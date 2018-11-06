@@ -13,15 +13,13 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from '../config';
 import { AuthProvider } from '../providers/auth/auth';
 import { LoginPage } from '../pages/login/login';
-import { AddPlayerPage } from '../pages/add-player/add-player';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
-    AddPlayerPage
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -34,8 +32,7 @@ import { AddPlayerPage } from '../pages/add-player/add-player';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
-    AddPlayerPage
+    LoginPage
   ],
   providers: [
     StatusBar,
