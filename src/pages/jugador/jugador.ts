@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'jugador.html',
 })
 export class JugadorPage {
-
+  //jugadores:Jugador[] = []; o players, o como esté nombrada la interfaz
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    //this.jugadores = JUGADORES.slice(0);
   }
 
   ionViewDidLoad() {
