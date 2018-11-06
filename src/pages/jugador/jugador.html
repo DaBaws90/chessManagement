@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Jugador</ion-title>
+    <ion-title>Jugadores</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <button ion-button block color="primary" *ngFor="let jugador of jugadores"></button>
+    </ion-item>
+  </ion-list>
 </ion-content>

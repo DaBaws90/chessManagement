@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { OPTIONS } from '../../data/data.options';
 import { Option } from '../../interfaces/options.interfaces';
 /*import { AddPlayerPage } from '../add-player/add-player';*/
+//import { JugadorPage } from '../jugador/jugador';
 
 @Component({
   selector: 'page-home',
@@ -24,6 +25,6 @@ export class HomePage {
   goTo(option: Option){
     let page = option.nombre + "Page";
     console.log("Going to: " + page);
-    //this.navCtrl.push(page);
+    this.navCtrl.push(page);
   }
 }
