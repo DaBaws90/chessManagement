@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { OPTIONS } from '../../data/data.options';
 import { Option } from '../../interfaces/options.interfaces';
-/*import { AddPlayerPage } from '../add-player/add-player';*/
+import { AddPlayerPage } from '../add-player/add-player';
 //import { JugadorPage } from '../jugador/jugador';
 
 @Component({

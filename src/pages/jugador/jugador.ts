@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AddPlayerPage } from '../add-player/add-player';
 
 /**
  * Generated class for the JugadorPage page.
@@ -21,6 +22,10 @@ export class JugadorPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JugadorPage');
+  }
+
+  addPlayerPage() {
+    this.navCtrl.push(AddPlayerPage);
   }
 
 }
