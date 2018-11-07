@@ -14,6 +14,7 @@ import { firebaseConfig } from '../config';
 import { AuthProvider } from '../providers/auth/auth';
 import { LoginPage } from '../pages/login/login';
 import { AddPlayerPage } from '../pages/add-player/add-player';
+import { HistorialProvider } from '../providers/historial/historial';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddPlayerPage } from '../pages/add-player/add-player';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    HistorialProvider
   ]
 })
 export class AppModule {}

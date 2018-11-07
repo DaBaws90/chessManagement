@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Jugador } from '../../interfaces/player.interfaces';
+import { HistorialProvider } from '../../providers/historial/historial';
 
 /**
  * Generated class for the AddPlayerPage page.
@@ -18,22 +19,14 @@ import { Jugador } from '../../interfaces/player.interfaces';
 export class AddPlayerPage {
   private jugadorForm: FormGroup;
   private jugador: Jugador;
-  private jugadores: Jugador[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController, private historialProvider: HistorialProvider) {
     this.jugadorForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
-      telefono: [''],
-      elo: [''], 
-      jugadas: [''],
-      ganadas: [''],
-      empatadas: [''],
-      perdidas: [''],
-      casa: [''],
-      fuera: [''],
-      puntos: ['']
+      telefono: ['', Validators.required],
+      elo: ['', Validators.required] 
     });
   }
 
@@ -47,23 +40,23 @@ export class AddPlayerPage {
       apellidos: jugadorForm.value['apellidos'],
       telefono: jugadorForm.value['telefono'],
       elo: jugadorForm.value['elo'],
-      jugadas: jugadorForm.value['jugadas'],
-      ganadas: jugadorForm.value['ganadas'],
-      empatadas: jugadorForm.value['empatadas'],
-      perdidas: jugadorForm.value['perdidas'],
-      casa: jugadorForm.value['casa'],
-      fuera: jugadorForm.value['fuera'],
-      puntos: jugadorForm.value['puntos']
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+
     };
     return this.jugador;
     
   }
 
   addPlayer() {
-    this.jugadores.push(this.toPlayer(this.jugadorForm));
+    this.historialProvider.agregar_historial(this.toPlayer(this.jugadorForm));
     this.presentToast(this.jugadorForm.value['nombre']);
     this.navCtrl.popToRoot();
-    console.log(this.jugadores);
   }
 
   presentToast(nombre: string) {

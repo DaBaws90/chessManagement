@@ -16,7 +16,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <button ion-button block color="primary" *ngFor="let jugador of jugadores"></button>
+      <button ion-button block color="primary" *ngFor="let jugador of jugadores">
+        <h3>{{ jugador.nombre }}</h3>
+      </button>
     </ion-item>
     <ion-item>
       <button ion-button block color="secondary" (click)="addPlayerPage()">Añadir jugador</button>
