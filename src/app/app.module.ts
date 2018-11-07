@@ -15,13 +15,15 @@ import { AuthProvider } from '../providers/auth/auth';
 import { LoginPage } from '../pages/login/login';
 import { AddPlayerPage } from '../pages/add-player/add-player';
 import { HistorialProvider } from '../providers/historial/historial';
+import { DetailsPage } from '../pages/details/details';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    AddPlayerPage
+    AddPlayerPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { HistorialProvider } from '../providers/historial/historial';
     MyApp,
     HomePage,
     LoginPage,
-    AddPlayerPage
+    AddPlayerPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

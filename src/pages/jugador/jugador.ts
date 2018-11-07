@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AddPlayerPage } from '../add-player/add-player';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
+import { DetailsPage } from '../details/details';
 /**
  * Generated class for the JugadorPage page.
  *
@@ -17,7 +18,8 @@ import { HistorialProvider } from '../../providers/historial/historial';
 })
 export class JugadorPage {
   jugadores:Jugador[] = []; 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private historialProvider: HistorialProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private historialProvider: HistorialProvider) {
   }
 
   ionViewDidLoad() {
@@ -30,6 +32,10 @@ export class JugadorPage {
 
   addPlayerPage() {
     this.navCtrl.push(AddPlayerPage);
+  }
+
+  details(jugador: Jugador){
+    this.navCtrl.push(DetailsPage, {"jugador":jugador});
   }
 
 }

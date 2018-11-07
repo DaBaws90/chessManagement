@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list>
-      <button text-center ion-item block *ngFor="let jugador of jugadores">
+      <button text-center ion-item block *ngFor="let jugador of jugadores" (click)="details(jugador)">
         <h3>{{ jugador.nombre }}&emsp;ELO: {{ jugador.elo }}</h3>
       </button>
     <ion-item>
