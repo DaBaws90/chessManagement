@@ -18,12 +18,14 @@ import { HistorialProvider } from '../../providers/historial/historial';
 export class JugadorPage {
   jugadores:Jugador[] = []; 
   constructor(public navCtrl: NavController, public navParams: NavParams, private historialProvider: HistorialProvider) {
-    this.jugadores = historialProvider.cargar_historial();
-    console.log(this.jugadores);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JugadorPage');
+  }
+
+  ionViewWillEnter() { 
+    this.jugadores = this.historialProvider.cargar_historial();
   }
 
   addPlayerPage() {

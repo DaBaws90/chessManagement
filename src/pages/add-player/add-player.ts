@@ -47,7 +47,6 @@ export class AddPlayerPage {
       casa: 0,
       fuera: 0,
       puntos: 0
-
     };
     return this.jugador;
     
@@ -56,7 +55,7 @@ export class AddPlayerPage {
   addPlayer() {
     this.historialProvider.agregar_historial(this.toPlayer(this.jugadorForm));
     this.presentToast(this.jugadorForm.value['nombre']);
-    this.navCtrl.popToRoot();
+    this.navCtrl.pop();
   }
 
   presentToast(nombre: string) {
