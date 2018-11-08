@@ -61,9 +61,9 @@ export class HistorialProvider {
 
   cargar_historial() {
     return this._historial.sort(function(a, b) {
-      if(a.elo > b.elo) {
+      if(Number(a.elo) > Number(b.elo)) {
         return -1;
-      } else if(a.elo < b.elo) {
+      } else if(Number(a.elo) < Number(b.elo)) {
         return 1;
       } else {
         return 0;
