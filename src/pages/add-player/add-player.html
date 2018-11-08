@@ -19,11 +19,11 @@
     </ion-item>
     <ion-item>
       <ion-label floating>Teléfono</ion-label>
-      <ion-input type="text" formControlName="telefono"></ion-input>
+      <ion-input type="tel" formControlName="telefono"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>ELO</ion-label>
-      <ion-input type="text" formControlName="elo"></ion-input>
+      <ion-input type="number" formControlName="elo"></ion-input>
     </ion-item>
     <div text-center>
       <button ion-button class="addPlayer" type="submit" [disabled]="!jugadorForm.valid">Añadir</button>
