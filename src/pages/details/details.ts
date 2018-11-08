@@ -30,16 +30,16 @@ export class DetailsPage {
     console.log('ionViewDidLoad DetailsPage');
   }
 
-  editable(){
+  /*editable(){
     var cont = document.getElementsByClassName("disabled");
     this.editando = true;
     for( var i = 0; i < cont.length; i++){
       cont[i].removeAttribute("disabled");
     }
-  }
+  }*/
 
-  update() {
-    console.log(this.index);
+  goEdit() {
+    console.log(this.jugador+ "," +this.jugador.nombre+","+this.index);
   }
   
   cerrar(){

@@ -14,75 +14,70 @@
 
 <ion-content>
   <ion-list>
-    <form [formGroup]="jugadorForm" (ngSubmit)="update()">
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="../../assets/imgs/options/user.png">
-        </ion-avatar>
-        <h2>{{jugador.nombre}}</h2>
-        <p>ELO : {{jugador.elo}}</p>
-        <p>Index: {{ index }}</p>
-        <button *ngIf="!editando" ion-button item-end color="dark" (click)="editable()">
-          <ion-icon name="create"></ion-icon>
-        </button>
-      </ion-item>
-      <ion-item>
-        Apellidos:
-        <ion-note item-end>
-          {{jugador.apellidos}}
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Teléfono:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="tel" value="{{jugador.telefono}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Partidas jugadas:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.jugadas}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Partidas ganadas:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.ganadas}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Partidas empatadas:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.empatadas}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Partidas perdidas:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.perdidas}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Partidas como local:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.casa}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Partidas como visitante:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.fuera}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        Puntos totales:
-        <ion-note item-end>
-          <input ion-input disabled class="disabled" type="number" value="{{jugador.puntos}}">
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        <button *ngIf="editando" ion-button item-end color="dark" (click)="update(jugador)">Guardar</button>
-      </ion-item>
-    </form>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/options/user.png">
+      </ion-avatar>
+      <h2>{{jugador.nombre}}</h2>
+      <p>ELO : {{jugador.elo}}</p>
+      <p>Index: {{ index }}</p>
+      <button *ngIf="!editando" ion-button item-end color="dark" (click)="goEdit()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+      Apellidos:
+      <ion-note item-end>
+        {{jugador.apellidos}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Teléfono:
+      <ion-note item-end>
+        {{jugador.telefono}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Partidas jugadas:
+      <ion-note item-end>
+        {{jugador.jugadas}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Partidas ganadas:
+      <ion-note item-end>
+        {{jugador.ganadas}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Partidas empatadas:
+      <ion-note item-end>
+        {{jugador.empatadas}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Partidas perdidas:
+      <ion-note item-end>
+        {{jugador.perdidas}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Partidas como local:
+      <ion-note item-end>
+        {{jugador.casa}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Partidas como visitante:
+      <ion-note item-end>
+        {{jugador.fuera}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      Puntos totales:
+      <ion-note item-end>
+        {{jugador.puntos}}
+      </ion-note>
+    </ion-item>
   </ion-list>
 </ion-content>

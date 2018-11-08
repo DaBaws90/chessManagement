@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([9],{
 
 /***/ 718:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -84,4 +84,4 @@ var EquiposPage = /** @class */ (function () {
 /***/ })
 
 });
-//# sourceMappingURL=2.js.map
+//# sourceMappingURL=9.js.map
