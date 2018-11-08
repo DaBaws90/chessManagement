@@ -47,7 +47,7 @@ export class HistorialProvider {
       nombre: "Prueba 3",
       apellidos: "Prueba",
       telefono: "123456789",
-      elo: 60,
+      elo: 60.5,
       jugadas: 0,
       ganadas: 0,
       empatadas: 0,

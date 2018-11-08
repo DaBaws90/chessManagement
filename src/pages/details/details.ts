@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Jugador } from '../../interfaces/player.interfaces';
+import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 
 /**
  * Generated class for the DetailsPage page.
@@ -23,8 +24,16 @@ export class DetailsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
   }
+
+  editable(){
+    var cont = document.getElementsByClassName("disabled");
+    for( var i = 0; i < cont.length; i++){
+      cont[i].removeAttribute("disabled");
+    }
+  }
   
   cerrar(){
     this.navCtrl.pop();
+    //document.getElementsByClassName("disabled")[0].removeAttribute("disabled");
   }
 }

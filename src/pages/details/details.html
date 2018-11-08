@@ -20,6 +20,7 @@
       </ion-avatar>
       <h2>{{jugador.nombre}}</h2>
       <p>ELO : {{jugador.elo}}</p>
+      <button ion-button item-end color="dark" (click)="editable()"><ion-icon name="create"></ion-icon></button>
     </ion-item>
 
     <ion-item>
@@ -31,49 +32,49 @@
     <ion-item>
       Teléfono:
       <ion-note item-end>
-        {{jugador.telefono}}
+        <input ion-input disabled class="disabled" type="tel" value="{{jugador.telefono}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Partidas jugadas:
       <ion-note item-end>
-        {{jugador.jugadas}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.jugadas}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Partidas ganadas:
       <ion-note item-end>
-        {{jugador.ganadas}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.ganadas}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Partidas empatadas:
       <ion-note item-end>
-        {{jugador.empatadas}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.empatadas}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Partidas perdidas:
       <ion-note item-end>
-        {{jugador.perdidas}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.perdidas}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Partidas como local:
       <ion-note item-end>
-        {{jugador.casa}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.casa}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Partidas como visitante:
       <ion-note item-end>
-        {{jugador.fuera}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.fuera}}">
       </ion-note>
     </ion-item>
     <ion-item>
       Puntos totales:
       <ion-note item-end>
-        {{jugador.puntos}}
+        <input ion-input disabled class="disabled" type="number" value="{{jugador.puntos}}">
       </ion-note>
     </ion-item>
   </ion-list>
