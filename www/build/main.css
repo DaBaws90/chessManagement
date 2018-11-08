@@ -25678,6 +25678,11 @@ page-add-player .addPlayer {
   margin-top: 3vh;
 }
 
+page-edit-player .editPlayer {
+  margin-top: 3vh;
+  float: right;
+}
+
 page-jugador .jugador h3 {
   padding: 1vh 0;
 }

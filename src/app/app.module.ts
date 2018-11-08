@@ -16,6 +16,7 @@ import { LoginPage } from '../pages/login/login';
 import { AddPlayerPage } from '../pages/add-player/add-player';
 import { HistorialProvider } from '../providers/historial/historial';
 import { DetailsPage } from '../pages/details/details';
+import { EditPlayerPage } from '../pages/edit-player/edit-player';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DetailsPage } from '../pages/details/details';
     HomePage,
     LoginPage,
     AddPlayerPage,
+    EditPlayerPage,
     DetailsPage
   ],
   imports: [
@@ -38,6 +40,7 @@ import { DetailsPage } from '../pages/details/details';
     HomePage,
     LoginPage,
     AddPlayerPage,
+    EditPlayerPage,
     DetailsPage
   ],
   providers: [

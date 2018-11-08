@@ -88,11 +88,32 @@ export class HistorialProvider {
       puntos: 0
     };
     return this.jugador;
-    
+  }
+
+  modifyPlayer(jugadorForm: FormGroup) {
+    this.jugador = {
+      nombre: jugadorForm.value['nombre'],
+      apellidos: jugadorForm.value['apellidos'],
+      telefono: jugadorForm.value['telefono'],
+      elo: jugadorForm.value['elo'],
+      jugadas: jugadorForm.value['jugadas'],
+      ganadas: jugadorForm.value['ganadas'],
+      empatadas: jugadorForm.value['empatadas'],
+      perdidas: jugadorForm.value['perdidas'],
+      casa: jugadorForm.value['casa'],
+      fuera: jugadorForm.value['fuera'],
+      puntos: jugadorForm.value['puntos']
+    };
+    return this.jugador;
+
   }
 
   agregar_historial(jugadorForm: FormGroup) {
     this._historial.unshift(this.toPlayer(jugadorForm));
+  }
+
+  editar_historial(jugadorForm: FormGroup, index: number) {
+    this._historial[index] = this.modifyPlayer(jugadorForm);
   }
 
 }

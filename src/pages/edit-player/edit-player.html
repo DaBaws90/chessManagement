@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Editar jugador</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="jugadorForm" (ngSubmit)="editPlayer()">
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input type="text" formControlName="nombre" value="{{jugador.nombre}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Apellidos</ion-label>
+    <ion-input type="text" formControlName="apellidos" value="{{jugador.apellidos}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Teléfono</ion-label>
+    <ion-input type="tel" formControlName="telefono" value="{{jugador.telefono}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>ELO</ion-label>
+    <ion-input type="number" formControlName="elo" value="{{jugador.elo}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Partidas jugadas</ion-label>
+    <ion-input type="number" formControlName="jugadas" value="{{jugador.jugadas}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Partidas ganadas</ion-label>
+    <ion-input type="number" formControlName="ganadas" value="{{jugador.ganadas}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Partidas empatadas</ion-label>
+    <ion-input type="number" formControlName="empatadas" value="{{jugador.empatadas}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Partidas perdidas</ion-label>
+    <ion-input type="number" formControlName="perdidas" value="{{jugador.perdidas}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Partidas en casa</ion-label>
+    <ion-input type="number" formControlName="casa" value="{{jugador.casa}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Partidas fuera de casa</ion-label>
+    <ion-input type="number" formControlName="fuera" value="{{jugador.fuera}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Puntos</ion-label>
+    <ion-input type="number" formControlName="puntos" value="{{jugador.puntos}}"></ion-input>
+  </ion-item>
+    <button class="editPlayer" type="submit" ion-button>Guardar</button>
+  </form>
+</ion-content>

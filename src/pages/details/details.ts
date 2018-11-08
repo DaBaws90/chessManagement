@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
+import { EditPlayerPage } from '../edit-player/edit-player';
+import { HistorialProvider } from '../../providers/historial/historial';
 
 /**
  * Generated class for the DetailsPage page.
@@ -19,7 +21,7 @@ export class DetailsPage {
   jugador:Jugador;
   editando: boolean;
   index: number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private historialProvider: HistorialProvider) {
     this.jugador = this.navParams.get("jugador");
     this.index = this.navParams.get("index");
     console.log(this.index);
@@ -39,7 +41,7 @@ export class DetailsPage {
   }*/
 
   goEdit() {
-    console.log(this.jugador+ "," +this.jugador.nombre+","+this.index);
+    this.navCtrl.push(EditPlayerPage, {"jugador": this.jugador, "index": this.index});
   }
   
   cerrar(){
