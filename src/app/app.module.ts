@@ -17,6 +17,7 @@ import { AddPlayerPage } from '../pages/add-player/add-player';
 import { HistorialProvider } from '../providers/historial/historial';
 import { DetailsPage } from '../pages/details/details';
 import { EditPlayerPage } from '../pages/edit-player/edit-player';
+import { HistorialEquiposProvider } from '../providers/historial-equipos/historial-equipos';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { EditPlayerPage } from '../pages/edit-player/edit-player';
     LoginPage,
     AddPlayerPage,
     EditPlayerPage,
-    DetailsPage
+    DetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -41,14 +42,15 @@ import { EditPlayerPage } from '../pages/edit-player/edit-player';
     LoginPage,
     AddPlayerPage,
     EditPlayerPage,
-    DetailsPage
+    DetailsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    HistorialProvider
+    HistorialProvider,
+    HistorialEquiposProvider
   ]
 })
 export class AppModule {}

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Equipo } from '../../interfaces/equipo.interfaces';
+import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
+
 
 /**
  * Generated class for the EquiposPage page.
@@ -14,8 +17,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'equipos.html',
 })
 export class EquiposPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  equipos:Equipo[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private historialEquiposProvider:HistorialEquiposProvider) {
+      this.equipos = this.historialEquiposProvider.cargar_equipos();
   }
 
   ionViewDidLoad() {

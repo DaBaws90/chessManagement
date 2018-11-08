@@ -14,5 +14,18 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+      <button text-center ion-item block *ngFor="let equipo of equipos; let i = index" (click)="details(equipo, i)">
+        <ion-item>
+          {{equipo.nombre}}
+          <ion-note item-end>
+            {{equipo.ciudad}}
+          </ion-note>
+        </ion-item>
+        
+      </button>
+    <ion-item>
+      <button ion-button block color="secondary" (click)="addEquiposPage()">Añadir equipo</button>
+    </ion-item>
+  </ion-list>
 </ion-content>
