@@ -1,6 +1,7 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 
 /*
@@ -12,6 +13,7 @@ import { Jugador } from '../../interfaces/player.interfaces';
 @Injectable()
 export class HistorialProvider {
   private _historial: Jugador[] = [];
+  private jugador: Jugador;
   private jugador1: Jugador;
   private jugador2: Jugador;
   private jugador3: Jugador;
@@ -71,8 +73,26 @@ export class HistorialProvider {
     });
   }
 
-  agregar_historial(jugador: Jugador) {
-    this._historial.unshift(jugador);
+  toPlayer(jugadorForm: FormGroup) {
+    this.jugador = {
+      nombre: jugadorForm.value['nombre'],
+      apellidos: jugadorForm.value['apellidos'],
+      telefono: jugadorForm.value['telefono'],
+      elo: jugadorForm.value['elo'],
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    return this.jugador;
+    
+  }
+
+  agregar_historial(jugadorForm: FormGroup) {
+    this._historial.unshift(this.toPlayer(jugadorForm));
   }
 
 }

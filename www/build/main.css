@@ -25677,3 +25677,7 @@ ion-navbar.toolbar {
 page-add-player .addPlayer {
   margin-top: 3vh;
 }
+
+page-jugador .jugador h3 {
+  padding: 1vh 0;
+}

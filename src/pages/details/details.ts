@@ -17,8 +17,13 @@ import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class DetailsPage {
   jugador:Jugador;
+  editando: boolean;
+  index: number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jugador = this.navParams.get("jugador");
+    this.index = this.navParams.get("index");
+    console.log(this.index);
+    this.editando = false;
   }
 
   ionViewDidLoad() {
@@ -27,9 +32,14 @@ export class DetailsPage {
 
   editable(){
     var cont = document.getElementsByClassName("disabled");
+    this.editando = true;
     for( var i = 0; i < cont.length; i++){
       cont[i].removeAttribute("disabled");
     }
+  }
+
+  update() {
+    console.log(this.index);
   }
   
   cerrar(){

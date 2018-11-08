@@ -34,8 +34,8 @@ export class JugadorPage {
     this.navCtrl.push(AddPlayerPage);
   }
 
-  details(jugador: Jugador){
-    this.navCtrl.push(DetailsPage, {"jugador":jugador});
+  details(jugador: Jugador, index: number){
+    this.navCtrl.push(DetailsPage, {"jugador":jugador, "index": index});
   }
 
 }

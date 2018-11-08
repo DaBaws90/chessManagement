@@ -34,26 +34,8 @@ export class AddPlayerPage {
     console.log('ionViewDidLoad AddPlayerPage');
   }
 
-  toPlayer(jugadorForm: FormGroup) {
-    this.jugador = {
-      nombre: jugadorForm.value['nombre'],
-      apellidos: jugadorForm.value['apellidos'],
-      telefono: jugadorForm.value['telefono'],
-      elo: jugadorForm.value['elo'],
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    return this.jugador;
-    
-  }
-
   addPlayer() {
-    this.historialProvider.agregar_historial(this.toPlayer(this.jugadorForm));
+    this.historialProvider.agregar_historial(this.jugadorForm);
     this.presentToast(this.jugadorForm.value['nombre']);
     this.navCtrl.pop();
   }

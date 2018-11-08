@@ -80,8 +80,24 @@ var HistorialProvider = /** @class */ (function () {
             }
         });
     };
-    HistorialProvider.prototype.agregar_historial = function (jugador) {
-        this._historial.unshift(jugador);
+    HistorialProvider.prototype.toPlayer = function (jugadorForm) {
+        this.jugador = {
+            nombre: jugadorForm.value['nombre'],
+            apellidos: jugadorForm.value['apellidos'],
+            telefono: jugadorForm.value['telefono'],
+            elo: jugadorForm.value['elo'],
+            jugadas: 0,
+            ganadas: 0,
+            empatadas: 0,
+            perdidas: 0,
+            casa: 0,
+            fuera: 0,
+            puntos: 0
+        };
+        return this.jugador;
+    };
+    HistorialProvider.prototype.agregar_historial = function (jugadorForm) {
+        this._historial.unshift(this.toPlayer(jugadorForm));
     };
     HistorialProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -194,27 +210,27 @@ webpackEmptyAsyncContext.id = 168;
 
 var map = {
 	"../pages/add-player/add-player.module": [
-		715,
+		717,
 		5
 	],
 	"../pages/details/details.module": [
-		716,
+		719,
 		4
 	],
 	"../pages/edit/edit.module": [
-		717,
+		715,
 		2
 	],
 	"../pages/equipos/equipos.module": [
-		718,
+		716,
 		1
 	],
 	"../pages/jugador/jugador.module": [
-		719,
+		720,
 		0
 	],
 	"../pages/login/login.module": [
-		720,
+		718,
 		3
 	]
 };
@@ -387,24 +403,8 @@ var AddPlayerPage = /** @class */ (function () {
     AddPlayerPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad AddPlayerPage');
     };
-    AddPlayerPage.prototype.toPlayer = function (jugadorForm) {
-        this.jugador = {
-            nombre: jugadorForm.value['nombre'],
-            apellidos: jugadorForm.value['apellidos'],
-            telefono: jugadorForm.value['telefono'],
-            elo: jugadorForm.value['elo'],
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        return this.jugador;
-    };
     AddPlayerPage.prototype.addPlayer = function () {
-        this.historialProvider.agregar_historial(this.toPlayer(this.jugadorForm));
+        this.historialProvider.agregar_historial(this.jugadorForm);
         this.presentToast(this.jugadorForm.value['nombre']);
         this.navCtrl.pop();
     };
@@ -419,10 +419,10 @@ var AddPlayerPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-add-player',template:/*ion-inline-start:"C:\Users\pablo\Documents\DAM\PMDM\App Primer Trimestre\ajedrez\src\pages\add-player\add-player.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Añadir jugador</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form [formGroup]="jugadorForm" (ngSubmit)="addPlayer()">\n\n    <ion-item>\n\n      <ion-label floating>Nombre</ion-label>\n\n      <ion-input type="text" formControlName="nombre"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>Apellidos</ion-label>\n\n      <ion-input type="text" formControlName="apellidos"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>Teléfono</ion-label>\n\n      <ion-input type="tel" formControlName="telefono"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>ELO</ion-label>\n\n      <ion-input type="number" formControlName="elo"></ion-input>\n\n    </ion-item>\n\n    <div text-center>\n\n      <button ion-button class="addPlayer" type="submit" [disabled]="!jugadorForm.valid">Añadir</button>\n\n    </div>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pablo\Documents\DAM\PMDM\App Primer Trimestre\ajedrez\src\pages\add-player\add-player.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]) === "function" && _e || Object])
     ], AddPlayerPage);
     return AddPlayerPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=add-player.js.map
@@ -474,7 +474,7 @@ var DetailsPage = /** @class */ (function () {
     };
     DetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-details',template:/*ion-inline-start:"C:\Users\pablo\Documents\DAM\PMDM\App Primer Trimestre\ajedrez\src\pages\details\details.html"*/'<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      Detalles\n\n      <!-- de {{ jugador.nombre }} -->\n\n    </ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="cerrar()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-avatar item-start>\n\n        <img src="../../assets/imgs/options/user.png">\n\n      </ion-avatar>\n\n      <h2>{{jugador.nombre}}</h2>\n\n      <p>ELO : {{jugador.elo}}</p>\n\n      <button ion-button item-end color="dark" (click)="editable()"><ion-icon name="create"></ion-icon></button>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      Apellidos:\n\n      <ion-note item-end>\n\n        {{jugador.apellidos}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Teléfono:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="tel" value="{{jugador.telefono}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Partidas jugadas:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.jugadas}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Partidas ganadas:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.ganadas}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Partidas empatadas:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.empatadas}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Partidas perdidas:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.perdidas}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Partidas como local:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.casa}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Partidas como visitante:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.fuera}}">\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      Puntos totales:\n\n      <ion-note item-end>\n\n        <input ion-input disabled class="disabled" type="number" value="{{jugador.puntos}}">\n\n      </ion-note>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pablo\Documents\DAM\PMDM\App Primer Trimestre\ajedrez\src\pages\details\details.html"*/,
+            selector: 'page-details',template:/*ion-inline-start:"C:\Users\pablo\Documents\DAM\PMDM\App Primer Trimestre\ajedrez\src\pages\details\details.html"*/'<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      Detalles\n\n      <!-- de {{ jugador.nombre }} -->\n\n    </ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="cerrar()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <form [formGroup]="jugadorForm" (ngSubmit)="update()">\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="../../assets/imgs/options/user.png">\n\n        </ion-avatar>\n\n        <h2>{{jugador.nombre}}</h2>\n\n        <p>ELO : {{jugador.elo}}</p>\n\n        <p>Index: {{ index }}</p>\n\n        <button *ngIf="!editando" ion-button item-end color="dark" (click)="editable()">\n\n          <ion-icon name="create"></ion-icon>\n\n        </button>\n\n      </ion-item>\n\n      <ion-item>\n\n        Apellidos:\n\n        <ion-note item-end>\n\n          {{jugador.apellidos}}\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Teléfono:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="tel" value="{{jugador.telefono}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Partidas jugadas:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.jugadas}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Partidas ganadas:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.ganadas}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Partidas empatadas:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.empatadas}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Partidas perdidas:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.perdidas}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Partidas como local:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.casa}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Partidas como visitante:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.fuera}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        Puntos totales:\n\n        <ion-note item-end>\n\n          <input ion-input disabled class="disabled" type="number" value="{{jugador.puntos}}">\n\n        </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        <button *ngIf="editando" ion-button item-end color="dark" (click)="update(jugador)">Guardar</button>\n\n      </ion-item>\n\n    </form>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pablo\Documents\DAM\PMDM\App Primer Trimestre\ajedrez\src\pages\details\details.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
     ], DetailsPage);
@@ -561,12 +561,12 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/add-player/add-player.module#AddPlayerPageModule', name: 'AddPlayerPage', segment: 'add-player', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/details/details.module#DetailsPageModule', name: 'DetailsPage', segment: 'details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit/edit.module#EditPageModule', name: 'EditPage', segment: 'edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/equipos/equipos.module#EquiposPageModule', name: 'EquiposPage', segment: 'equipos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/jugador/jugador.module#JugadorPageModule', name: 'JugadorPage', segment: 'jugador', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/add-player/add-player.module#AddPlayerPageModule', name: 'AddPlayerPage', segment: 'add-player', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/details/details.module#DetailsPageModule', name: 'DetailsPage', segment: 'details', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/jugador/jugador.module#JugadorPageModule', name: 'JugadorPage', segment: 'jugador', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_7_angularfire2__["AngularFireModule"].initializeApp(__WEBPACK_IMPORTED_MODULE_10__config__["a" /* firebaseConfig */]),
