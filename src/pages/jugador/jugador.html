@@ -16,7 +16,13 @@
 <ion-content padding>
   <ion-list>
       <button class="jugador" text-center ion-item block *ngFor="let jugador of jugadores; let i = index" (click)="details(jugador, i)">
-        <h3>{{ jugador.nombre }}&emsp;ELO: {{ jugador.elo }}</h3>
+        <ion-item>
+          {{jugador.nombre}}
+          <ion-note item-end>
+            {{jugador.telefono}}
+          </ion-note>
+        </ion-item>
+        
       </button>
     <ion-item>
       <button ion-button block color="secondary" (click)="addPlayerPage()">Añadir jugador</button>

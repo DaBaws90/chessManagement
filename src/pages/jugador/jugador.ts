@@ -17,8 +17,8 @@ import { DetailsPage } from '../details/details';
   templateUrl: 'jugador.html',
 })
 export class JugadorPage {
-  jugadores:Jugador[] = []; 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  jugadores: Jugador[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     private historialProvider: HistorialProvider) {
   }
 
@@ -26,7 +26,7 @@ export class JugadorPage {
     console.log('ionViewDidLoad JugadorPage');
   }
 
-  ionViewWillEnter() { 
+  ionViewWillEnter() {
     this.jugadores = this.historialProvider.cargar_historial();
   }
 
@@ -34,8 +34,8 @@ export class JugadorPage {
     this.navCtrl.push(AddPlayerPage);
   }
 
-  details(jugador: Jugador, index: number){
-    this.navCtrl.push(DetailsPage, {"jugador":jugador, "index": index});
+  details(jugador: Jugador, index: number) {
+    this.navCtrl.push(DetailsPage, { "jugador": jugador, "index": index });
   }
 
 }

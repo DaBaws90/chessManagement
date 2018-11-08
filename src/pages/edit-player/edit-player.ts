@@ -21,7 +21,6 @@ export class EditPlayerPage {
   jugador: Jugador;
   jugadorForm: FormGroup;
   index: number;
-  index2: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
     private toastCtrl: ToastController, private historialProvider: HistorialProvider) {
@@ -46,12 +45,8 @@ export class EditPlayerPage {
     console.log(this.jugadorForm);
     this.historialProvider.editar_historial(this.jugadorForm, this.index);
     this.presentToast(this.jugador.nombre);
-    this.navCtrl.pop();
-  }
-
-  ionViewDidLoad() {
-    this.index2 = this.index;
-    console.log(this.index2);
+    this.navCtrl.popToRoot();
+    this.navCtrl.push(JugadorPage);
   }
 
   presentToast(nombre: string) {

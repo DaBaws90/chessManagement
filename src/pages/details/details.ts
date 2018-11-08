@@ -21,6 +21,7 @@ export class DetailsPage {
   jugador:Jugador;
   editando: boolean;
   index: number;
+  index2: number;
   constructor(public navCtrl: NavController, public navParams: NavParams, private historialProvider: HistorialProvider) {
     this.jugador = this.navParams.get("jugador");
     this.index = this.navParams.get("index");
@@ -29,6 +30,7 @@ export class DetailsPage {
   }
 
   ionViewDidLoad() {
+    this.index2 = this.index;
     console.log('ionViewDidLoad DetailsPage');
   }
 
