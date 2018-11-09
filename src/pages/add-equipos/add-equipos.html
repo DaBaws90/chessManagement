@@ -1,33 +1,32 @@
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>Añadir equipo</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding>
-    <form [formGroup]="jugadorForm" (ngSubmit)="addPlayer()">
-      <ion-item>
-        <ion-label floating>Nombre</ion-label>
-        <ion-input type="text" formControlName="nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Apellidos</ion-label>
-        <ion-input type="text" formControlName="apellidos"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Teléfono</ion-label>
-        <ion-input type="tel" formControlName="telefono"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>ELO</ion-label>
-        <ion-input type="number" formControlName="elo"></ion-input>
-      </ion-item>
-      <div text-center>
-        <button ion-button class="addPlayer" type="submit" [disabled]="!jugadorForm.valid">Añadir</button>
-      </div>
-    </form>
-  </ion-content>
-  
+  <ion-navbar>
+    <ion-title>Añadir equipo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="equipoForm" (ngSubmit)="addTeam()">
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Ciudad</ion-label>
+      <ion-input type="text" formControlName="ciudad"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Jugadores (ordenados por ELO)</ion-label>
+      <ion-select formControlName="jugadores" multiple="true">
+        <ion-option *ngFor="let jugador of jugadoresEquipo" [value]="jugador">
+          {{jugador.nombre}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <div text-center>
+      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid">Añadir</button>
+    </div>
+  </form>
+</ion-content>

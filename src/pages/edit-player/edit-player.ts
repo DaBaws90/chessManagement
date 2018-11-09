@@ -30,14 +30,14 @@ export class EditPlayerPage {
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       telefono: ['', Validators.required],
-      elo: ['', Validators.required],
-      jugadas: ['', Validators.required],
-      ganadas: ['', Validators.required],
-      empatadas: ['', Validators.required],
-      perdidas: ['', Validators.required],
-      casa: ['', Validators.required],
-      fuera: ['', Validators.required],
-      puntos: ['', Validators.required]
+      elo: [''],
+      jugadas: [''],
+      ganadas: [''],
+      empatadas: [''],
+      perdidas: [''],
+      casa: [''],
+      fuera: [''],
+      puntos: ['']
     });
   }
 
@@ -45,8 +45,7 @@ export class EditPlayerPage {
     console.log(this.jugadorForm);
     this.historialProvider.editar_historial(this.jugadorForm, this.index);
     this.presentToast(this.jugador.nombre);
-    this.navCtrl.popToRoot();
-    this.navCtrl.push(JugadorPage);
+    this.navCtrl.pop();
   }
 
   presentToast(nombre: string) {

@@ -20,7 +20,7 @@ export class HistorialProvider {
 
   constructor() {
     this.jugador1 = {
-      nombre: "Prueba 1",
+      nombre: "Jugador 1",
       apellidos: "Prueba",
       telefono: "123456789",
       elo: 50,
@@ -33,7 +33,7 @@ export class HistorialProvider {
       puntos: 0
     };
     this.jugador2 = {
-      nombre: "Prueba 2",
+      nombre: "Jugador 2",
       apellidos: "Prueba",
       telefono: "123456789",
       elo: 40,
@@ -46,7 +46,7 @@ export class HistorialProvider {
       puntos: 0
     };
     this.jugador3 = {
-      nombre: "Prueba 3",
+      nombre: "Jugador 3",
       apellidos: "Prueba",
       telefono: "123456789",
       elo: 60.5,

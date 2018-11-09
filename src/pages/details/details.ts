@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Jugador } from '../../interfaces/player.interfaces';
-import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { EditPlayerPage } from '../edit-player/edit-player';
 import { HistorialProvider } from '../../providers/historial/historial';
 
@@ -21,26 +20,20 @@ export class DetailsPage {
   jugador:Jugador;
   editando: boolean;
   index: number;
-  index2: number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private historialProvider: HistorialProvider) {
     this.jugador = this.navParams.get("jugador");
     this.index = this.navParams.get("index");
-    console.log(this.index);
     this.editando = false;
   }
 
   ionViewDidLoad() {
-    this.index2 = this.index;
     console.log('ionViewDidLoad DetailsPage');
   }
 
-  /*editable(){
-    var cont = document.getElementsByClassName("disabled");
-    this.editando = true;
-    for( var i = 0; i < cont.length; i++){
-      cont[i].removeAttribute("disabled");
-    }
-  }*/
+  ionViewWillEnter(){
+    this.jugador = this.historialProvider.cargar_historial()[this.index];
+  }
 
   goEdit() {
     this.navCtrl.push(EditPlayerPage, {"jugador": this.jugador, "index": this.index});
@@ -48,6 +41,14 @@ export class DetailsPage {
   
   cerrar(){
     this.navCtrl.pop();
-    //document.getElementsByClassName("disabled")[0].removeAttribute("disabled");
   }
+
+  
+  /*editable(){
+    var cont = document.getElementsByClassName("disabled");
+    this.editando = true;
+    for( var i = 0; i < cont.length; i++){
+      cont[i].removeAttribute("disabled");
+    }
+  }*/
 }

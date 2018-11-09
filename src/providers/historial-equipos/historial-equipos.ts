@@ -48,6 +48,6 @@ export class HistorialEquiposProvider {
     return this.equipo;
   }
   agregar_equipo(equipoForm: FormGroup){
-    this._historialEquipos.unshift(this.toTeam(equipoForm));
+    this._historialEquipos.push(this.toTeam(equipoForm));
   }
 }

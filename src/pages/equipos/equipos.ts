@@ -28,6 +28,10 @@ export class EquiposPage {
     console.log('ionViewDidLoad EquiposPage');
   }
 
+  ionViewWillEnter() {
+    this.equipos = this.historialEquiposProvider.cargar_equipos();
+  }
+
   addEquiposView(){
     this.navCtrl.push(AddEquiposPage);
     console.log("Navigating to: AddEquiposPage");
