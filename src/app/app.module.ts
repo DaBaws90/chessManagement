@@ -18,6 +18,7 @@ import { HistorialProvider } from '../providers/historial/historial';
 import { DetailsPage } from '../pages/details/details';
 import { EditPlayerPage } from '../pages/edit-player/edit-player';
 import { HistorialEquiposProvider } from '../providers/historial-equipos/historial-equipos';
+import { AddEquiposPage } from '../pages/add-equipos/add-equipos';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HistorialEquiposProvider } from '../providers/historial-equipos/histori
     AddPlayerPage,
     EditPlayerPage,
     DetailsPage,
+    AddEquiposPage,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { HistorialEquiposProvider } from '../providers/historial-equipos/histori
     AddPlayerPage,
     EditPlayerPage,
     DetailsPage,
+    AddEquiposPage,
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Jugador } from '../../interfaces/player.interfaces';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HistorialProvider } from '../../providers/historial/historial';
 
 /**
@@ -18,7 +17,6 @@ import { HistorialProvider } from '../../providers/historial/historial';
 })
 export class AddPlayerPage {
   private jugadorForm: FormGroup;
-  private jugador: Jugador;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
     private toastCtrl: ToastController, private historialProvider: HistorialProvider) {

@@ -1,6 +1,7 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Equipo } from '../../interfaces/equipo.interfaces';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /*
   Generated class for the HistorialEquiposProvider provider.
@@ -36,5 +37,17 @@ export class HistorialEquiposProvider {
   }
   cargar_equipos(){
     return this._historialEquipos;
+  }
+
+  private toTeam(equipoForm: FormGroup) {
+    this.equipo = {
+      nombre: equipoForm.value['nombre'],
+      ciudad: equipoForm.value['ciudad'],
+      jugadores: equipoForm.value['jugadores']
+    };
+    return this.equipo;
+  }
+  agregar_equipo(equipoForm: FormGroup){
+    this._historialEquipos.unshift(this.toTeam(equipoForm));
   }
 }

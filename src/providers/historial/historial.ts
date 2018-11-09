@@ -73,7 +73,7 @@ export class HistorialProvider {
     });
   }
 
-  toPlayer(jugadorForm: FormGroup) {
+  private toPlayer(jugadorForm: FormGroup) {
     this.jugador = {
       nombre: jugadorForm.value['nombre'],
       apellidos: jugadorForm.value['apellidos'],
