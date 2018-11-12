@@ -19,8 +19,9 @@
     </ion-item>
     <ion-item>
       <ion-label floating>Jugadores (ordenados por ELO)</ion-label>
-      <ion-select formControlName="jugadores" max="4" multiple="true">
-        <ion-option *ngFor="let jugador of jugadoresEquipo" [value]="jugador">
+      <ion-select formControlName="jugadores" multiple="true" [(ngModel)]="jugadores">
+        <ion-option *ngFor="let jugador of jugadoresEquipo" [value]="jugador" 
+        (ionSelect)="select()" [disabled]="cont > 3">
           {{jugador.nombre}}
         </ion-option>
       </ion-select>

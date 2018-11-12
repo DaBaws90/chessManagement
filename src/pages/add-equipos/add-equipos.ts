@@ -19,24 +19,26 @@ import { Jugador } from '../../interfaces/player.interfaces';
 })
 export class AddEquiposPage {
   private equipoForm: FormGroup;
-  private jugadoresEquipo:Jugador[] = []
+  private jugadoresEquipo: Jugador[] = [];
+  private cont: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private historialEquipos: HistorialEquiposProvider, private toastCtrl:ToastController,
-      private formBuilder:FormBuilder, private historial:HistorialProvider) {
-      this.equipoForm = this.formBuilder.group({
-        nombre: ['', Validators.required],
-        ciudad: ['', Validators.required],
-        jugadores: [[]]
-      });
-      this.jugadoresEquipo = this.historial.cargar_historial();
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private historialEquipos: HistorialEquiposProvider, private toastCtrl: ToastController,
+    private formBuilder: FormBuilder, private historial: HistorialProvider) {
+    this.equipoForm = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      ciudad: ['', Validators.required],
+      jugadores: [[]]
+    });
+    this.jugadoresEquipo = this.historial.cargar_historial();
+    this.cont = 0;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEquiposPage');
   }
 
-  addTeam(){
+  addTeam() {
     this.historialEquipos.agregar_equipo(this.equipoForm);
     this.presentToast(this.equipoForm.value['nombre']);
     this.navCtrl.pop();
@@ -48,5 +50,10 @@ export class AddEquiposPage {
       duration: 3000
     });
     toast.present();
+  }
+
+  select() {
+    this.cont += 1;
+    console.log(this.cont);
   }
 }
