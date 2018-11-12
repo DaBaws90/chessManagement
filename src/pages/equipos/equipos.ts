@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { AddEquiposPage } from '../add-equipos/add-equipos';
+import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
 
 
 /**
@@ -35,5 +36,8 @@ export class EquiposPage {
   addEquiposView(){
     this.navCtrl.push(AddEquiposPage);
     console.log("Navigating to: AddEquiposPage");
+  }
+  details(equipo:Equipo, idx:number){
+    this.navCtrl.push(EquipoDetailPage, {"equipo":equipo, "idx": idx});
   }
 }

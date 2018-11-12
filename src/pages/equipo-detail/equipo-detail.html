@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Detalles
+      <!-- de {{ jugador.nombre }} -->
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cerrar()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/options/team.png">
+      </ion-avatar>
+      <h2>{{equipo.nombre}}</h2>
+      <p>Ciudad : {{equipo.ciudad}}</p>
+      <button *ngIf="!editando" ion-button item-end color="dark" (click)="goEdit()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item *ngFor="let jugador of equipo.jugadores; let i = index">
+      <h2> Jugador {{ (i + 1) }}</h2>
+      <ion-note item-end>
+          {{ jugador.nombre }}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
