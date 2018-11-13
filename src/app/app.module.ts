@@ -20,6 +20,7 @@ import { EditPlayerPage } from '../pages/edit-player/edit-player';
 import { HistorialEquiposProvider } from '../providers/historial-equipos/historial-equipos';
 import { AddEquiposPage } from '../pages/add-equipos/add-equipos';
 import { EquipoDetailPage } from '../pages/equipo-detail/equipo-detail';
+import { ModalPage } from '../pages/modal/modal';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EquipoDetailPage } from '../pages/equipo-detail/equipo-detail';
     DetailsPage,
     AddEquiposPage,
     EquipoDetailPage,
+    ModalPage,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { EquipoDetailPage } from '../pages/equipo-detail/equipo-detail';
     DetailsPage,
     AddEquiposPage,
     EquipoDetailPage,
+    ModalPage,
   ],
   providers: [
     StatusBar,

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { HistorialProvider } from '../../providers/historial/historial';
 import { Jugador } from '../../interfaces/player.interfaces';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the AddEquiposPage page.
@@ -19,18 +20,18 @@ import { Jugador } from '../../interfaces/player.interfaces';
 })
 export class AddEquiposPage {
   private equipoForm: FormGroup;
-  private jugadoresEquipo: Jugador[] = [];
+  private jugadores: Jugador[] = [];
   private cont: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private historialEquipos: HistorialEquiposProvider, private toastCtrl: ToastController,
-    private formBuilder: FormBuilder, private historial: HistorialProvider) {
+    private formBuilder: FormBuilder, private historial: HistorialProvider, private modalCtrl:ModalController) {
     this.equipoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       ciudad: ['', Validators.required],
       jugadores: [[]]
     });
-    this.jugadoresEquipo = this.historial.cargar_historial();
+    this.jugadores = this.historial.cargar_historial();
     this.cont = 0;
   }
 
@@ -50,6 +51,10 @@ export class AddEquiposPage {
       duration: 3000
     });
     toast.present();
+  }
+  private presentModal(){
+    let modal = this.modalCtrl.create(ModalPage, {"jugadores":this.jugadores});
+    modal.present();
   }
 
   select() {

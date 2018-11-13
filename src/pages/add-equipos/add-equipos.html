@@ -17,14 +17,8 @@
       <ion-label floating>Ciudad</ion-label>
       <ion-input type="text" formControlName="ciudad"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label floating>Jugadores (ordenados por ELO)</ion-label>
-      <ion-select formControlName="jugadores" multiple="true" [(ngModel)]="jugadores">
-        <ion-option *ngFor="let jugador of jugadoresEquipo" [value]="jugador" 
-        (ionSelect)="select()" [disabled]="cont > 3">
-          {{jugador.nombre}}
-        </ion-option>
-      </ion-select>
+    <ion-item (click)="presentModal()">
+      Jugadores
     </ion-item>
     <div text-center>
       <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid">Añadir</button>
