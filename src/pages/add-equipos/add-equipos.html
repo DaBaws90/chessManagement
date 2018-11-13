@@ -21,7 +21,7 @@
       Jugadores
     </ion-item>
     <div text-center>
-      <button ion-button class="addTeam" type="submit">Añadir</button>
+      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>
     </div>
     <ion-list *ngIf="selected">
       <ion-label>Jugadores</ion-label>
