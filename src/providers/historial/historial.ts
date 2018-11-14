@@ -20,6 +20,11 @@ export class HistorialProvider {
   private jugador4: Jugador;
   private jugador5: Jugador;
   private jugador6: Jugador;
+  private jugador7: Jugador;
+  private jugador8: Jugador;
+  private jugador9: Jugador;
+  private jugador10: Jugador;
+
 
   constructor() {
     this.jugador1 = {
@@ -100,7 +105,59 @@ export class HistorialProvider {
       fuera: 0,
       puntos: 0
     };
-    this._historial.unshift(this.jugador1, this.jugador2, this.jugador3, this.jugador4, this.jugador5, this.jugador6);
+    this.jugador7 = {
+      nombre: "María",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador8 = {
+      nombre: "Ana",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador9 = {
+      nombre: "Lucía",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador10 = {
+      nombre: "Alba",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this._historial.unshift(this.jugador1, this.jugador2, this.jugador3, this.jugador4, this.jugador5, this.jugador6, this.jugador7, this.jugador8, this.jugador9, this.jugador10);
   }
 
   cargar_historial() {

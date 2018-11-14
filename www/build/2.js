@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 726:
+/***/ 727:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JornadaPageModule", function() { return JornadaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquiposPageModule", function() { return EquiposPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jornada__ = __webpack_require__(734);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipos__ = __webpack_require__(734);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var JornadaPageModule = /** @class */ (function () {
-    function JornadaPageModule() {
+var EquiposPageModule = /** @class */ (function () {
+    function EquiposPageModule() {
     }
-    JornadaPageModule = __decorate([
+    EquiposPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__jornada__["a" /* JornadaPage */],
+                __WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__jornada__["a" /* JornadaPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */]),
             ],
         })
-    ], JornadaPageModule);
-    return JornadaPageModule;
+    ], EquiposPageModule);
+    return EquiposPageModule;
 }());
 
-//# sourceMappingURL=jornada.module.js.map
+//# sourceMappingURL=equipos.module.js.map
 
 /***/ }),
 
@@ -42,11 +42,12 @@ var JornadaPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return JornadaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EquiposPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_jornada_modal_jornada__ = __webpack_require__(736);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_equipos_add_equipos__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__equipo_detail_equipo_detail__ = __webpack_require__(366);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,62 +61,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Generated class for the JornadaPage page.
+ * Generated class for the EquiposPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var JornadaPage = /** @class */ (function () {
-    function JornadaPage(navCtrl, navParams, historialEquipos, viewCtrl, toastCtrl, modalCtrl) {
+var EquiposPage = /** @class */ (function () {
+    function EquiposPage(navCtrl, navParams, historialEquiposProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.historialEquipos = historialEquipos;
-        this.viewCtrl = viewCtrl;
-        this.toastCtrl = toastCtrl;
-        this.modalCtrl = modalCtrl;
-        this.selected = [];
-        this.equipos = historialEquipos.cargar_equipos();
+        this.historialEquiposProvider = historialEquiposProvider;
+        this.equipos = [];
+        this.equipos = this.historialEquiposProvider.cargar_equipos();
     }
-    JornadaPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad JornadaPage');
+    EquiposPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EquiposPage');
     };
-    JornadaPage.prototype.addTeam = function (equipo) {
-        if (this.selected.indexOf(equipo) > -1) {
-            var i = this.selected.indexOf(equipo);
-            this.selected.splice(i, 1);
-        }
-        else {
-            this.selected.push(equipo);
-        }
+    EquiposPage.prototype.ionViewWillEnter = function () {
+        this.equipos = this.historialEquiposProvider.cargar_equipos();
     };
-    JornadaPage.prototype.save = function () {
-        if (this.selected.length != 2) {
-            this.presentToast();
-        }
-        else {
-            var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__modal_jornada_modal_jornada__["a" /* ModalJornadaPage */], { "local": this.selected[0], "visitante": this.selected[1] });
-            modal.present();
-        }
+    EquiposPage.prototype.addEquiposView = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__add_equipos_add_equipos__["a" /* AddEquiposPage */]);
+        console.log("Navigating to: AddEquiposPage");
     };
-    JornadaPage.prototype.presentToast = function () {
-        var toast = this.toastCtrl.create({
-            message: 'Debes seleccionar 2 equipos',
-            duration: 3000
-        });
-        toast.present();
+    EquiposPage.prototype.details = function (equipo, idx) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__equipo_detail_equipo_detail__["a" /* EquipoDetailPage */], { "equipo": equipo, "idx": idx });
     };
-    JornadaPage = __decorate([
+    EquiposPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-jornada',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/'<!--\n\n  Generated template for the JornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let equipo of equipos">\n\n      <ion-label>{{ equipo.nombre }}</ion-label>\n\n      <ion-checkbox (ionChange)="addTeam(equipo)">\n\n      </ion-checkbox>\n\n    </ion-item>\n\n    <button ion-button (click)="save()">Guardar</button>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/,
+            selector: 'page-equipos',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\equipos\equipos.html"*/'<!--\n\n  Generated template for the EquiposPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Equipos</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n      <button text-center ion-item block *ngFor="let equipo of equipos; let i = index" (click)="details(equipo, i)">\n\n        <ion-item>\n\n          {{equipo.nombre}}\n\n          <ion-note item-end>\n\n            {{equipo.ciudad}}\n\n          </ion-note>\n\n        </ion-item>\n\n        \n\n      </button>\n\n    <ion-item>\n\n      <button ion-button block color="secondary" (click)="addEquiposView()">Añadir equipo</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\equipos\equipos.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]) === "function" && _f || Object])
-    ], JornadaPage);
-    return JornadaPage;
-    var _a, _b, _c, _d, _e, _f;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _c || Object])
+    ], EquiposPage);
+    return EquiposPage;
+    var _a, _b, _c;
 }());
 
-//# sourceMappingURL=jornada.js.map
+//# sourceMappingURL=equipos.js.map
 
 /***/ })
 

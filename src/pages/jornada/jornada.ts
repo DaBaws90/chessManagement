@@ -41,8 +41,11 @@ export class JornadaPage {
     if (this.selected.length != 2) {
       this.presentToast();
     } else {
-      let modal = this.modalCtrl.create(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
-      modal.present();
+      console.log(this.selected[0]);
+      console.log(this.selected[1]);
+      this.navCtrl.push(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
+      // let modal = this.modalCtrl.create(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
+      // modal.present();
     }
   }
 
