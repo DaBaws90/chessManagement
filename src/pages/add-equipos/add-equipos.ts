@@ -63,8 +63,4 @@ export class AddEquiposPage {
       this.selected = data;
     });
   }
-
-  select() {
-    this.cont += 1;
-  }
 }

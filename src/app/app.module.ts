@@ -21,6 +21,7 @@ import { HistorialEquiposProvider } from '../providers/historial-equipos/histori
 import { AddEquiposPage } from '../pages/add-equipos/add-equipos';
 import { EquipoDetailPage } from '../pages/equipo-detail/equipo-detail';
 import { ModalPage } from '../pages/modal/modal';
+import { ModalJornadaPage } from '../pages/modal-jornada/modal-jornada';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ModalPage } from '../pages/modal/modal';
     AddEquiposPage,
     EquipoDetailPage,
     ModalPage,
+    ModalJornadaPage,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { ModalPage } from '../pages/modal/modal';
     AddEquiposPage,
     EquipoDetailPage,
     ModalPage,
+    ModalJornadaPage,
   ],
   providers: [
     StatusBar,

@@ -6,5 +6,9 @@ export const OPTIONS = [
 {
     nombre: "Equipos",
     img: "assets/imgs/options/team.png"
-}
+},
+{
+    nombre: "Jornada",
+    img: "assets/imgs/options/team.png"
+},
 ]
