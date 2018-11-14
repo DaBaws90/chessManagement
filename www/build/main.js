@@ -742,13 +742,18 @@ var ModalJornadaPage = /** @class */ (function () {
     ModalJornadaPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ModalJornadaPage');
     };
+    ModalJornadaPage.prototype.addResultado = function (idx, resultado) {
+        console.log("INDEX: " + idx);
+        console.log("RESULTADO: " + resultado);
+    };
     ModalJornadaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-modal-jornada',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let player of local; let i = index">\n\n    <h2>{{ player.nombre }} VS {{ visitante[i].nombre }}</h2>\n\n    <ion-item>\n\n      <ion-label><ion-note>1</ion-note></ion-label>\n\n      <ion-checkbox (ionChange)="prueba()"></ion-checkbox>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label><ion-note>X</ion-note></ion-label>\n\n      <ion-checkbox (ionChange)="prueba()"></ion-checkbox>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label><ion-note>2</ion-note></ion-label>\n\n      <ion-checkbox (ionChange)="prueba()"></ion-checkbox>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
+            selector: 'page-modal-jornada',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let player of local; let i = index">\n\n    <h2>{{ player.nombre }} VS {{ visitante[i].nombre }}</h2>\n\n    <ion-item>\n\n      <ion-label><ion-note>1</ion-note></ion-label>\n\n      <ion-checkbox (ionChange)="addResultado(i, 1)"></ion-checkbox>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label><ion-note>X</ion-note></ion-label>\n\n      <ion-checkbox (ionChange)="addResultado(i, \'X\')"></ion-checkbox>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label><ion-note>2</ion-note></ion-label>\n\n      <ion-checkbox (ionChange)="addResultado(i, 2)"></ion-checkbox>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
     ], ModalJornadaPage);
     return ModalJornadaPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=modal-jornada.js.map

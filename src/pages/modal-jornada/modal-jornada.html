@@ -18,15 +18,15 @@
     <h2>{{ player.nombre }} VS {{ visitante[i].nombre }}</h2>
     <ion-item>
       <ion-label><ion-note>1</ion-note></ion-label>
-      <ion-checkbox (ionChange)="prueba()"></ion-checkbox>
+      <ion-checkbox (ionChange)="addResultado(i, 1)"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label><ion-note>X</ion-note></ion-label>
-      <ion-checkbox (ionChange)="prueba()"></ion-checkbox>
+      <ion-checkbox (ionChange)="addResultado(i, 'X')"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label><ion-note>2</ion-note></ion-label>
-      <ion-checkbox (ionChange)="prueba()"></ion-checkbox>
+      <ion-checkbox (ionChange)="addResultado(i, 2)"></ion-checkbox>
     </ion-item>
   </ion-list>
 

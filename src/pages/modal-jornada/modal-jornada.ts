@@ -27,4 +27,9 @@ export class ModalJornadaPage {
     console.log('ionViewDidLoad ModalJornadaPage');
   }
 
+  addResultado(idx: number, resultado: string) {
+    console.log("INDEX: " + idx);
+    console.log("RESULTADO: " + resultado);
+  }
+
 }
