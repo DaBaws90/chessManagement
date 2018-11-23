@@ -14,20 +14,22 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor="let player of local; let i = index">
-    <h2>{{ player.nombre }} VS {{ visitante[i].nombre }}</h2>
+
+  <ion-list *ngFor="let player of equipo; let i = index">
     <ion-item>
-      <ion-label><ion-note>1</ion-note></ion-label>
-      <ion-checkbox (ionChange)="addResultado(i, 1)"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label><ion-note>X</ion-note></ion-label>
-      <ion-checkbox (ionChange)="addResultado(i, 'X')"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label><ion-note>2</ion-note></ion-label>
-      <ion-checkbox (ionChange)="addResultado(i, 2)"></ion-checkbox>
+        <ion-label>{{ player.nombre }}</ion-label>
+        <ion-select>
+          <ion-option>
+            Gana
+          </ion-option>
+          <ion-option selected>
+              Empata
+            </ion-option>
+            <ion-option>
+                Pierde
+              </ion-option>
+        </ion-select>
     </ion-item>
   </ion-list>
-
+  <button ion-button type="submit">Guardar</button>
 </ion-content>

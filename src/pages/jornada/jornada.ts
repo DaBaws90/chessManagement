@@ -28,26 +28,30 @@ export class JornadaPage {
     console.log('ionViewDidLoad JornadaPage');
   }
 
-  addTeam(equipo:Equipo){
-    if(this.selected.indexOf(equipo) > -1) {
-      let i = this.selected.indexOf(equipo);
-      this.selected.splice(i, 1);
-    } else {
-      this.selected.push(equipo);
-    }
+  viewResults(equipo) {
+    this.navCtrl.push(ModalJornadaPage, {"equipo": equipo});
   }
 
-  save() {
-    if (this.selected.length != 2) {
-      this.presentToast();
-    } else {
-      console.log(this.selected[0]);
-      console.log(this.selected[1]);
-      this.navCtrl.push(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
-      // let modal = this.modalCtrl.create(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
-      // modal.present();
-    }
-  }
+  // addTeam(equipo:Equipo){
+  //   if(this.selected.indexOf(equipo) > -1) {
+  //     let i = this.selected.indexOf(equipo);
+  //     this.selected.splice(i, 1);
+  //   } else {
+  //     this.selected.push(equipo);
+  //   }
+  // }
+
+  // save() {
+  //   if (this.selected.length != 2) {
+  //     this.presentToast();
+  //   } else {
+  //     console.log(this.selected[0]);
+  //     console.log(this.selected[1]);
+  //     this.navCtrl.push(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
+  //     // let modal = this.modalCtrl.create(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
+  //     // modal.present();
+  //   }
+  // }
 
   private presentToast() {
     const toast = this.toastCtrl.create({

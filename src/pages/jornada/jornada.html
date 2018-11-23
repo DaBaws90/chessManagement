@@ -15,11 +15,8 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let equipo of equipos">
+    <button ion-item *ngFor="let equipo of equipos" (click)="viewResults(equipo)">
       <ion-label>{{ equipo.nombre }}</ion-label>
-      <ion-checkbox (ionChange)="addTeam(equipo)">
-      </ion-checkbox>
-    </ion-item>
-    <button ion-button (click)="save()">Guardar</button>
+    </button>
   </ion-list>
 </ion-content>

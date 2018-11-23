@@ -32,7 +32,6 @@ export class ModalPage {
     } else {
       this.selected.push(jugador);
     }
-    
   }
 
   save() {
