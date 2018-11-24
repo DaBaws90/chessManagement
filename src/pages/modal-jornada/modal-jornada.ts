@@ -4,6 +4,7 @@ import { Equipo } from '../../interfaces/equipo.interfaces';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Resultado } from '../../interfaces/resultado.interfaces';
+import { HistorialProvider } from '../../providers/historial/historial';
 
 /**
  * Generated class for the ModalJornadaPage page.
@@ -25,9 +26,10 @@ export class ModalJornadaPage {
   // private datos: [];
   private resultados: Resultado[] = [];
   private res: Resultado;
+  private jugadores: Jugador[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider) {
     this.equipo = this.navParams.get("equipo");
     for (let p of this.equipo.jugadores) {
       this.res = {
@@ -35,6 +37,7 @@ export class ModalJornadaPage {
         resultado: "empata"
       }
       this.resultados.push(this.res);
+      this.jugadores = this.historialProvider.cargar_historial();
     }
   }
 
@@ -65,11 +68,10 @@ export class ModalJornadaPage {
   addResultado(player: Jugador, result: string) {
 
     this.resultados.forEach(resultado => {
-      if(resultado.jugador == player) {
+      if (resultado.jugador == player) {
         resultado.resultado = result;
       }
     });
-    console.log(this.resultados);
 
     // console.log(player + ' ' + result);
     //   this.equipo.forEach(element => {
@@ -100,6 +102,30 @@ export class ModalJornadaPage {
     //   this.resultados.push(this.res);
     //   console.log("Se añadió el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
     // }
+  }
+
+  guardar() {
+    this.historialProvider.cargar_historial().forEach(jugador => {
+      this.resultados.forEach(resultado => {
+        if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
+          jugador.jugadas += 1;
+          switch (resultado.resultado) {
+            case "gana":
+              jugador.ganadas += 1;
+              jugador.puntos += 1;
+              break;
+            case "empata":
+              jugador.empatadas += 1;
+              jugador.puntos += 0.5;
+              break;
+            case "pierde":
+              jugador.perdidas += 1;
+              break;
+          }
+        }
+      });
+    });
+
   }
 
 }
