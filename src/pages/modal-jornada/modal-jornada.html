@@ -15,21 +15,21 @@
 
 <ion-content padding>
 
-  <ion-list *ngFor="let player of equipo; let i = index">
+  <ion-list *ngFor="let player of equipo.jugadores; let i = index">
     <ion-item>
-        <ion-label>{{ player.nombre }}</ion-label>
-        <ion-select>
-          <ion-option>
-            Gana
-          </ion-option>
-          <ion-option selected>
-              Empata
-            </ion-option>
-            <ion-option>
-                Pierde
-              </ion-option>
-        </ion-select>
+      <ion-label>{{ player.nombre }}</ion-label>
+      <ion-select >
+        <ion-option (ionSelect)="addResultado(player, 'gana')">
+          Gana
+        </ion-option>
+        <ion-option selected (ionSelect)="addResultado(player, 'empata')">
+          Empata
+        </ion-option>
+        <ion-option (ionSelect)="addResultado(player, 'pierde')">
+          Pierde
+        </ion-option>
+      </ion-select>
     </ion-item>
   </ion-list>
-  <button ion-button type="submit">Guardar</button>
+  <button ion-button type="cerrar()">Guardar</button>
 </ion-content>
