@@ -18,24 +18,24 @@ import { Resultado } from '../../interfaces/resultado.interfaces';
   templateUrl: 'modal-jornada.html',
 })
 export class ModalJornadaPage {
-  private equipo:Equipo;
+  private equipo: Equipo;
   // resultado: {} = {};
   // private resultados: FormGroup;
   private selected: boolean;
   // private datos: [];
   private resultados: Resultado[] = [];
-  private res:Resultado;
+  private res: Resultado;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.equipo = this.navParams.get("equipo");
-    // this.resultados = this.formBuilder.group({
-    //   jugadores: [[]],
-    //   resultados: [[]]
-    // });
-    // this.resultados = 
-    // this.res.jugador = null;
-    // this.res.resultado = "";
+    for (let p of this.equipo.jugadores) {
+      this.res = {
+        jugador: p,
+        resultado: "empata"
+      }
+      this.resultados.push(this.res);
+    }
   }
 
   ionViewDidLoad() {
@@ -62,44 +62,44 @@ export class ModalJornadaPage {
   //     // }
   //   }
   // }
-    addResultado(player:Jugador, result:string){
-      // console.log(player + ' ' + result);
+  addResultado(player: Jugador, result: string) {
 
-      for(let p of this.equipo.jugadores){
-        // let res:Resultado;
-      this.res.jugador = p;
-      this.res.resultado = "";
-      this.resultados.push(this.res);
+    this.resultados.forEach(resultado => {
+      if(resultado.jugador == player) {
+        resultado.resultado = result;
       }
-      console.log(this.resultados);
-      //   this.equipo.forEach(element => {
-      //   console.log(element.nombre);
-      // });
-      // this.resultados.forEach(element => {
-      //   if(element.jugador == player){
-      //     element.resultado = result;
-      //   }
-      //   // else{
-      //   //   let res:Resultado;
-      //   //   res.jugador = player;
-      //   //   res.resultado = result;
-      //   //   this.resultados.push(res);
-      //   // }
-      // });
-      // console.log(this.resultados);
+    });
+    console.log(this.resultados);
+
+    // console.log(player + ' ' + result);
+    //   this.equipo.forEach(element => {
+    //   console.log(element.nombre);
+    // });
+    // this.resultados.forEach(element => {
+    //   if(element.jugador == player){
+    //     element.resultado = result;
+    //   }
+    //   // else{
+    //   //   let res:Resultado;
+    //   //   res.jugador = player;
+    //   //   res.resultado = result;
+    //   //   this.resultados.push(res);
+    //   // }
+    // });
+    // console.log(this.resultados);
 
 
 
-      // if(this.resultados.indexOf(this.res) > -1){
-      //   let i = this.resultados.indexOf(this.res);
-      //   this.resultados.splice(i, 1);
-      //   console.log("Se eliminó el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
-      //   // this.resultados.push()
-      // }
-      // else{
-      //   this.resultados.push(this.res);
-      //   console.log("Se añadió el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
-      // }
-    }
+    // if(this.resultados.indexOf(this.res) > -1){
+    //   let i = this.resultados.indexOf(this.res);
+    //   this.resultados.splice(i, 1);
+    //   console.log("Se eliminó el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
+    //   // this.resultados.push()
+    // }
+    // else{
+    //   this.resultados.push(this.res);
+    //   console.log("Se añadió el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
+    // }
+  }
 
 }
