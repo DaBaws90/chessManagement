@@ -27,6 +27,7 @@ export class CalendarioPage {
   public event = {
     fecha: this.myDate,
     hora: this.myTime,
+    nombre: ""
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private historialEquipos: HistorialEquiposProvider) {
@@ -48,6 +49,10 @@ export class CalendarioPage {
   }
 
   goTo(){
+    this.calendar.fecha = this.event.fecha;
+    this.calendar.hora = this.event.hora;
+    this.calendar.nombre = this.event.nombre;
     this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
+    console.log(this.event.nombre);
   }
 }
