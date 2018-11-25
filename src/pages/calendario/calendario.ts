@@ -4,6 +4,7 @@ import { Timestamp } from 'rxjs';
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { Calendario } from '../../interfaces/calendario.interfaces';
+import { JornadaPage } from '../jornada/jornada';
 
 /**
  * Generated class for the CalendarioPage page.
@@ -44,5 +45,9 @@ export class CalendarioPage {
   selectTeam(equipo: Equipo){
     this.calendar.equipo = equipo;
     console.log(this.calendar.equipo.nombre);
+  }
+
+  goTo(){
+    this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
   }
 }
