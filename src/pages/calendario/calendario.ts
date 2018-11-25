@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Timestamp } from 'rxjs';
+import { Equipo } from '../../interfaces/equipo.interfaces';
+import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
+import { Calendario } from '../../interfaces/calendario.interfaces';
 
 /**
  * Generated class for the CalendarioPage page.
@@ -14,12 +18,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'calendario.html',
 })
 export class CalendarioPage {
+  myDate: String = new Date().toISOString();
+  myTime: String = Timestamp.toString(); // Necesita revisión
+  private calendar: Calendario;
+  private listTeams:Equipo[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public event = {
+    fecha: this.myDate,
+    hora: this.myTime,
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private historialEquipos: HistorialEquiposProvider) {
+    this.listTeams = historialEquipos.cargar_equipos();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarioPage');
   }
 
+  isLocal(text: String){
+    this.calendar.local = text;
+    console.log(this.calendar.local);
+  }
+
+  selectTeam(equipo: Equipo){
+    this.calendar.equipo = equipo;
+    console.log(this.calendar.equipo.nombre);
+  }
 }
