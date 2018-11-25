@@ -9,6 +9,10 @@ export const OPTIONS = [
 },
 {
     nombre: "Jornada",
-    img: "assets/imgs/options/team.png"
+    img: "assets/imgs/options/list.png"
 },
+{
+    nombre: "Calendario",
+    img: "assets/imgs/options/calendar.png"
+}
 ]
