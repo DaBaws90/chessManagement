@@ -1,4 +1,3 @@
-import { Timestamp } from "rxjs";
 import { Equipo } from "./equipo.interfaces";
 
 export interface Calendario {

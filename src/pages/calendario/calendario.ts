@@ -52,7 +52,8 @@ export class CalendarioPage {
     this.calendar.fecha = this.event.fecha;
     this.calendar.hora = this.event.hora;
     this.calendar.nombre = this.event.nombre;
-    this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
-    console.log(this.event.nombre);
+    // this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
+    console.log(this.calendar)
+    // console.log(this.event.nombre);
   }
 }
