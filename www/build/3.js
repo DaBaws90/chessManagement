@@ -74,23 +74,29 @@ var CalendarioPage = /** @class */ (function () {
         this.historialEquipos = historialEquipos;
         this.myDate = new Date().toISOString();
         this.myTime = __WEBPACK_IMPORTED_MODULE_2_rxjs__["Timestamp"].toString(); // Necesita revisión
+        this.calendar = {}; // Inicializarlo vacío así o en el constructor
         this.event = {
             fecha: this.myDate,
             hora: this.myTime,
             nombre: ""
         };
         this.listTeams = historialEquipos.cargar_equipos();
+        // this.calendar = {
+        //   nombre: "",
+        //   fecha: "",
+        //   hora: "",
+        //   equipo: null,
+        //   local: ""
+        // }
     }
     CalendarioPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad CalendarioPage');
     };
     CalendarioPage.prototype.isLocal = function (text) {
         this.calendar.local = text;
-        console.log(this.calendar.local);
     };
     CalendarioPage.prototype.selectTeam = function (equipo) {
         this.calendar.equipo = equipo;
-        console.log(this.calendar.equipo.nombre);
     };
     CalendarioPage.prototype.goTo = function () {
         this.calendar.fecha = this.event.fecha;
@@ -98,7 +104,6 @@ var CalendarioPage = /** @class */ (function () {
         this.calendar.nombre = this.event.nombre;
         // this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
         console.log(this.calendar);
-        // console.log(this.event.nombre);
     };
     CalendarioPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

@@ -21,7 +21,7 @@ import { JornadaPage } from '../jornada/jornada';
 export class CalendarioPage {
   myDate: String = new Date().toISOString();
   myTime: String = Timestamp.toString(); // Necesita revisión
-  private calendar: Calendario;
+  private calendar: Calendario = <Calendario>{}; // Inicializarlo vacío así o en el constructor
   private listTeams:Equipo[];
 
   public event = {
@@ -32,6 +32,13 @@ export class CalendarioPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private historialEquipos: HistorialEquiposProvider) {
     this.listTeams = historialEquipos.cargar_equipos();
+    // this.calendar = {
+    //   nombre: "",
+    //   fecha: "",
+    //   hora: "",
+    //   equipo: null,
+    //   local: ""
+    // }
   }
 
   ionViewDidLoad() {
@@ -40,12 +47,10 @@ export class CalendarioPage {
 
   isLocal(text: String){
     this.calendar.local = text;
-    console.log(this.calendar.local);
   }
 
   selectTeam(equipo: Equipo){
     this.calendar.equipo = equipo;
-    console.log(this.calendar.equipo.nombre);
   }
 
   goTo(){
@@ -54,6 +59,5 @@ export class CalendarioPage {
     this.calendar.nombre = this.event.nombre;
     // this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
     console.log(this.calendar)
-    // console.log(this.event.nombre);
   }
 }
