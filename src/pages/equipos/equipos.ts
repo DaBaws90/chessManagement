@@ -24,7 +24,7 @@ export class EquiposPage {
   equipos:Equipo[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private historialEquiposProvider:HistorialEquiposProvider) {
-      this.equipos = this.historialEquiposProvider.cargar_equipos();
+      this.equipos = this.historialEquiposProvider.cargar_jornadas();
   }
 
   ionViewDidLoad() {
@@ -32,7 +32,7 @@ export class EquiposPage {
   }
 
   ionViewWillEnter() {
-    this.equipos = this.historialEquiposProvider.cargar_equipos();
+    this.equipos = this.historialEquiposProvider.cargar_jornadas();
   }
 
   addEquiposView(){
