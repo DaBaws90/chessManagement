@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 724:
+/***/ 723:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarioPageModule", function() { return CalendarioPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendario__ = __webpack_require__(735);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendario__ = __webpack_require__(733);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,14 +38,14 @@ var CalendarioPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 735:
+/***/ 733:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarioPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__ = __webpack_require__(91);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -68,10 +68,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var CalendarioPage = /** @class */ (function () {
-    function CalendarioPage(navCtrl, navParams, historialEquipos) {
+    function CalendarioPage(navCtrl, navParams, _jornadas) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.historialEquipos = historialEquipos;
+        this._jornadas = _jornadas;
         this.myDate = new Date().toISOString();
         this.myTime = __WEBPACK_IMPORTED_MODULE_2_rxjs__["Timestamp"].toString(); // Necesita revisión
         this.calendar = {}; // Inicializarlo vacío así o en el constructor
@@ -80,14 +80,7 @@ var CalendarioPage = /** @class */ (function () {
             hora: this.myTime,
             nombre: ""
         };
-        this.listTeams = historialEquipos.cargar_equipos();
-        // this.calendar = {
-        //   nombre: "",
-        //   fecha: "",
-        //   hora: "",
-        //   equipo: null,
-        //   local: ""
-        // }
+        this.listTeams = _jornadas.cargar_jornadas();
     }
     CalendarioPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad CalendarioPage');

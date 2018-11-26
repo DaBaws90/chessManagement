@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, ToastController, M
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
+import { AddEquiposPage } from '../add-equipos/add-equipos';
 
 /**
  * Generated class for the JornadaPage page.
@@ -17,48 +18,27 @@ import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
   templateUrl: 'jornada.html',
 })
 export class JornadaPage {
-  equipos:Equipo[];
-  selected:Equipo[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private historialEquipos:HistorialEquiposProvider, 
-    private viewCtrl:ViewController, private toastCtrl:ToastController, private modalCtrl:ModalController) {
-    this.equipos = historialEquipos.cargar_equipos();
+  equipos:Equipo[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private _jornadas:HistorialEquiposProvider) {
+      this.equipos = this._jornadas.cargar_jornadas();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JornadaPage');
   }
 
-  viewResults(equipo) {
-    this.navCtrl.push(ModalJornadaPage, {"equipo": equipo});
+  ionViewWillEnter() {
+    this.equipos = this._jornadas.cargar_jornadas();
   }
 
-  // addTeam(equipo:Equipo){
-  //   if(this.selected.indexOf(equipo) > -1) {
-  //     let i = this.selected.indexOf(equipo);
-  //     this.selected.splice(i, 1);
-  //   } else {
-  //     this.selected.push(equipo);
-  //   }
-  // }
-
-  // save() {
-  //   if (this.selected.length != 2) {
-  //     this.presentToast();
-  //   } else {
-  //     console.log(this.selected[0]);
-  //     console.log(this.selected[1]);
-  //     this.navCtrl.push(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
-  //     // let modal = this.modalCtrl.create(ModalJornadaPage, {"local":this.selected[0], "visitante":this.selected[1]});
-  //     // modal.present();
-  //   }
-  // }
-
-  private presentToast() {
-    const toast = this.toastCtrl.create({
-      message: 'Debes seleccionar 2 equipos',
-      duration: 3000
-    });
-    toast.present();
+  addEquiposView(){
+    this.navCtrl.push(AddEquiposPage);
+    console.log("Navigating to: AddEquiposPage");
   }
-  
+
+  details(equipo:Equipo, idx:number){
+    this.navCtrl.push(ModalJornadaPage, {"equipo":equipo, "idx": idx});
+  }
+
 }

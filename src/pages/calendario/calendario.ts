@@ -30,15 +30,8 @@ export class CalendarioPage {
     nombre: ""
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private historialEquipos: HistorialEquiposProvider) {
-    this.listTeams = historialEquipos.cargar_equipos();
-    // this.calendar = {
-    //   nombre: "",
-    //   fecha: "",
-    //   hora: "",
-    //   equipo: null,
-    //   local: ""
-    // }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider) {
+    this.listTeams = _jornadas.cargar_jornadas();
   }
 
   ionViewDidLoad() {

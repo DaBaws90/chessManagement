@@ -5,6 +5,8 @@ import { HistorialEquiposProvider } from '../../providers/historial-equipos/hist
 import { HistorialProvider } from '../../providers/historial/historial';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { ModalPage } from '../modal/modal';
+import { Timestamp } from 'rxjs';
+import { Calendario } from '../../interfaces/calendario.interfaces';
 
 /**
  * Generated class for the AddEquiposPage page.
@@ -23,6 +25,17 @@ export class AddEquiposPage {
   private jugadores: Jugador[] = [];
   private cont: number;
   private selected: Jugador[];
+  myDate: String = new Date().toISOString();
+  myTime: String = Timestamp.toString(); // Necesita revisión
+  private calendar: Calendario = <Calendario>{}; // Inicializarlo vacío así o en el constructor
+  // private listTeams:Equipo[];
+
+  public event = {
+    fecha: this.myDate,
+    hora: this.myTime,
+    nombre: ""
+  }
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private historialEquipos: HistorialEquiposProvider, private toastCtrl: ToastController,
@@ -30,7 +43,10 @@ export class AddEquiposPage {
     this.equipoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       ciudad: ['', Validators.required],
-      jugadores: [[]]
+      jugadores: [[]],
+      fecha: ['', Validators.required],
+      hora: ['', Validators.required],
+      local: ['', Validators.required],
     });
     this.jugadores = this.historial.cargar_historial();
     this.cont = 0;

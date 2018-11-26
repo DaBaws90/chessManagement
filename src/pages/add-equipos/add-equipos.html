@@ -1,33 +1,56 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Añadir equipo</ion-title>
+    <ion-title>Añadir jornada</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
   <form [formGroup]="equipoForm" (ngSubmit)="addTeam()">
+
     <ion-item>
       <ion-label floating>Nombre</ion-label>
       <ion-input type="text" formControlName="nombre"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label floating>Ciudad</ion-label>
       <ion-input type="text" formControlName="ciudad"></ion-input>
     </ion-item>
+
     <ion-item (click)="presentModal()">
       Jugadores
     </ion-item>
-    <div text-center>
-      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>
-    </div>
+
     <ion-list *ngIf="selected">
-      <ion-label>Jugadores</ion-label>
+      <!-- <ion-label>Jugadores</ion-label> -->
       <ion-item *ngFor="let jugador of selected">
         {{ jugador.nombre }}
       </ion-item>
-
     </ion-list>
+
+    <ion-item>
+      <ion-label>Fecha de la jornada</ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" formControlName="fecha"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Local o visitante</ion-label>
+      <ion-select formControlName="local">
+        <ion-option value="local" selected>Local</ion-option>
+        <ion-option value="visitante">Visitante</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hora de la partida</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="hora"></ion-datetime>
+    </ion-item>
+
+    <div text-center padding>
+      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>
+    </div>
+
   </form>
 </ion-content>

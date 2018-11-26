@@ -4,6 +4,8 @@ import { Equipo } from '../../interfaces/equipo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { AddEquiposPage } from '../add-equipos/add-equipos';
 import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
+import { JornadaPage } from '../jornada/jornada';
+import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
 
 
 /**
@@ -37,7 +39,8 @@ export class EquiposPage {
     this.navCtrl.push(AddEquiposPage);
     console.log("Navigating to: AddEquiposPage");
   }
+
   details(equipo:Equipo, idx:number){
-    this.navCtrl.push(EquipoDetailPage, {"equipo":equipo, "idx": idx});
+    this.navCtrl.push(ModalJornadaPage, {"equipo":equipo, "idx": idx});
   }
 }

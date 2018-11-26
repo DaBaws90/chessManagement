@@ -4,4 +4,7 @@ export interface Equipo {
     nombre: string;
     ciudad: string;
     jugadores:Jugador[];
+    local: string;
+    fecha: string;
+    hora: string;
 }

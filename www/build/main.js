@@ -1,4 +1,4 @@
-webpackJsonp([13],{
+webpackJsonp([12],{
 
 /***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -65,7 +65,7 @@ var ModalPage = /** @class */ (function () {
     };
     ModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-modal',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal\modal.html"*/'<!--\n\n  Generated template for the ModalPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      Modal\n\n      <!-- de {{ jugador.nombre }} -->\n\n    </ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="cerrar()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let jugador of jugadores">\n\n      <ion-label>{{ jugador.nombre }}</ion-label>\n\n      <ion-checkbox (ionChange)="addPlayer(jugador)">\n\n      </ion-checkbox>\n\n    </ion-item>\n\n    <button ion-button (click)="save()">Guardar</button>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal\modal.html"*/,
+            selector: 'page-modal',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal\modal.html"*/'<!--\n\n  Generated template for the ModalPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      Modal\n\n      <!-- de {{ jugador.nombre }} -->\n\n    </ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="cerrar()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let jugador of jugadores">\n\n      <ion-label>{{ jugador.nombre }}</ion-label>\n\n      <ion-checkbox (ionChange)="addPlayer(jugador)">\n\n      </ion-checkbox>\n\n    </ion-item>\n\n    <div text-center padding>\n\n      <button ion-button (click)="save()">Guardar</button>\n\n    </div>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal\modal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]])
     ], ModalPage);
@@ -255,55 +255,51 @@ webpackEmptyAsyncContext.id = 171;
 var map = {
 	"../pages/add-equipos/add-equipos.module": [
 		721,
-		12
-	],
-	"../pages/add-jornada/add-jornada.module": [
-		722,
-		4
-	],
-	"../pages/add-player/add-player.module": [
-		723,
 		11
 	],
+	"../pages/add-player/add-player.module": [
+		722,
+		10
+	],
 	"../pages/calendario/calendario.module": [
-		724,
+		723,
 		3
 	],
 	"../pages/details/details.module": [
-		725,
-		10
-	],
-	"../pages/edit-player/edit-player.module": [
-		726,
+		724,
 		9
 	],
-	"../pages/equipo-detail/equipo-detail.module": [
-		727,
+	"../pages/edit-player/edit-player.module": [
+		725,
 		8
 	],
+	"../pages/equipo-detail/equipo-detail.module": [
+		726,
+		7
+	],
 	"../pages/equipos/equipos.module": [
-		728,
+		727,
 		2
 	],
 	"../pages/jornada/jornada.module": [
-		729,
+		728,
 		1
 	],
 	"../pages/jugador/jugador.module": [
-		730,
+		729,
 		0
 	],
 	"../pages/login/login.module": [
-		731,
-		7
-	],
-	"../pages/modal-jornada/modal-jornada.module": [
-		732,
+		730,
 		6
 	],
-	"../pages/modal/modal.module": [
-		733,
+	"../pages/modal-jornada/modal-jornada.module": [
+		731,
 		5
+	],
+	"../pages/modal/modal.module": [
+		732,
+		4
 	]
 };
 function webpackAsyncContext(req) {
@@ -441,6 +437,8 @@ var AuthProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_historial_historial__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modal_modal__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -450,6 +448,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -473,10 +472,22 @@ var AddEquiposPage = /** @class */ (function () {
         this.modalCtrl = modalCtrl;
         this.viewCtrl = viewCtrl;
         this.jugadores = [];
+        this.myDate = new Date().toISOString();
+        this.myTime = __WEBPACK_IMPORTED_MODULE_6_rxjs__["Timestamp"].toString(); // Necesita revisión
+        this.calendar = {}; // Inicializarlo vacío así o en el constructor
+        // private listTeams:Equipo[];
+        this.event = {
+            fecha: this.myDate,
+            hora: this.myTime,
+            nombre: ""
+        };
         this.equipoForm = this.formBuilder.group({
             nombre: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
             ciudad: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            jugadores: [[]]
+            jugadores: [[]],
+            fecha: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            hora: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            local: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
         });
         this.jugadores = this.historial.cargar_historial();
         this.cont = 0;
@@ -508,7 +519,7 @@ var AddEquiposPage = /** @class */ (function () {
     };
     AddEquiposPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-equipos',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\add-equipos\add-equipos.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Añadir equipo</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <form [formGroup]="equipoForm" (ngSubmit)="addTeam()">\n\n    <ion-item>\n\n      <ion-label floating>Nombre</ion-label>\n\n      <ion-input type="text" formControlName="nombre"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>Ciudad</ion-label>\n\n      <ion-input type="text" formControlName="ciudad"></ion-input>\n\n    </ion-item>\n\n    <ion-item (click)="presentModal()">\n\n      Jugadores\n\n    </ion-item>\n\n    <div text-center>\n\n      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>\n\n    </div>\n\n    <ion-list *ngIf="selected">\n\n      <ion-label>Jugadores</ion-label>\n\n      <ion-item *ngFor="let jugador of selected">\n\n        {{ jugador.nombre }}\n\n      </ion-item>\n\n\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\add-equipos\add-equipos.html"*/,
+            selector: 'page-add-equipos',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\add-equipos\add-equipos.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Añadir jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <form [formGroup]="equipoForm" (ngSubmit)="addTeam()">\n\n\n\n    <ion-item>\n\n      <ion-label floating>Nombre</ion-label>\n\n      <ion-input type="text" formControlName="nombre"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Ciudad</ion-label>\n\n      <ion-input type="text" formControlName="ciudad"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item (click)="presentModal()">\n\n      Jugadores\n\n    </ion-item>\n\n\n\n    <ion-list *ngIf="selected">\n\n      <!-- <ion-label>Jugadores</ion-label> -->\n\n      <ion-item *ngFor="let jugador of selected">\n\n        {{ jugador.nombre }}\n\n      </ion-item>\n\n    </ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label>Fecha de la jornada</ion-label>\n\n      <ion-datetime displayFormat="DD MMM YYYY" formControlName="fecha"></ion-datetime>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label>Local o visitante</ion-label>\n\n      <ion-select formControlName="local">\n\n        <ion-option value="local" selected>Local</ion-option>\n\n        <ion-option value="visitante">Visitante</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label>Hora de la partida</ion-label>\n\n      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="hora"></ion-datetime>\n\n    </ion-item>\n\n\n\n    <div text-center padding>\n\n      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>\n\n    </div>\n\n\n\n  </form>\n\n</ion-content>'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\add-equipos\add-equipos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */],
@@ -522,6 +533,104 @@ var AddEquiposPage = /** @class */ (function () {
 /***/ }),
 
 /***/ 364:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalJornadaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__ = __webpack_require__(43);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the ModalJornadaPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ModalJornadaPage = /** @class */ (function () {
+    function ModalJornadaPage(navCtrl, navParams, formBuilder, historialProvider) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.formBuilder = formBuilder;
+        this.historialProvider = historialProvider;
+        // private datos: [];
+        this.resultados = [];
+        this.jugadores = [];
+        this.equipo = this.navParams.get("equipo");
+        for (var _i = 0, _a = this.equipo.jugadores; _i < _a.length; _i++) {
+            var p = _a[_i];
+            this.res = {
+                jugador: p,
+                resultado: "empata"
+            };
+            this.resultados.push(this.res);
+            this.jugadores = this.historialProvider.cargar_historial();
+        }
+    }
+    ModalJornadaPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ModalJornadaPage');
+    };
+    ModalJornadaPage.prototype.prueba = function () {
+        console.log(this.navParams.get("datos"));
+    };
+    ModalJornadaPage.prototype.addResultado = function (player, result) {
+        this.resultados.forEach(function (resultado) {
+            if (resultado.jugador == player) {
+                resultado.resultado = result;
+            }
+        });
+    };
+    ModalJornadaPage.prototype.guardar = function () {
+        var _this = this;
+        this.historialProvider.cargar_historial().forEach(function (jugador) {
+            _this.resultados.forEach(function (resultado) {
+                if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
+                    jugador.jugadas += 1;
+                    switch (resultado.resultado) {
+                        case "gana":
+                            jugador.ganadas += 1;
+                            jugador.puntos += 1;
+                            break;
+                        case "empata":
+                            jugador.empatadas += 1;
+                            jugador.puntos += 0.5;
+                            break;
+                        case "pierde":
+                            jugador.perdidas += 1;
+                            break;
+                    }
+                }
+            });
+        });
+        this.navCtrl.pop();
+    };
+    ModalJornadaPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-modal-jornada',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list *ngFor="let player of equipo.jugadores; let i = index">\n\n    <ion-item>\n\n      <ion-label>{{ player.nombre }}</ion-label>\n\n      <ion-select >\n\n        <ion-option (ionSelect)="addResultado(player, \'gana\')">\n\n          Gana\n\n        </ion-option>\n\n        <ion-option selected (ionSelect)="addResultado(player, \'empata\')">\n\n          Empata\n\n        </ion-option>\n\n        <ion-option (ionSelect)="addResultado(player, \'pierde\')">\n\n          Pierde\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button (click)="guardar()">Guardar</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]])
+    ], ModalJornadaPage);
+    return ModalJornadaPage;
+}());
+
+//# sourceMappingURL=modal-jornada.js.map
+
+/***/ }),
+
+/***/ 365:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -592,7 +701,7 @@ var AddPlayerPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 365:
+/***/ 366:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -654,7 +763,7 @@ var DetailsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 366:
+/***/ 367:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -708,144 +817,6 @@ var EquipoDetailPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 367:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalJornadaPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__ = __webpack_require__(43);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the ModalJornadaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ModalJornadaPage = /** @class */ (function () {
-    function ModalJornadaPage(navCtrl, navParams, formBuilder, historialProvider) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.formBuilder = formBuilder;
-        this.historialProvider = historialProvider;
-        // private datos: [];
-        this.resultados = [];
-        this.jugadores = [];
-        this.equipo = this.navParams.get("equipo");
-        for (var _i = 0, _a = this.equipo.jugadores; _i < _a.length; _i++) {
-            var p = _a[_i];
-            this.res = {
-                jugador: p,
-                resultado: "empata"
-            };
-            this.resultados.push(this.res);
-            this.jugadores = this.historialProvider.cargar_historial();
-        }
-    }
-    ModalJornadaPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ModalJornadaPage');
-    };
-    // addResultado(idx: number, resultado: string) {
-    //   console.log("INDEX: " + idx);
-    //   console.log("RESULTADO: " + resultado);
-    // }
-    ModalJornadaPage.prototype.prueba = function () {
-        console.log(this.navParams.get("datos"));
-    };
-    // prueba(valor: String, index: number) {
-    //   this.resultados.push([valor, index]);
-    //   for(let resultado of this.resultados) {
-    //     console.log(resultado[1]);
-    //     // if(resultado[1] == index) {
-    //     //   console.log("Está seleccionado");
-    //     // } else {
-    //     //   this.resultados.push([valor, index]);
-    //     // }
-    //   }
-    // }
-    ModalJornadaPage.prototype.addResultado = function (player, result) {
-        this.resultados.forEach(function (resultado) {
-            if (resultado.jugador == player) {
-                resultado.resultado = result;
-            }
-        });
-        // console.log(player + ' ' + result);
-        //   this.equipo.forEach(element => {
-        //   console.log(element.nombre);
-        // });
-        // this.resultados.forEach(element => {
-        //   if(element.jugador == player){
-        //     element.resultado = result;
-        //   }
-        //   // else{
-        //   //   let res:Resultado;
-        //   //   res.jugador = player;
-        //   //   res.resultado = result;
-        //   //   this.resultados.push(res);
-        //   // }
-        // });
-        // console.log(this.resultados);
-        // if(this.resultados.indexOf(this.res) > -1){
-        //   let i = this.resultados.indexOf(this.res);
-        //   this.resultados.splice(i, 1);
-        //   console.log("Se eliminó el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
-        //   // this.resultados.push()
-        // }
-        // else{
-        //   this.resultados.push(this.res);
-        //   console.log("Se añadió el jugador "+this.res.jugador.nombre+" con el resultado "+this.res.resultado);
-        // }
-    };
-    ModalJornadaPage.prototype.guardar = function () {
-        var _this = this;
-        this.historialProvider.cargar_historial().forEach(function (jugador) {
-            _this.resultados.forEach(function (resultado) {
-                if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
-                    jugador.jugadas += 1;
-                    switch (resultado.resultado) {
-                        case "gana":
-                            jugador.ganadas += 1;
-                            jugador.puntos += 1;
-                            break;
-                        case "empata":
-                            jugador.empatadas += 1;
-                            jugador.puntos += 0.5;
-                            break;
-                        case "pierde":
-                            jugador.perdidas += 1;
-                            break;
-                    }
-                }
-            });
-        });
-    };
-    ModalJornadaPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-modal-jornada',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list *ngFor="let player of equipo.jugadores; let i = index">\n\n    <ion-item>\n\n      <ion-label>{{ player.nombre }}</ion-label>\n\n      <ion-select >\n\n        <ion-option (ionSelect)="addResultado(player, \'gana\')">\n\n          Gana\n\n        </ion-option>\n\n        <ion-option selected (ionSelect)="addResultado(player, \'empata\')">\n\n          Empata\n\n        </ion-option>\n\n        <ion-option (ionSelect)="addResultado(player, \'pierde\')">\n\n          Pierde\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button (click)="guardar()">Guardar</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]])
-    ], ModalJornadaPage);
-    return ModalJornadaPage;
-}());
-
-//# sourceMappingURL=modal-jornada.js.map
-
-/***/ }),
-
 /***/ 368:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -865,7 +836,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(351);
@@ -881,15 +852,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__config__ = __webpack_require__(720);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_auth_auth__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_login_login__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_add_player_add_player__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_add_player_add_player__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_historial_historial__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_details_details__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_details_details__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_edit_player_edit_player__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_historial_equipos_historial_equipos__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_add_equipos_add_equipos__ = __webpack_require__(363);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_equipo_detail_equipo_detail__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_equipo_detail_equipo_detail__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_modal_modal__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_modal_jornada_modal_jornada__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_modal_jornada_modal_jornada__ = __webpack_require__(364);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -940,7 +911,6 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/add-equipos/add-equipos.module#AddEquiposPageModule', name: 'AddEquiposPage', segment: 'add-equipos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/add-jornada/add-jornada.module#AddJornadaPageModule', name: 'AddJornadaPage', segment: 'add-jornada', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-player/add-player.module#AddPlayerPageModule', name: 'AddPlayerPage', segment: 'add-player', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/calendario/calendario.module#CalendarioPageModule', name: 'CalendarioPage', segment: 'calendario', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/details/details.module#DetailsPageModule', name: 'DetailsPage', segment: 'details', priority: 'low', defaultHistory: [] },
@@ -1280,17 +1250,9 @@ var OPTIONS = [
         img: "assets/imgs/options/user.png"
     },
     {
-        nombre: "Equipos",
-        img: "assets/imgs/options/team.png"
-    },
-    {
         nombre: "Jornada",
         img: "assets/imgs/options/list.png"
     },
-    {
-        nombre: "Calendario",
-        img: "assets/imgs/options/calendar.png"
-    }
 ];
 //# sourceMappingURL=data.options.js.map
 
@@ -1338,144 +1300,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 */
 var HistorialEquiposProvider = /** @class */ (function () {
     function HistorialEquiposProvider() {
-        this._historialEquipos = [];
-        this.equipo = {
-            nombre: "Equipo A",
-            ciudad: "Barcelona",
-            jugadores: [
-                this.jugador1 = {
-                    nombre: "Pepito",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 50,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-                this.jugador2 = {
-                    nombre: "Manolito",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 40,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-                this.jugador3 = {
-                    nombre: "Antonio",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 60.5,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-                this.jugador4 = {
-                    nombre: "Federico",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 50,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-            ]
-        };
-        this.equipo2 = {
-            nombre: "Equipo B",
-            ciudad: "Valencia",
-            jugadores: [
-                this.jugador7 = {
-                    nombre: "María",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 60.5,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-                this.jugador8 = {
-                    nombre: "Ana",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 60.5,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-                this.jugador9 = {
-                    nombre: "Lucía",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 60.5,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-                this.jugador10 = {
-                    nombre: "Alba",
-                    apellidos: "Prueba",
-                    telefono: "123456789",
-                    elo: 60.5,
-                    jugadas: 0,
-                    ganadas: 0,
-                    empatadas: 0,
-                    perdidas: 0,
-                    casa: 0,
-                    fuera: 0,
-                    puntos: 0
-                },
-            ]
-        };
-        this.equipo3 = {
-            nombre: "Equipo C",
-            ciudad: "Madrid",
-            jugadores: []
-        };
-        this._historialEquipos.unshift(this.equipo, this.equipo2, this.equipo3);
+        this._jornadas = [];
+        this._jornadasJugadas = [];
         console.log('Hello HistorialEquiposProvider Provider');
     }
-    HistorialEquiposProvider.prototype.cargar_equipos = function () {
-        return this._historialEquipos;
+    HistorialEquiposProvider.prototype.cargar_jornadas = function () {
+        return this._jornadas;
     };
     HistorialEquiposProvider.prototype.toTeam = function (equipoForm) {
-        this.equipo = {
+        this.jornada = {
             nombre: equipoForm.value['nombre'],
             ciudad: equipoForm.value['ciudad'],
-            jugadores: equipoForm.value['jugadores']
+            jugadores: equipoForm.value['jugadores'],
+            fecha: equipoForm.value['fecha'],
+            hora: equipoForm.value['hora'],
+            local: equipoForm.value['local'],
         };
-        return this.equipo;
+        return this.jornada;
     };
     HistorialEquiposProvider.prototype.agregar_equipo = function (equipoForm) {
-        this._historialEquipos.push(this.toTeam(equipoForm));
+        this._jornadas.push(this.toTeam(equipoForm));
     };
     HistorialEquiposProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
