@@ -1,25 +1,26 @@
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>Jornada</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding>
-    <ion-list>
-        <button text-center ion-item block *ngFor="let equipo of equipos; let i = index" (click)="details(equipo, i)">
-          <ion-item>
-            {{equipo.nombre}}
-            <ion-note item-end>
-              {{equipo.ciudad}}
-            </ion-note>
-          </ion-item>
-          
-        </button>
+  <ion-navbar>
+    <ion-title>Jornada</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let equipo of equipos; let i = index">
+    <button text-center ion-item block *ngIf="equipo.jugada == false" (click)="details(equipo, i)">
       <ion-item>
-        <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>
+        {{equipo.nombre}}
+        <ion-note item-end>
+          {{equipo.ciudad}}
+        </ion-note>
       </ion-item>
-    </ion-list>
-  </ion-content>
+
+    </button>
+
+  </ion-list>
+  <ion-item>
+    <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>
+  </ion-item>
+</ion-content>

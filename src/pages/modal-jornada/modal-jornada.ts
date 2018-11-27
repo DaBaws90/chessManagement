@@ -5,6 +5,7 @@ import { Jugador } from '../../interfaces/player.interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Resultado } from '../../interfaces/resultado.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
+import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 
 /**
  * Generated class for the ModalJornadaPage page.
@@ -27,9 +28,11 @@ export class ModalJornadaPage {
   private resultados: Resultado[] = [];
   private res: Resultado;
   private jugadores: Jugador[] = [];
+  private jornadas: Equipo[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider,
+    private _jornadas: HistorialEquiposProvider) {
     this.equipo = this.navParams.get("equipo");
     for (let p of this.equipo.jugadores) {
       this.res = {
@@ -45,12 +48,7 @@ export class ModalJornadaPage {
     console.log('ionViewDidLoad ModalJornadaPage');
   }
 
-  prueba() {
-    console.log(this.navParams.get("datos"));
-  }
-
   addResultado(player: Jugador, result: string) {
-
     this.resultados.forEach(resultado => {
       if (resultado.jugador == player) {
         resultado.resultado = result;
@@ -79,6 +77,7 @@ export class ModalJornadaPage {
         }
       });
     });
+    this.equipo.jugada = true;
     this.navCtrl.pop();
   }
 

@@ -13,6 +13,7 @@ import { Jugador } from '../../interfaces/player.interfaces';
 @Injectable()
 export class HistorialEquiposProvider {
   private _jornadas: Equipo[] = [];
+  private _jornadasPendientes: Equipo[] = [];
   private _jornadasJugadas: Equipo[] = [];
   private jornada:Equipo;
 
@@ -23,6 +24,24 @@ export class HistorialEquiposProvider {
     return this._jornadas;
   }
 
+  // cargar_jugadas() {
+  //   this._jornadas.forEach(jornada => {
+  //     if(jornada.jugada == true){
+  //       this._jornadasJugadas.push(jornada);
+  //     }
+  //   });
+  //   return this._jornadasJugadas;
+  // }
+
+  // cargar_pendientes() {
+  //   this._jornadas.forEach(jornada => {
+  //     if(jornada.jugada == false) {
+  //       this._jornadasPendientes.push(jornada);
+  //     }
+  //   });
+  //   return this._jornadasPendientes;
+  // }
+
   private toTeam(equipoForm: FormGroup) {
     this.jornada = {
       nombre: equipoForm.value['nombre'],
@@ -31,6 +50,7 @@ export class HistorialEquiposProvider {
       fecha: equipoForm.value['fecha'],
       hora: equipoForm.value['hora'],
       local: equipoForm.value['local'],
+      jugada: false,
     };
     return this.jornada;
   }
@@ -38,4 +58,8 @@ export class HistorialEquiposProvider {
   agregar_equipo(equipoForm: FormGroup){
     this._jornadas.push(this.toTeam(equipoForm));
   }
+
+  // agregar_jugada() {
+  //   this._jornadasJugadas.push();
+  // }
 }

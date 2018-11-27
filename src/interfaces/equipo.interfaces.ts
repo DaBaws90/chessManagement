@@ -7,4 +7,5 @@ export interface Equipo {
     local: string;
     fecha: string;
     hora: string;
+    jugada: boolean;
 }

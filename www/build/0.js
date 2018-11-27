@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 728:
+/***/ 733:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JugadorPageModule", function() { return JugadorPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResultadosPageModule", function() { return ResultadosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jugador__ = __webpack_require__(735);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__resultados__ = __webpack_require__(738);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var JugadorPageModule = /** @class */ (function () {
-    function JugadorPageModule() {
+var ResultadosPageModule = /** @class */ (function () {
+    function ResultadosPageModule() {
     }
-    JugadorPageModule = __decorate([
+    ResultadosPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__jugador__["a" /* JugadorPage */],
+                __WEBPACK_IMPORTED_MODULE_2__resultados__["a" /* ResultadosPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__jugador__["a" /* JugadorPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__resultados__["a" /* ResultadosPage */]),
             ],
         })
-    ], JugadorPageModule);
-    return JugadorPageModule;
+    ], ResultadosPageModule);
+    return ResultadosPageModule;
 }());
 
-//# sourceMappingURL=jugador.module.js.map
+//# sourceMappingURL=resultados.module.js.map
 
 /***/ }),
 
-/***/ 735:
+/***/ 738:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return JugadorPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultadosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_player_add_player__ = __webpack_require__(365);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__details_details__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__ = __webpack_require__(68);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,44 +58,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 /**
- * Generated class for the JugadorPage page.
+ * Generated class for the ResultadosPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var JugadorPage = /** @class */ (function () {
-    function JugadorPage(navCtrl, navParams, historialProvider) {
+var ResultadosPage = /** @class */ (function () {
+    function ResultadosPage(navCtrl, navParams, _jornadas) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.historialProvider = historialProvider;
-        this.jugadores = [];
+        this._jornadas = _jornadas;
+        this.equipos = [];
+        this.equipos = this._jornadas.cargar_jornadas();
     }
-    JugadorPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad JugadorPage');
+    ResultadosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ResultadosPage');
     };
-    JugadorPage.prototype.ionViewWillEnter = function () {
-        this.jugadores = this.historialProvider.cargar_historial();
-    };
-    JugadorPage.prototype.addPlayerPage = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__add_player_add_player__["a" /* AddPlayerPage */]);
-    };
-    JugadorPage.prototype.details = function (jugador, index) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__details_details__["a" /* DetailsPage */], { "jugador": jugador, "index": index });
-    };
-    JugadorPage = __decorate([
+    ResultadosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-jugador',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\jugador\jugador.html"*/'<!--\n\n  Generated template for the JugadorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jugadores</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n      <button class="jugador" text-center ion-item block *ngFor="let jugador of jugadores; let i = index" (click)="details(jugador, i)">\n\n        <ion-item>\n\n          {{jugador.nombre}}\n\n          <ion-note item-end>\n\n            {{jugador.elo}}\n\n          </ion-note>\n\n        </ion-item>\n\n        \n\n      </button>\n\n    <ion-item>\n\n      <button ion-button block color="secondary" (click)="addPlayerPage()">Añadir jugador</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\jugador\jugador.html"*/,
+            selector: 'page-resultados',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\resultados\resultados.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let equipo of equipos; let i = index">\n\n    <button text-center ion-item block *ngIf="equipo.jugada == true" (click)="details(equipo, i)">\n\n      <ion-item>\n\n        {{equipo.nombre}}\n\n        <ion-note item-end>\n\n          {{equipo.ciudad}}\n\n        </ion-note>\n\n      </ion-item>\n\n    </button>\n\n\n\n  </ion-list>\n\n  <ion-item>\n\n    <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>\n\n  </ion-item>\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\resultados\resultados.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]])
-    ], JugadorPage);
-    return JugadorPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]])
+    ], ResultadosPage);
+    return ResultadosPage;
 }());
 
-//# sourceMappingURL=jugador.js.map
+//# sourceMappingURL=resultados.js.map
 
 /***/ })
 

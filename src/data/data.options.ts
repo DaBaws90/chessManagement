@@ -7,8 +7,8 @@ export const OPTIONS = [
     nombre: "Jornada",
     img: "assets/imgs/options/list.png"
 },
-// {
-//     nombre: "Calendario",
-//     img: "assets/imgs/options/calendar.png"
-// }
+{
+    nombre: "Resultados",
+    img: "assets/imgs/options/poll-solid.svg"
+}
 ]

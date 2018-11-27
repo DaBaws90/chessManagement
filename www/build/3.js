@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 723:
+/***/ 727:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarioPageModule", function() { return CalendarioPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EquiposPageModule", function() { return EquiposPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendario__ = __webpack_require__(733);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equipos__ = __webpack_require__(735);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CalendarioPageModule = /** @class */ (function () {
-    function CalendarioPageModule() {
+var EquiposPageModule = /** @class */ (function () {
+    function EquiposPageModule() {
     }
-    CalendarioPageModule = __decorate([
+    EquiposPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__calendario__["a" /* CalendarioPage */],
+                __WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__calendario__["a" /* CalendarioPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__equipos__["a" /* EquiposPage */]),
             ],
         })
-    ], CalendarioPageModule);
-    return CalendarioPageModule;
+    ], EquiposPageModule);
+    return EquiposPageModule;
 }());
 
-//# sourceMappingURL=calendario.module.js.map
+//# sourceMappingURL=equipos.module.js.map
 
 /***/ }),
 
-/***/ 733:
+/***/ 735:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarioPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EquiposPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_equipos_add_equipos__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal_jornada_modal_jornada__ = __webpack_require__(364);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,53 +61,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Generated class for the CalendarioPage page.
+ * Generated class for the EquiposPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var CalendarioPage = /** @class */ (function () {
-    function CalendarioPage(navCtrl, navParams, _jornadas) {
+var EquiposPage = /** @class */ (function () {
+    function EquiposPage(navCtrl, navParams, historialEquiposProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this._jornadas = _jornadas;
-        this.myDate = new Date().toISOString();
-        this.myTime = __WEBPACK_IMPORTED_MODULE_2_rxjs__["Timestamp"].toString(); // Necesita revisión
-        this.calendar = {}; // Inicializarlo vacío así o en el constructor
-        this.event = {
-            fecha: this.myDate,
-            hora: this.myTime,
-            nombre: ""
-        };
-        this.listTeams = _jornadas.cargar_jornadas();
+        this.historialEquiposProvider = historialEquiposProvider;
+        this.equipos = [];
+        this.equipos = this.historialEquiposProvider.cargar_jornadas();
     }
-    CalendarioPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CalendarioPage');
+    EquiposPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EquiposPage');
     };
-    CalendarioPage.prototype.isLocal = function (text) {
-        this.calendar.local = text;
+    EquiposPage.prototype.ionViewWillEnter = function () {
+        this.equipos = this.historialEquiposProvider.cargar_jornadas();
     };
-    CalendarioPage.prototype.selectTeam = function (equipo) {
-        this.calendar.equipo = equipo;
+    EquiposPage.prototype.addEquiposView = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__add_equipos_add_equipos__["a" /* AddEquiposPage */]);
+        console.log("Navigating to: AddEquiposPage");
     };
-    CalendarioPage.prototype.goTo = function () {
-        this.calendar.fecha = this.event.fecha;
-        this.calendar.hora = this.event.hora;
-        this.calendar.nombre = this.event.nombre;
-        // this.navCtrl.push(JornadaPage, {"calendar": this.calendar});
-        console.log(this.calendar);
+    EquiposPage.prototype.details = function (equipo, idx) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__modal_jornada_modal_jornada__["a" /* ModalJornadaPage */], { "equipo": equipo, "idx": idx });
     };
-    CalendarioPage = __decorate([
+    EquiposPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-calendario',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\calendario\calendario.html"*/'\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Añadir jornada</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-input [(ngModel)]="event.nombre" name="nombre" placeholder="Nombre"></ion-input>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n  <ion-item>\n\n    <ion-label>Equipos</ion-label>\n\n    <ion-select>\n\n      <ion-option *ngFor="let equipo of listTeams" (ionSelect)="selectTeam(equipo)">\n\n        {{equipo.nombre}}\n\n      </ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Fecha de la jornada</ion-label>\n\n      <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="event.fecha"></ion-datetime>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label>Local o visitante</ion-label>\n\n      <ion-select>\n\n        <ion-option (ionSelect)="isLocal(\'local\')" selected>Local</ion-option>\n\n        <ion-option (ionSelect)="isLocal(\'visitante\')">Visitante</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label>Hora de la partida</ion-label>\n\n      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.hora"></ion-datetime>\n\n    </ion-item>\n\n\n\n    <div text-center padding>\n\n      <button ion-button (click)="goTo()">Guardar</button>\n\n    </div>\n\n \n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\calendario\calendario.html"*/,
+            selector: 'page-equipos',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\equipos\equipos.html"*/'<!--\n\n  Generated template for the EquiposPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Equipos</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n      <button text-center ion-item block *ngFor="let equipo of equipos; let i = index" (click)="details(equipo, i)">\n\n        <ion-item>\n\n          {{equipo.nombre}}\n\n          <ion-note item-end>\n\n            {{equipo.ciudad}}\n\n          </ion-note>\n\n        </ion-item>\n\n        \n\n      </button>\n\n    <ion-item>\n\n      <button ion-button block color="secondary" (click)="addEquiposView()">Añadir equipo</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\equipos\equipos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]])
-    ], CalendarioPage);
-    return CalendarioPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]])
+    ], EquiposPage);
+    return EquiposPage;
 }());
 
-//# sourceMappingURL=calendario.js.map
+//# sourceMappingURL=equipos.js.map
 
 /***/ })
 
