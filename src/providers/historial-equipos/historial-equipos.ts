@@ -51,6 +51,7 @@ export class HistorialEquiposProvider {
       hora: equipoForm.value['hora'],
       local: equipoForm.value['local'],
       jugada: false,
+      resultados: []
     };
     return this.jornada;
   }
