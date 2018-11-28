@@ -40,8 +40,11 @@ export class JugadorPage {
   }
 
   goEdit(jugador: Jugador, idx: number) {
-    console.log(jugador);
     this.navCtrl.push(EditPlayerPage, {"jugador": jugador, "index": idx});    
+  }
+
+  delete(idx: number) {
+    this.historialProvider.cargar_historial().splice(idx, 1);
   }
 
 }

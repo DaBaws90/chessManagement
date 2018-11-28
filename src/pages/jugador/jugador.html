@@ -34,12 +34,12 @@
         <p>ELO: {{ jugador.elo }}</p>
       </ion-item>
       <ion-item-options side="right">
-        <button class="whiteFont" ion-button color="danger">
+        <button ion-button color="danger" (click)="delete(i)">
           <ion-icon name="trash"></ion-icon>
           Borrar
         </button>
-        <button class="whiteFont" ion-button color="primary" (click)="goEdit(jugador, i)">
-          <ion-icon name="mail"></ion-icon>
+        <button ion-button color="primary" (click)="goEdit(jugador, i)">
+          <ion-icon name="create"></ion-icon>
           Editar
         </button>
       </ion-item-options>
