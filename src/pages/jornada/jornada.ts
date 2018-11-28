@@ -4,6 +4,7 @@ import { HistorialEquiposProvider } from '../../providers/historial-equipos/hist
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
 import { AddEquiposPage } from '../add-equipos/add-equipos';
+import { ResultadosPage } from '../resultados/resultados';
 
 /**
  * Generated class for the JornadaPage page.
@@ -45,6 +46,10 @@ export class JornadaPage {
     console.log(idx);
     this._jornadas.cargar_jornadas().splice(idx, 1);
     this.equipos = this._jornadas.cargar_pendientes();
+  }
+
+  goToResultados() {
+    this.navCtrl.push(ResultadosPage);
   }
 
 }

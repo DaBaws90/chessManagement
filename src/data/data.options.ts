@@ -5,7 +5,7 @@ export const OPTIONS = [
 },
 {
     nombre: "Jornada",
-    img: "assets/imgs/options/list.png"
+    img: "assets/imgs/options/chess-rook-solid.svg"
 },
 {
     nombre: "Resultados",

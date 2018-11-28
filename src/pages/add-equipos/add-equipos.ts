@@ -25,17 +25,17 @@ export class AddEquiposPage {
   private jugadores: Jugador[] = [];
   private cont: number;
   private selected: Jugador[];
-  d = new Date();
-  offset = new Date().getTimezoneOffset() + 1;
-  myDate: String = new Date().toISOString();
-  myTime: String = new Date(this.d.getTime() + (3600000 * this.offset)).toISOString(); // Necesita revisión
+  private d = new Date();
+  private offset = new Date().getTimezoneOffset() + 13;
+  private myDate: String = new Date().toISOString();
+  private myTime: String = new Date(this.d.getTime() + (3600000 * this.offset)).toISOString(); // Necesita revisión
   private calendar: Calendario = <Calendario>{}; // Inicializarlo vacío así o en el constructor
   // private listTeams:Equipo[];
 
   public event = {
     fecha: this.myDate,
     hora: this.myTime,
-    nombre: ""
+    selected: "local"
   }
 
 

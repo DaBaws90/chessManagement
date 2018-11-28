@@ -25683,6 +25683,10 @@ page-edit-player .editPlayer {
   float: right;
 }
 
+page-home ion-icon {
+  width: 3rem;
+}
+
 page-jornada .mensaje {
   font-weight: bold;
   font-size: 2rem;

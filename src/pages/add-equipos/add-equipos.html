@@ -24,23 +24,22 @@
     </ion-item>
 
     <ion-list *ngIf="selected">
-      <!-- <ion-label>Jugadores</ion-label> -->
       <ion-item *ngFor="let jugador of selected">
         {{ jugador.nombre }}
       </ion-item>
     </ion-list>
 
     <ion-item>
-      <ion-label>Fecha de la jornada</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" min="2010" max="2030-12-31" formControlName="fecha" [ngModel]="event.fecha"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
       <ion-label>Local o visitante</ion-label>
-      <ion-select formControlName="local">
+      <ion-select formControlName="local" [ngModel]="event.selected">
         <ion-option value="local" selected>Local</ion-option>
         <ion-option value="visitante">Visitante</ion-option>
       </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha de la jornada</ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY" min="2010" max="2030-12-31" formControlName="fecha" [ngModel]="event.fecha"></ion-datetime>
     </ion-item>
 
     <ion-item>

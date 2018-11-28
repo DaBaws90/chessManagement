@@ -2,6 +2,9 @@
 
   <ion-navbar>
     <ion-title>Jornada</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goToResultados()">Ir a resultados</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +23,7 @@
     <ion-item-sliding *ngFor="let equipo of equipos; let i = index">
       <ion-item (click)="details(equipo, i)">
         <ion-avatar item-start>
-          <img src="../../assets/imgs/chess-rook-solid.svg">
+          <img src="../../assets/imgs/options/chess-rook-solid.svg">
         </ion-avatar>
         <h2>{{equipo.nombre}}</h2>
         <p>Ciudad: {{equipo.ciudad}}</p>

@@ -36,9 +36,9 @@ export class ResultadosPage {
     this.navCtrl.push(EquipoDetailPage, {"equipo":equipo, "idx": idx});
   }
 
-  goToJornadas(){
-    this.navCtrl.push(JornadaPage);
-    console.log("Navigating to: JornadaPage");
+  goToHome(){
+    this.navCtrl.popToRoot();
+    console.log("Navigating to: HomePage");
   }
 
 }
