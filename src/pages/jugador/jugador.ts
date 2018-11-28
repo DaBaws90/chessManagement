@@ -4,6 +4,7 @@ import { AddPlayerPage } from '../add-player/add-player';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
 import { DetailsPage } from '../details/details';
+import { EditPlayerPage } from '../edit-player/edit-player';
 /**
  * Generated class for the JugadorPage page.
  *
@@ -36,6 +37,11 @@ export class JugadorPage {
 
   details(jugador: Jugador, index: number) {
     this.navCtrl.push(DetailsPage, { "jugador": jugador, "index": index });
+  }
+
+  goEdit(jugador: Jugador, idx: number) {
+    console.log(jugador);
+    this.navCtrl.push(EditPlayerPage, {"jugador": jugador, "index": idx});    
   }
 
 }

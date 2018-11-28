@@ -25688,5 +25688,5 @@ page-jugador .jugador h3 {
 }
 
 page-jugador .whiteFont {
-  color: white;
+  color: white !important;
 }

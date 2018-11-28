@@ -11,11 +11,11 @@
   <form [formGroup]="jugadorForm" (ngSubmit)="editPlayer()">
   <ion-item>
     <ion-label floating>Nombre</ion-label>
-    <ion-input type="text" readonly formControlName="nombre" value="{{jugador.nombre}}"></ion-input>
+    <ion-input type="text" formControlName="nombre" value="{{jugador.nombre}}"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Apellidos</ion-label>
-    <ion-input type="text" readonly formControlName="apellidos" value="{{jugador.apellidos}}"></ion-input>
+    <ion-input type="text" formControlName="apellidos" value="{{jugador.apellidos}}"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Teléfono</ion-label>
