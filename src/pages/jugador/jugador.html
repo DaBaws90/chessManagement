@@ -1,9 +1,3 @@
-<!--
-  Generated template for the JugadorPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -13,7 +7,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<!-- <ion-content padding>
   <ion-list>
       <button text-center ion-item block *ngFor="let jugador of jugadores; let i = index" (click)="details(jugador, i)">
         <ion-item>
@@ -27,5 +21,27 @@
     <ion-item>
       <button ion-button block color="secondary" (click)="addPlayerPage()">Añadir jugador</button>
     </ion-item>
+  </ion-list> 
+</ion-content> -->
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item *ngFor="let jugador of jugadores; let i = index" (click)="details(jugador, i)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/options/user.png">
+        </ion-avatar>
+        <h2>{{ jugador.nombre }}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button class="whiteFont" ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+        <button class="whiteFont" ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>
