@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Jornada</ion-title>
+    <ion-title>Resultados</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,14 +13,10 @@
       <ion-item>
         {{equipo.nombre}}
         <ion-note item-end>
-          {{equipo.ciudad}}
+          {{equipo.ciudad}} ({{ equipo.local }}) 
         </ion-note>
       </ion-item>
     </button>
-
   </ion-list>
-  <ion-item>
-    <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>
-  </ion-item>
 </ion-content>
 

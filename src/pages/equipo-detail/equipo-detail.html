@@ -25,9 +25,9 @@
       </button>
     </ion-item>
     <ion-item *ngFor="let jugador of equipo.jugadores; let i = index">
-      <h2> Jugador {{ (i + 1) }}</h2>
-      <ion-note item-end>
-          {{ jugador.nombre }}
+      <h2> {{ jugador.nombre }}</h2>
+      <ion-note text-capitalize item-end>
+          {{ equipo.resultados[i].resultado}}
       </ion-note>
     </ion-item>
   </ion-list>

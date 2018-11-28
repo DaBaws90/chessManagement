@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
+import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
 
 /**
  * Generated class for the ResultadosPage page.
@@ -24,6 +25,10 @@ export class ResultadosPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultadosPage');
+  }
+
+  details(equipo: Equipo, idx: number) {
+    this.navCtrl.push(EquipoDetailPage, {"equipo":equipo, "idx": idx});
   }
 
 }

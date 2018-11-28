@@ -1,4 +1,5 @@
 import { Jugador } from "./player.interfaces";
+import { Resultado } from "./resultado.interfaces";
 
 export interface Equipo {
     nombre: string;
@@ -8,4 +9,5 @@ export interface Equipo {
     fecha: string;
     hora: string;
     jugada: boolean;
+    resultados: Resultado[];
 }

@@ -78,6 +78,8 @@ export class ModalJornadaPage {
       });
     });
     this.equipo.jugada = true;
+    this.equipo.resultados = this.resultados;
+    // console.log(this.equipo);
     this.navCtrl.pop();
   }
 
