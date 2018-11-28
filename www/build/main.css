@@ -25700,3 +25700,7 @@ page-resultados .mensaje {
   font-weight: bold;
   font-size: 2rem;
 }
+
+page-resultados ion-icon {
+  width: 2rem;
+}
