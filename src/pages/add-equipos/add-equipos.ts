@@ -5,8 +5,8 @@ import { HistorialEquiposProvider } from '../../providers/historial-equipos/hist
 import { HistorialProvider } from '../../providers/historial/historial';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { ModalPage } from '../modal/modal';
-import { Timestamp } from 'rxjs';
 import { Calendario } from '../../interfaces/calendario.interfaces';
+import { Timestamp } from 'rxjs/operators/timestamp';
 
 /**
  * Generated class for the AddEquiposPage page.
@@ -25,8 +25,10 @@ export class AddEquiposPage {
   private jugadores: Jugador[] = [];
   private cont: number;
   private selected: Jugador[];
+  d = new Date();
+  offset = new Date().getTimezoneOffset() + 1;
   myDate: String = new Date().toISOString();
-  myTime: String = Timestamp.toString(); // Necesita revisión
+  myTime: String = new Date(this.d.getTime() + (3600000 * this.offset)).toISOString(); // Necesita revisión
   private calendar: Calendario = <Calendario>{}; // Inicializarlo vacío así o en el constructor
   // private listTeams:Equipo[];
 

@@ -32,7 +32,7 @@
 
     <ion-item>
       <ion-label>Fecha de la jornada</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" formControlName="fecha"></ion-datetime>
+      <ion-datetime displayFormat="DD MMM YYYY" min="2010" max="2030-12-31" formControlName="fecha" [ngModel]="event.fecha"></ion-datetime>
     </ion-item>
 
     <ion-item>
@@ -45,7 +45,7 @@
 
     <ion-item>
       <ion-label>Hora de la partida</ion-label>
-      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="hora"></ion-datetime>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="h:mm A" formControlName="hora" [ngModel]="event.hora"></ion-datetime>
     </ion-item>
 
     <div text-center padding>

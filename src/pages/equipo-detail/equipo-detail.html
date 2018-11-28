@@ -20,9 +20,6 @@
       </ion-avatar>
       <h2>{{equipo.nombre}}</h2>
       <p>Ciudad : {{equipo.ciudad}}</p>
-      <button *ngIf="!editando" ion-button item-end color="dark" (click)="goEdit()">
-        <ion-icon name="create"></ion-icon>
-      </button>
     </ion-item>
     <ion-item *ngFor="let jugador of equipo.jugadores; let i = index">
       <h2> {{ jugador.nombre }}</h2>
