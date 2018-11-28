@@ -32,6 +32,8 @@
         </ion-avatar>
         <h2>{{ jugador.nombre }} {{ jugador.apellidos }}</h2>
         <p>ELO: {{ jugador.elo }}</p>
+        <ion-icon item-right name="ios-arrow-back"></ion-icon>
+        <ion-note item-end>Deslizar</ion-note>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="delete(i)">
