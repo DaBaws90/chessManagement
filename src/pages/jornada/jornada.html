@@ -8,22 +8,36 @@
 
 
 <ion-content padding>
+
   <ion-item *ngIf="equipos.length == 0" class="mensaje">
-  <div text-center padding>
-  No hay jornadas pendientes
-  </div>
+    <div text-center padding>
+      No hay jornadas pendientes
+    </div>
   </ion-item>
-      <ion-list *ngFor="let equipo of equipos; let i = index">
-    <button text-center ion-item block (click)="details(equipo, i)">
-      <ion-item>
-        {{equipo.nombre}}
-        <ion-note item-end>
-          {{equipo.ciudad}}
-        </ion-note>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let equipo of equipos; let i = index">
+      <ion-item (click)="details(equipo, i)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/chess-rook-solid.svg">
+        </ion-avatar>
+        <h2>{{equipo.nombre}}</h2>
+        <p>Ciudad: {{equipo.ciudad}}</p>
+        <ion-icon item-right name="ios-arrow-back"></ion-icon>
+        <ion-note item-end>Deslizar</ion-note>
       </ion-item>
-    </button>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(i)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
+
   <div text-center padding>
-  <button ion-button color="primary" (click)="addEquiposView()">Añadir jornada</button>
+    <button ion-button color="primary" (click)="addEquiposView()">Añadir jornada</button>
   </div>
 </ion-content>

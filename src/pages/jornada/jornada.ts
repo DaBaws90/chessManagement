@@ -41,4 +41,10 @@ export class JornadaPage {
     this.navCtrl.push(ModalJornadaPage, {"equipo":equipo, "idx": idx});
   }
 
+  delete(idx: number) {
+    console.log(idx);
+    this._jornadas.cargar_jornadas().splice(idx, 1);
+    this.equipos = this._jornadas.cargar_pendientes();
+  }
+
 }

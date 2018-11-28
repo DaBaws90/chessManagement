@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 733:
+/***/ 732:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89,9 +89,14 @@ var JornadaPage = /** @class */ (function () {
     JornadaPage.prototype.details = function (equipo, idx) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__modal_jornada_modal_jornada__["a" /* ModalJornadaPage */], { "equipo": equipo, "idx": idx });
     };
+    JornadaPage.prototype.delete = function (idx) {
+        console.log(idx);
+        this._jornadas.cargar_jornadas().splice(idx, 1);
+        this.equipos = this._jornadas.cargar_pendientes();
+    };
     JornadaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-jornada',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-item *ngIf="equipos.length == 0" class="mensaje">\n\n  <div text-center padding>\n\n  No hay jornadas pendientes\n\n  </div>\n\n  </ion-item>\n\n      <ion-list *ngFor="let equipo of equipos; let i = index">\n\n    <button text-center ion-item block (click)="details(equipo, i)">\n\n      <ion-item>\n\n        {{equipo.nombre}}\n\n        <ion-note item-end>\n\n          {{equipo.ciudad}}\n\n        </ion-note>\n\n      </ion-item>\n\n    </button>\n\n  </ion-list>\n\n  <div text-center padding>\n\n  <button ion-button color="primary" (click)="addEquiposView()">Añadir jornada</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/,
+            selector: 'page-jornada',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-item *ngIf="equipos.length == 0" class="mensaje">\n\n    <div text-center padding>\n\n      No hay jornadas pendientes\n\n    </div>\n\n  </ion-item>\n\n\n\n  <ion-list>\n\n\n\n    <ion-item-sliding *ngFor="let equipo of equipos; let i = index">\n\n      <ion-item (click)="details(equipo, i)">\n\n        <ion-avatar item-start>\n\n          <img src="../../assets/imgs/chess-rook-solid.svg">\n\n        </ion-avatar>\n\n        <h2>{{equipo.nombre}}</h2>\n\n        <p>Ciudad: {{equipo.ciudad}}</p>\n\n        <ion-icon item-right name="ios-arrow-back"></ion-icon>\n\n        <ion-note item-end>Deslizar</ion-note>\n\n      </ion-item>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="danger" (click)="delete(i)">\n\n          <ion-icon name="trash"></ion-icon>\n\n          Borrar\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n\n\n  </ion-list>\n\n\n\n  <div text-center padding>\n\n    <button ion-button color="primary" (click)="addEquiposView()">Añadir jornada</button>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]])
