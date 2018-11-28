@@ -74,13 +74,13 @@ var JornadaPage = /** @class */ (function () {
         this.navParams = navParams;
         this._jornadas = _jornadas;
         this.equipos = [];
-        this.equipos = this._jornadas.cargar_jornadas();
+        this.equipos = this._jornadas.cargar_pendientes();
     }
     JornadaPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad JornadaPage');
     };
     JornadaPage.prototype.ionViewWillEnter = function () {
-        this.equipos = this._jornadas.cargar_jornadas();
+        this.equipos = this._jornadas.cargar_pendientes();
     };
     JornadaPage.prototype.addEquiposView = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__add_equipos_add_equipos__["a" /* AddEquiposPage */]);
@@ -91,12 +91,12 @@ var JornadaPage = /** @class */ (function () {
     };
     JornadaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-jornada',template:/*ion-inline-start:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let equipo of equipos; let i = index">\n\n    <button text-center ion-item block *ngIf="equipo.jugada == false" (click)="details(equipo, i)">\n\n      <ion-item>\n\n        {{equipo.nombre}}\n\n        <ion-note item-end>\n\n          {{equipo.ciudad}}\n\n        </ion-note>\n\n      </ion-item>\n\n\n\n    </button>\n\n\n\n  </ion-list>\n\n  <ion-item>\n\n    <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>\n\n  </ion-item>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Desktop\Ionic\ajedrez\src\pages\jornada\jornada.html"*/,
+            selector: 'page-jornada',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\jornada\jornada.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list *ngFor="let equipo of equipos; let i = index">\n\n    <button text-center ion-item block (click)="details(equipo, i)">\n\n      <ion-item>\n\n        {{equipo.nombre}}\n\n        <ion-note item-end>\n\n          {{equipo.ciudad}}\n\n        </ion-note>\n\n      </ion-item>\n\n\n\n    </button>\n\n\n\n  </ion-list>\n\n  <ion-item>\n\n    <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>\n\n  </ion-item>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\jornada\jornada.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _c || Object])
     ], JornadaPage);
     return JornadaPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=jornada.js.map

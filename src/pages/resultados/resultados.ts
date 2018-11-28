@@ -20,7 +20,7 @@ export class ResultadosPage {
   equipos: Equipo[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider) {
-    this.equipos = this._jornadas.cargar_jornadas();
+    this.equipos = this._jornadas.cargar_jugadas();
   }
 
   ionViewDidLoad() {

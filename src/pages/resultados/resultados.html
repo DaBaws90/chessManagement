@@ -6,10 +6,9 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <ion-list *ngFor="let equipo of equipos; let i = index">
-    <button text-center ion-item block *ngIf="equipo.jugada == true" (click)="details(equipo, i)">
+    <button text-center ion-item block (click)="details(equipo, i)">
       <ion-item>
         {{equipo.nombre}}
         <ion-note item-end>

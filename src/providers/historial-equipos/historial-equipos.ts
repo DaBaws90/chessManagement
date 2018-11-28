@@ -24,23 +24,25 @@ export class HistorialEquiposProvider {
     return this._jornadas;
   }
 
-  // cargar_jugadas() {
-  //   this._jornadas.forEach(jornada => {
-  //     if(jornada.jugada == true){
-  //       this._jornadasJugadas.push(jornada);
-  //     }
-  //   });
-  //   return this._jornadasJugadas;
-  // }
+  cargar_jugadas() {
+    this._jornadasJugadas = [];
+    this._jornadas.forEach(jornada => {
+      if(jornada.jugada == true){
+        this._jornadasJugadas.push(jornada);
+      }
+    });
+    return this._jornadasJugadas;
+  }
 
-  // cargar_pendientes() {
-  //   this._jornadas.forEach(jornada => {
-  //     if(jornada.jugada == false) {
-  //       this._jornadasPendientes.push(jornada);
-  //     }
-  //   });
-  //   return this._jornadasPendientes;
-  // }
+  cargar_pendientes() {
+    this._jornadasPendientes = [];
+    this._jornadas.forEach(jornada => {
+      if(jornada.jugada == false) {
+        this._jornadasPendientes.push(jornada);
+      }
+    });
+    return this._jornadasPendientes;
+  }
 
   private toTeam(equipoForm: FormGroup) {
     this.jornada = {
