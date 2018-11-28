@@ -286,19 +286,19 @@ var map = {
 		2
 	],
 	"../pages/jugador/jugador.module": [
-		731,
+		729,
 		1
 	],
 	"../pages/login/login.module": [
-		729,
+		730,
 		7
 	],
 	"../pages/modal-jornada/modal-jornada.module": [
-		732,
+		731,
 		6
 	],
 	"../pages/modal/modal.module": [
-		730,
+		732,
 		5
 	],
 	"../pages/resultados/resultados.module": [
@@ -508,7 +508,7 @@ var AddEquiposPage = /** @class */ (function () {
     };
     AddEquiposPage.prototype.presentToast = function (nombre) {
         var toast = this.toastCtrl.create({
-            message: 'Equipo ' + nombre + ' añadido con éxito',
+            message: 'Jornada ' + nombre + ' añadida con éxito',
             duration: 3000
         });
         toast.present();
@@ -525,11 +525,10 @@ var AddEquiposPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-add-equipos',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\add-equipos\add-equipos.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Añadir jornada</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <form [formGroup]="equipoForm" (ngSubmit)="addTeam()">\n\n\n\n    <ion-item>\n\n      <ion-label floating>Nombre</ion-label>\n\n      <ion-input type="text" formControlName="nombre"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Ciudad</ion-label>\n\n      <ion-input type="text" formControlName="ciudad"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item (click)="presentModal()">\n\n      Jugadores\n\n    </ion-item>\n\n\n\n    <ion-list *ngIf="selected">\n\n      <!-- <ion-label>Jugadores</ion-label> -->\n\n      <ion-item *ngFor="let jugador of selected">\n\n        {{ jugador.nombre }}\n\n      </ion-item>\n\n    </ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label>Fecha de la jornada</ion-label>\n\n      <ion-datetime displayFormat="DD MMM YYYY" formControlName="fecha"></ion-datetime>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label>Local o visitante</ion-label>\n\n      <ion-select formControlName="local">\n\n        <ion-option value="local" selected>Local</ion-option>\n\n        <ion-option value="visitante">Visitante</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label>Hora de la partida</ion-label>\n\n      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="hora"></ion-datetime>\n\n    </ion-item>\n\n\n\n    <div text-center padding>\n\n      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>\n\n    </div>\n\n\n\n  </form>\n\n</ion-content>'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\add-equipos\add-equipos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__providers_historial_historial__["a" /* HistorialProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_historial_historial__["a" /* HistorialProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_historial_historial__["a" /* HistorialProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */]) === "function" && _h || Object])
     ], AddEquiposPage);
     return AddEquiposPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=add-equipos.js.map
@@ -567,12 +566,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ModalJornadaPage = /** @class */ (function () {
-    function ModalJornadaPage(navCtrl, navParams, formBuilder, historialProvider, _jornadas) {
+    function ModalJornadaPage(navCtrl, navParams, formBuilder, historialProvider, _jornadas, toastCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.formBuilder = formBuilder;
         this.historialProvider = historialProvider;
         this._jornadas = _jornadas;
+        this.toastCtrl = toastCtrl;
         // private datos: [];
         this.resultados = [];
         this.jugadores = [];
@@ -622,17 +622,24 @@ var ModalJornadaPage = /** @class */ (function () {
         });
         this.equipo.jugada = true;
         this.equipo.resultados = this.resultados;
-        // console.log(this.equipo);
+        this.presentToast(this.equipo.nombre);
         this.navCtrl.pop();
+    };
+    ModalJornadaPage.prototype.presentToast = function (nombre) {
+        var toast = this.toastCtrl.create({
+            message: 'Resultados de la jornada ' + nombre + ' añadidos con éxito',
+            duration: 3000
+        });
+        toast.present();
     };
     ModalJornadaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-modal-jornada',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list *ngFor="let player of equipo.jugadores; let i = index">\n\n    <ion-item>\n\n      <ion-label>{{ player.nombre }}</ion-label>\n\n      <ion-select >\n\n        <ion-option (ionSelect)="addResultado(player, \'gana\')">\n\n          Gana\n\n        </ion-option>\n\n        <ion-option selected (ionSelect)="addResultado(player, \'empata\')">\n\n          Empata\n\n        </ion-option>\n\n        <ion-option (ionSelect)="addResultado(player, \'pierde\')">\n\n          Pierde\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button (click)="guardar()">Guardar</button>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
+            selector: 'page-modal-jornada',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list *ngFor="let player of equipo.jugadores; let i = index">\n\n    <ion-item>\n\n      <ion-label>{{ player.nombre }}</ion-label>\n\n      <ion-select >\n\n        <ion-option (ionSelect)="addResultado(player, \'gana\')">\n\n          Gana\n\n        </ion-option>\n\n        <ion-option selected (ionSelect)="addResultado(player, \'empata\')">\n\n          Empata\n\n        </ion-option>\n\n        <ion-option (ionSelect)="addResultado(player, \'pierde\')">\n\n          Pierde\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </ion-list>\n\n  <div text-center padding>\n\n  <button ion-button (click)="guardar()">Guardar</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _f || Object])
     ], ModalJornadaPage);
     return ModalJornadaPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=modal-jornada.js.map
@@ -927,10 +934,10 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/equipo-detail/equipo-detail.module#EquipoDetailPageModule', name: 'EquipoDetailPage', segment: 'equipo-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/equipos/equipos.module#EquiposPageModule', name: 'EquiposPage', segment: 'equipos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/jornada/jornada.module#JornadaPageModule', name: 'JornadaPage', segment: 'jornada', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modal/modal.module#ModalPageModule', name: 'ModalPage', segment: 'modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/jugador/jugador.module#JugadorPageModule', name: 'JugadorPage', segment: 'jugador', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modal-jornada/modal-jornada.module#ModalJornadaPageModule', name: 'ModalJornadaPage', segment: 'modal-jornada', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modal/modal.module#ModalPageModule', name: 'ModalPage', segment: 'modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/resultados/resultados.module#ResultadosPageModule', name: 'ResultadosPage', segment: 'resultados', priority: 'low', defaultHistory: [] }
                     ]
                 }),

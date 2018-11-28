@@ -25683,6 +25683,16 @@ page-edit-player .editPlayer {
   float: right;
 }
 
+page-jornada .mensaje {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 page-jugador .jugador h3 {
   padding: 1vh 0;
+}
+
+page-resultados .mensaje {
+  font-weight: bold;
+  font-size: 2rem;
 }

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
+import { JornadaPage } from '../jornada/jornada';
 
 /**
  * Generated class for the ResultadosPage page.
@@ -27,8 +28,17 @@ export class ResultadosPage {
     console.log('ionViewDidLoad ResultadosPage');
   }
 
+  ionViewWillEnter() {
+    this.equipos = this._jornadas.cargar_jugadas();
+  }
+
   details(equipo: Equipo, idx: number) {
     this.navCtrl.push(EquipoDetailPage, {"equipo":equipo, "idx": idx});
+  }
+
+  goToJornadas(){
+    this.navCtrl.push(JornadaPage);
+    console.log("Navigating to: JornadaPage");
   }
 
 }

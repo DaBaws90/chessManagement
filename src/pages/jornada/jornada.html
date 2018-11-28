@@ -8,7 +8,12 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor="let equipo of equipos; let i = index">
+  <ion-item *ngIf="equipos.length == 0" class="mensaje">
+  <div text-center padding>
+  No hay jornadas pendientes
+  </div>
+  </ion-item>
+      <ion-list *ngFor="let equipo of equipos; let i = index">
     <button text-center ion-item block (click)="details(equipo, i)">
       <ion-item>
         {{equipo.nombre}}
@@ -16,11 +21,9 @@
           {{equipo.ciudad}}
         </ion-note>
       </ion-item>
-
     </button>
-
   </ion-list>
-  <ion-item>
-    <button ion-button block color="secondary" (click)="addEquiposView()">Añadir jornada</button>
-  </ion-item>
+  <div text-center padding>
+  <button ion-button color="primary" (click)="addEquiposView()">Añadir jornada</button>
+  </div>
 </ion-content>

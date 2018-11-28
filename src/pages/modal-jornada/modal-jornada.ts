@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Equipo } from '../../interfaces/equipo.interfaces';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -32,7 +32,7 @@ export class ModalJornadaPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider,
-    private _jornadas: HistorialEquiposProvider) {
+    private _jornadas: HistorialEquiposProvider, private toastCtrl: ToastController) {
     this.equipo = this.navParams.get("equipo");
     for (let p of this.equipo.jugadores) {
       this.res = {
@@ -79,8 +79,16 @@ export class ModalJornadaPage {
     });
     this.equipo.jugada = true;
     this.equipo.resultados = this.resultados;
-    // console.log(this.equipo);
+    this.presentToast(this.equipo.nombre);
     this.navCtrl.pop();
+  }
+
+  private presentToast(nombre: string) {
+    const toast = this.toastCtrl.create({
+      message: 'Resultados de la jornada ' + nombre + ' añadidos con éxito',
+      duration: 3000
+    });
+    toast.present();
   }
 
 }

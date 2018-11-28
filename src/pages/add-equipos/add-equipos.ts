@@ -66,7 +66,7 @@ export class AddEquiposPage {
 
   private presentToast(nombre: string) {
     const toast = this.toastCtrl.create({
-      message: 'Equipo ' + nombre + ' añadido con éxito',
+      message: 'Jornada ' + nombre + ' añadida con éxito',
       duration: 3000
     });
     toast.present();
