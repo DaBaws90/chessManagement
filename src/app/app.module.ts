@@ -62,7 +62,8 @@ import { ModalJornadaPage } from '../pages/modal-jornada/modal-jornada';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     HistorialProvider,
-    HistorialEquiposProvider
+    HistorialEquiposProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

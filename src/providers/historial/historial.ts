@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthProvider } from '../auth/auth';
 
 
 /*
@@ -26,7 +27,7 @@ export class HistorialProvider {
   private jugador10: Jugador;
 
 
-  constructor() {
+  constructor(public auth: AuthProvider) {
     this.jugador1 = {
       nombre: "Pepito",
       apellidos: "Prueba",
@@ -173,6 +174,7 @@ export class HistorialProvider {
   }
 
   private toPlayer(jugadorForm: FormGroup) {
+    this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass']);
     this.jugador = {
       nombre: jugadorForm.value['nombre'],
       apellidos: jugadorForm.value['apellidos'],

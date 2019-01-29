@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HistorialProvider } from '../../providers/historial/historial';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the AddPlayerPage page.
@@ -17,14 +18,20 @@ import { HistorialProvider } from '../../providers/historial/historial';
 })
 export class AddPlayerPage {
   private jugadorForm: FormGroup;
+  // user = {
+  //   email: "",
+  //   password: ""
+  // };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
-    private toastCtrl: ToastController, private historialProvider: HistorialProvider) {
+    private toastCtrl: ToastController, private historialProvider: HistorialProvider, public auth: AuthProvider) {
     this.jugadorForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       telefono: ['', Validators.required],
-      elo: ['', Validators.required] 
+      elo: ['', Validators.required],
+      email: ['', Validators.required],
+      pass: ['', Validators.required]
     });
   }
 
@@ -38,7 +45,7 @@ export class AddPlayerPage {
     this.navCtrl.pop();
   }
 
-  presentToast(nombre: string) {
+  private presentToast(nombre: string) {
     const toast = this.toastCtrl.create({
       message: 'Jugador ' + nombre + ' añadido con éxito',
       duration: 3000
