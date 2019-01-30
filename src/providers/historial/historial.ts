@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../auth/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseApp } from 'angularfire2';
+import { ToastController, AlertController } from 'ionic-angular';
 
 
 /*
@@ -27,7 +31,8 @@ export class HistorialProvider {
   private jugador10: Jugador;
 
 
-  constructor(public auth: AuthProvider) {
+  constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, private fbApp: FirebaseApp,
+    private toastCtrl: ToastController, private alertCtrl: AlertController) {
     this.jugador1 = {
       nombre: "Pepito",
       apellidos: "Prueba",
@@ -174,7 +179,6 @@ export class HistorialProvider {
   }
 
   private toPlayer(jugadorForm: FormGroup) {
-    this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass']);
     this.jugador = {
       nombre: jugadorForm.value['nombre'],
       apellidos: jugadorForm.value['apellidos'],
@@ -210,6 +214,25 @@ export class HistorialProvider {
   }
 
   agregar_historial(jugadorForm: FormGroup) {
+    this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass'])
+      .then((user) => {
+        let toast = this.toastCtrl.create({
+          message: 'Usuario ' + this.fbApp.auth().currentUser.uid + ' ha creado su cuenta con éxito',
+          duration: 3000
+        });
+        toast.present();
+        var uid = this.fbApp.auth().currentUser.uid;
+        this.fbApp.database().ref().child('users').child(uid).set(this.toPlayer(jugadorForm));
+        // this.navCtrl.push()
+      })
+      .catch(err => {
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: err.message,
+          buttons: ['Aceptar']
+        });
+        alert.present();
+      });
     this._historial.unshift(this.toPlayer(jugadorForm));
   }
 
