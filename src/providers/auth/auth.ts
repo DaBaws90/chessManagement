@@ -1,6 +1,6 @@
 // import { HttpClient } from '@angular/common/http';
-import {  Injectable} from '@angular/core';
-import {  AngularFireAuth} from 'angularfire2/auth';
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 /*
@@ -20,10 +20,12 @@ export class AuthProvider {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((res) => {
         // El usuario se ha creado correctamente.
+        console.log(this.afAuth.auth.currentUser.uid);
       })
       .catch(err => Promise.reject(err))
   }
   get Session(){
+    // this.afAuth.auth.currentUser.uid;
     return this.afAuth.authState;
   }
 }
