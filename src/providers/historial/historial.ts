@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../auth/auth';
+import { AlertController, ToastController } from 'ionic-angular';
+import { FirebaseApp } from 'angularfire2';
 
 
 /*
@@ -27,7 +29,8 @@ export class HistorialProvider {
   private jugador10: Jugador;
 
 
-  constructor(public auth: AuthProvider) {
+  constructor(public auth: AuthProvider, public alertCtrl: AlertController, public toastCtrl: ToastController, 
+    public fireApp: FirebaseApp) {
     this.jugador1 = {
       nombre: "Pepito",
       apellidos: "Prueba",
@@ -174,7 +177,24 @@ export class HistorialProvider {
   }
 
   private toPlayer(jugadorForm: FormGroup) {
-    this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass']);
+    // this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass']);
+    this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass'])
+      .then((user) => {
+        let toast = this.toastCtrl.create({
+          message: 'Usuario ' + this.fireApp.auth().currentUser.uid + ' ha creado su cuenta con éxito',
+          duration: 3000
+        });
+        toast.present();
+        // this.navCtrl.push()
+      })
+      .catch(err => {
+        let alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: err.message,
+          buttons: ['Aceptar']
+        });
+        alert.present();
+      })
     this.jugador = {
       nombre: jugadorForm.value['nombre'],
       apellidos: jugadorForm.value['apellidos'],
