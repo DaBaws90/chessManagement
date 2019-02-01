@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../auth/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import { ToastController, AlertController } from 'ionic-angular';
+import { Observable, Subject } from 'rxjs';
 
 
 /*
@@ -18,164 +19,30 @@ import { ToastController, AlertController } from 'ionic-angular';
 @Injectable()
 export class HistorialProvider {
   private _historial: Jugador[] = [];
-  private jugador: Jugador;
-  private jugador1: Jugador;
-  private jugador2: Jugador;
-  private jugador3: Jugador;
-  private jugador4: Jugador;
-  private jugador5: Jugador;
-  private jugador6: Jugador;
-  private jugador7: Jugador;
-  private jugador8: Jugador;
-  private jugador9: Jugador;
-  private jugador10: Jugador;
+  jugador: Jugador;
+  usersRef$: Observable<any[]>;
 
-
-  constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, private fbApp: FirebaseApp,
+  constructor(public auth: AuthProvider, public afDB: AngularFireDatabase, public afAuth: AngularFireAuth, public fbApp: FirebaseApp,
     private toastCtrl: ToastController, private alertCtrl: AlertController) {
-    this.jugador1 = {
-      nombre: "Pepito",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 50,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador2 = {
-      nombre: "Manolito",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 40,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador3 = {
-      nombre: "Antonio",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 60.5,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador4 = {
-      nombre: "Federico",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 50,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador5 = {
-      nombre: "Juan",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 40,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador6 = {
-      nombre: "Paco",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 60.5,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador7 = {
-      nombre: "María",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 60.5,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador8 = {
-      nombre: "Ana",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 60.5,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador9 = {
-      nombre: "Lucía",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 60.5,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this.jugador10 = {
-      nombre: "Alba",
-      apellidos: "Prueba",
-      telefono: "123456789",
-      elo: 60.5,
-      jugadas: 0,
-      ganadas: 0,
-      empatadas: 0,
-      perdidas: 0,
-      casa: 0,
-      fuera: 0,
-      puntos: 0
-    };
-    this._historial.unshift(this.jugador1, this.jugador2, this.jugador3, this.jugador4, this.jugador5, this.jugador6, this.jugador7, this.jugador8, this.jugador9, this.jugador10);
+      this.usersRef$ = this.afDB.list('users').valueChanges()
+      // .subscribe((datas) => { 
+      //   console.log("datas", datas)
+      //   },(err)=>{
+      //    console.log("probleme : ", err)
+      //   });
   }
 
   cargar_historial() {
-    return this._historial.sort(function(a, b) {
-      if(Number(a.elo) > Number(b.elo)) {
-        return -1;
-      } else if(Number(a.elo) < Number(b.elo)) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+    // return this._historial.sort(function(a, b) {
+    //   if(Number(a.elo) > Number(b.elo)) {
+    //     return -1;
+    //   } else if(Number(a.elo) < Number(b.elo)) {
+    //     return 1;
+    //   } else {
+    //     return 0;
+    //   }
+    // });
+    return this.usersRef$;
   }
 
   private toPlayer(jugadorForm: FormGroup) {
@@ -217,13 +84,12 @@ export class HistorialProvider {
     this.auth.registerUser(jugadorForm.value['email'], jugadorForm.value['pass'])
       .then((user) => {
         let toast = this.toastCtrl.create({
-          message: 'Usuario ' + this.fbApp.auth().currentUser.uid + ' ha creado su cuenta con éxito',
+          message: 'Usuario ' + this.fbApp.auth().currentUser.email + ' ha creado su cuenta con éxito',
           duration: 3000
         });
         toast.present();
         var uid = this.fbApp.auth().currentUser.uid;
         this.fbApp.database().ref().child('users').child(uid).set(this.toPlayer(jugadorForm));
-        // this.navCtrl.push()
       })
       .catch(err => {
         let alert = this.alertCtrl.create({
@@ -233,7 +99,6 @@ export class HistorialProvider {
         });
         alert.present();
       });
-    this._historial.unshift(this.toPlayer(jugadorForm));
   }
 
   editar_historial(jugadorForm: FormGroup, index: number) {

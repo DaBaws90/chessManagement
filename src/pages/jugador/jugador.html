@@ -25,8 +25,8 @@
 </ion-content> -->
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let jugador of jugadores; let i = index">
-      <ion-item (click)="details(jugador, i)">
+    <ion-item-sliding *ngFor="let jugador of jugadores | async">
+      <ion-item (click)="details(jugador)">
         <ion-avatar item-start>
           <img src="../../assets/imgs/options/user.png">
         </ion-avatar>
@@ -36,11 +36,11 @@
         <ion-note item-end>Deslizar</ion-note>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="delete(i)">
+        <button ion-button color="danger" (click)="delete()">
           <ion-icon name="trash"></ion-icon>
           Borrar
         </button>
-        <button ion-button color="primary" (click)="goEdit(jugador, i)">
+        <button ion-button color="primary" (click)="goEdit(jugador)">
           <ion-icon name="create"></ion-icon>
           Editar
         </button>
