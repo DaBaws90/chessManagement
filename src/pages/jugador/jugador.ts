@@ -5,6 +5,7 @@ import { Jugador } from '../../interfaces/player.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
 import { DetailsPage } from '../details/details';
 import { EditPlayerPage } from '../edit-player/edit-player';
+import { Observable } from 'rxjs';
 /**
  * Generated class for the JugadorPage page.
  *
@@ -18,7 +19,7 @@ import { EditPlayerPage } from '../edit-player/edit-player';
   templateUrl: 'jugador.html',
 })
 export class JugadorPage {
-  jugadores: Jugador[] = [];
+  jugadores: Observable<any[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private historialProvider: HistorialProvider) {
   }
@@ -44,7 +45,7 @@ export class JugadorPage {
   }
 
   delete(idx: number) {
-    this.historialProvider.cargar_historial().splice(idx, 1);
+    // this.historialProvider.cargar_historial().splice(idx, 1);
   }
 
 }

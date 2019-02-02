@@ -70,10 +70,10 @@ var AddPlayerPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-add-player',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\add-player\add-player.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Añadir jugador</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <form [formGroup]="jugadorForm" (ngSubmit)="addPlayer()">\n\n    <ion-item>\n\n      <ion-label floating>Email</ion-label>\n\n      <ion-input formControlName="email" name="email" type="text" autocapitalize="off" required>\n\n      </ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Contraseña</ion-label>\n\n      <ion-input formControlName="pass" name="pass" type="password" required>\n\n      </ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>Nombre</ion-label>\n\n      <ion-input type="text" formControlName="nombre"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>Apellidos</ion-label>\n\n      <ion-input type="text" formControlName="apellidos"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>Teléfono</ion-label>\n\n      <ion-input type="tel" formControlName="telefono"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label floating>ELO</ion-label>\n\n      <ion-input type="number" formControlName="elo"></ion-input>\n\n    </ion-item>\n\n    <div text-center>\n\n      <button ion-button class="addPlayer" type="submit" [disabled]="!jugadorForm.valid">Añadir</button>\n\n    </div>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\add-player\add-player.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
     ], AddPlayerPage);
     return AddPlayerPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=add-player.js.map
@@ -478,10 +478,9 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>\n\n      Menú principal\n\n    </ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button (click)="logOut()" color="light" right>Salir <ion-icon name="exit"></ion-icon></button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <button ion-item *ngFor="let option of options" (click)="goTo(option)">\n\n      <!--<button block ion-button color="light" (click)="irEquipos()">Equipos</button>-->\n\n      <ion-avatar item-start>\n\n        <img [src]="option.img">\n\n      </ion-avatar>\n\n      <h2>{{ option.nombre }}</h2>\n\n    </button>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]])
     ], HomePage);
     return HomePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -687,7 +686,6 @@ var ModalJornadaPage = /** @class */ (function () {
         this.toastCtrl = toastCtrl;
         // private datos: [];
         this.resultados = [];
-        this.jugadores = [];
         this.jornadas = [];
         this.equipo = this.navParams.get("equipo");
         for (var _i = 0, _a = this.equipo.jugadores; _i < _a.length; _i++) {
@@ -711,26 +709,25 @@ var ModalJornadaPage = /** @class */ (function () {
         });
     };
     ModalJornadaPage.prototype.guardar = function () {
-        var _this = this;
         this.historialProvider.cargar_historial().forEach(function (jugador) {
-            _this.resultados.forEach(function (resultado) {
-                if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
-                    jugador.jugadas += 1;
-                    switch (resultado.resultado) {
-                        case "gana":
-                            jugador.ganadas += 1;
-                            jugador.puntos += 1;
-                            break;
-                        case "empata":
-                            jugador.empatadas += 1;
-                            jugador.puntos += 0.5;
-                            break;
-                        case "pierde":
-                            jugador.perdidas += 1;
-                            break;
-                    }
-                }
-            });
+            // this.resultados.forEach(resultado => {
+            //   if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
+            //     jugador.jugadas += 1;
+            //     switch (resultado.resultado) {
+            //       case "gana":
+            //         jugador.ganadas += 1;
+            //         jugador.puntos += 1;
+            //         break;
+            //       case "empata":
+            //         jugador.empatadas += 1;
+            //         jugador.puntos += 0.5;
+            //         break;
+            //       case "pierde":
+            //         jugador.perdidas += 1;
+            //         break;
+            //     }
+            //   }
+            // });
         });
         this.equipo.jugada = true;
         this.equipo.resultados = this.resultados;
@@ -748,10 +745,10 @@ var ModalJornadaPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-modal-jornada',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list *ngFor="let player of equipo.jugadores; let i = index">\n\n    <ion-item>\n\n      <ion-label>{{ player.nombre }}</ion-label>\n\n      <ion-select >\n\n        <ion-option (ionSelect)="addResultado(player, \'gana\')">\n\n          Gana\n\n        </ion-option>\n\n        <ion-option selected (ionSelect)="addResultado(player, \'empata\')">\n\n          Empata\n\n        </ion-option>\n\n        <ion-option (ionSelect)="addResultado(player, \'pierde\')">\n\n          Pierde\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </ion-list>\n\n  <div text-center padding>\n\n  <button ion-button (click)="guardar()">Guardar</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\modal-jornada\modal-jornada.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _f || Object])
     ], ModalJornadaPage);
     return ModalJornadaPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=modal-jornada.js.map
@@ -1006,151 +1003,20 @@ var HistorialProvider = /** @class */ (function () {
         this.fbApp = fbApp;
         this.toastCtrl = toastCtrl;
         this.alertCtrl = alertCtrl;
-        this._historial = [];
-        this.jugador1 = {
-            nombre: "Pepito",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 50,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador2 = {
-            nombre: "Manolito",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 40,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador3 = {
-            nombre: "Antonio",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 60.5,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador4 = {
-            nombre: "Federico",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 50,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador5 = {
-            nombre: "Juan",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 40,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador6 = {
-            nombre: "Paco",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 60.5,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador7 = {
-            nombre: "María",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 60.5,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador8 = {
-            nombre: "Ana",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 60.5,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador9 = {
-            nombre: "Lucía",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 60.5,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this.jugador10 = {
-            nombre: "Alba",
-            apellidos: "Prueba",
-            telefono: "123456789",
-            elo: 60.5,
-            jugadas: 0,
-            ganadas: 0,
-            empatadas: 0,
-            perdidas: 0,
-            casa: 0,
-            fuera: 0,
-            puntos: 0
-        };
-        this._historial.unshift(this.jugador1, this.jugador2, this.jugador3, this.jugador4, this.jugador5, this.jugador6, this.jugador7, this.jugador8, this.jugador9, this.jugador10);
+        this._historial;
     }
     HistorialProvider.prototype.cargar_historial = function () {
-        return this._historial.sort(function (a, b) {
-            if (Number(a.elo) > Number(b.elo)) {
-                return -1;
-            }
-            else if (Number(a.elo) < Number(b.elo)) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        });
+        // return this._historial.sort(function(a, b) {
+        //   if(Number(a.elo) > Number(b.elo)) {
+        //     return -1;
+        //   } else if(Number(a.elo) < Number(b.elo)) {
+        //     return 1;
+        //   } else {
+        //     return 0;
+        //   }
+        // });
+        this._historial = this.afDB.list('users').valueChanges();
+        return this._historial;
     };
     HistorialProvider.prototype.toPlayer = function (jugadorForm) {
         this.jugador = {
@@ -1273,10 +1139,9 @@ var AuthProvider = /** @class */ (function () {
     });
     AuthProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["AngularFireAuth"]])
     ], AuthProvider);
     return AuthProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=auth.js.map

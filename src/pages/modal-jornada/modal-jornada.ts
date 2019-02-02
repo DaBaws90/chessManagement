@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Resultado } from '../../interfaces/resultado.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the ModalJornadaPage page.
@@ -27,7 +28,7 @@ export class ModalJornadaPage {
   // private datos: [];
   private resultados: Resultado[] = [];
   private res: Resultado;
-  private jugadores: Jugador[] = [];
+  private jugadores: Observable<any[]>;
   private jornadas: Equipo[] = [];
 
 
@@ -58,24 +59,24 @@ export class ModalJornadaPage {
 
   guardar() {
     this.historialProvider.cargar_historial().forEach(jugador => {
-      this.resultados.forEach(resultado => {
-        if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
-          jugador.jugadas += 1;
-          switch (resultado.resultado) {
-            case "gana":
-              jugador.ganadas += 1;
-              jugador.puntos += 1;
-              break;
-            case "empata":
-              jugador.empatadas += 1;
-              jugador.puntos += 0.5;
-              break;
-            case "pierde":
-              jugador.perdidas += 1;
-              break;
-          }
-        }
-      });
+      // this.resultados.forEach(resultado => {
+      //   if ((resultado.jugador.nombre == jugador.nombre) && (resultado.jugador.apellidos == jugador.apellidos)) {
+      //     jugador.jugadas += 1;
+      //     switch (resultado.resultado) {
+      //       case "gana":
+      //         jugador.ganadas += 1;
+      //         jugador.puntos += 1;
+      //         break;
+      //       case "empata":
+      //         jugador.empatadas += 1;
+      //         jugador.puntos += 0.5;
+      //         break;
+      //       case "pierde":
+      //         jugador.perdidas += 1;
+      //         break;
+      //     }
+      //   }
+      // });
     });
     this.equipo.jugada = true;
     this.equipo.resultados = this.resultados;
