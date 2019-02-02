@@ -7,7 +7,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import { ToastController, AlertController } from 'ionic-angular';
-import { Observable } from 'rxjs';
 
 
 /*
@@ -18,26 +17,165 @@ import { Observable } from 'rxjs';
 */
 @Injectable()
 export class HistorialProvider {
-  private _historial: Observable<any[]>;
+  private _historial: Jugador[] = [];
   private jugador: Jugador;
+  private jugador1: Jugador;
+  private jugador2: Jugador;
+  private jugador3: Jugador;
+  private jugador4: Jugador;
+  private jugador5: Jugador;
+  private jugador6: Jugador;
+  private jugador7: Jugador;
+  private jugador8: Jugador;
+  private jugador9: Jugador;
+  private jugador10: Jugador;
+
 
   constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, private fbApp: FirebaseApp,
     private toastCtrl: ToastController, private alertCtrl: AlertController) {
-      this._historial
-}
+    this.jugador1 = {
+      nombre: "Pepito",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 50,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador2 = {
+      nombre: "Manolito",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 40,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador3 = {
+      nombre: "Antonio",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador4 = {
+      nombre: "Federico",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 50,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador5 = {
+      nombre: "Juan",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 40,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador6 = {
+      nombre: "Paco",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador7 = {
+      nombre: "María",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador8 = {
+      nombre: "Ana",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador9 = {
+      nombre: "Lucía",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this.jugador10 = {
+      nombre: "Alba",
+      apellidos: "Prueba",
+      telefono: "123456789",
+      elo: 60.5,
+      jugadas: 0,
+      ganadas: 0,
+      empatadas: 0,
+      perdidas: 0,
+      casa: 0,
+      fuera: 0,
+      puntos: 0
+    };
+    this._historial.unshift(this.jugador1, this.jugador2, this.jugador3, this.jugador4, this.jugador5, this.jugador6, this.jugador7, this.jugador8, this.jugador9, this.jugador10);
+  }
 
   cargar_historial() {
-    // return this._historial.sort(function(a, b) {
-    //   if(Number(a.elo) > Number(b.elo)) {
-    //     return -1;
-    //   } else if(Number(a.elo) < Number(b.elo)) {
-    //     return 1;
-    //   } else {
-    //     return 0;
-    //   }
-    // });
-    this._historial =  this.afDB.list('users').valueChanges();
-    return this._historial;
+    return this._historial.sort(function(a, b) {
+      if(Number(a.elo) > Number(b.elo)) {
+        return -1;
+      } else if(Number(a.elo) < Number(b.elo)) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   private toPlayer(jugadorForm: FormGroup) {
