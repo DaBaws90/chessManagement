@@ -6,7 +6,8 @@ import { HistorialProvider } from '../../providers/historial/historial';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { ModalPage } from '../modal/modal';
 import { Calendario } from '../../interfaces/calendario.interfaces';
-import { Timestamp } from 'rxjs/operators/timestamp';
+// import { Timestamp } from 'rxjs/operators/timestamp';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the AddEquiposPage page.
@@ -22,7 +23,7 @@ import { Timestamp } from 'rxjs/operators/timestamp';
 })
 export class AddEquiposPage {
   private equipoForm: FormGroup;
-  private jugadores: Jugador[] = [];
+  private jugadores: Observable<any[]>;
   private cont: number;
   private selected: Jugador[];
   private d = new Date();
