@@ -44,8 +44,8 @@ export class JugadorPage {
     this.navCtrl.push(EditPlayerPage, {"jugador": jugador, "index": idx});    
   }
 
-  delete(idx: number) {
-    // this.historialProvider.cargar_historial().splice(idx, 1);
+  deleteUser(user:any) {
+    this.historialProvider.deleteData(user);
   }
 
 }

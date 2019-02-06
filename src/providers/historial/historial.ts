@@ -99,4 +99,16 @@ export class HistorialProvider {
     this._historial[index] = this.modifyPlayer(jugadorForm);
   }
 
+  deleteData(user:any){
+    this.afDB.list('/users').snapshotChanges().subscribe((res) => {
+      res.forEach((ele:any) => {
+        if(ele.payload.val().email == user.email) {
+           this.afDB.list('/users').remove(ele.key).then(() => {
+            console.log('BORRADO')
+           })
+        }
+      });
+    });
+}
+
 }
