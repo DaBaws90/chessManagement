@@ -10,4 +10,7 @@ export interface Jugador {
     casa: number;
     fuera: number;
     puntos: number;
+    email: string;
+    key: string;
+    rol: string;
 }

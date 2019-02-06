@@ -47,7 +47,7 @@
       </ion-item-options>
     </ion-item-sliding>
     
-    <ion-item padding>
+    <ion-item padding *ngIf="allowed != 'user'">
       <div text-center>
         <button ion-button color="primary" (click)="addPlayerPage()">Añadir jugador</button>
       </div>

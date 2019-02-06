@@ -6,6 +6,7 @@ import { HistorialProvider } from '../../providers/historial/historial';
 import { DetailsPage } from '../details/details';
 import { EditPlayerPage } from '../edit-player/edit-player';
 import { Observable } from 'rxjs';
+import { FirebaseApp } from 'angularfire2';
 /**
  * Generated class for the JugadorPage page.
  *
@@ -20,12 +21,15 @@ import { Observable } from 'rxjs';
 })
 export class JugadorPage {
   jugadores: Observable<any[]>;
+  allowed;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private historialProvider: HistorialProvider) {
+    private historialProvider: HistorialProvider, private fbApp: FirebaseApp,) {
+      this.allowed = this.historialProvider.getCurrentUser();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JugadorPage');
+      console.log(this.historialProvider.getCurrentUser())
   }
 
   ionViewWillEnter() {

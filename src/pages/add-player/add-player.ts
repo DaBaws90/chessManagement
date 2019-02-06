@@ -18,10 +18,6 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class AddPlayerPage {
   private jugadorForm: FormGroup;
-  // user = {
-  //   email: "",
-  //   password: ""
-  // };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
     private toastCtrl: ToastController, private historialProvider: HistorialProvider, public auth: AuthProvider) {
@@ -41,16 +37,16 @@ export class AddPlayerPage {
 
   addPlayer() {
     this.historialProvider.agregar_historial(this.jugadorForm);
-    this.presentToast(this.jugadorForm.value['nombre']);
+    // this.presentToast(this.jugadorForm.value['nombre']);
     this.navCtrl.pop();
   }
 
-  private presentToast(nombre: string) {
-    const toast = this.toastCtrl.create({
-      message: 'Jugador ' + nombre + ' añadido con éxito',
-      duration: 3000
-    });
-    toast.present();
-  }
+  // private presentToast(nombre: string) {
+  //   const toast = this.toastCtrl.create({
+  //     message: 'Jugador ' + nombre + ' añadido con éxito',
+  //     duration: 3000
+  //   });
+  //   toast.present();
+  // }
 
 }
