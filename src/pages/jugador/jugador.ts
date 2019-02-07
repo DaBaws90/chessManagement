@@ -29,11 +29,12 @@ export class JugadorPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JugadorPage');
-      console.log(this.historialProvider.getCurrentUser())
   }
 
   ionViewWillEnter() {
     this.jugadores = this.historialProvider.cargar_historial();
+    this.allowed = this.historialProvider.getCurrentUser();
+    console.log("JUGAODR PAGE " + this.allowed)
   }
 
   addPlayerPage() {

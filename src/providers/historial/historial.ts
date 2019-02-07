@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import { ToastController, AlertController } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
 
 /*
@@ -18,6 +19,10 @@ import { ToastController, AlertController } from 'ionic-angular';
 export class HistorialProvider {
   private _historial: Jugador[] = [];
   private jugador: Jugador;
+  // users: Observable<any[]>;
+  users;
+  refCategoria;
+  allowed;
 
   constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, 
     private fbApp: FirebaseApp, private toastCtrl: ToastController, private alertCtrl: AlertController) {
@@ -103,24 +108,34 @@ export class HistorialProvider {
   }
 
   deleteData(user: any) {
-    console.log(user.key)
     this.afDB.object('/users/' + user.key).remove();
   }
 
   getCurrentUser(){
     if(this.fbApp.auth().currentUser.uid != null){
-      this.afDB.list('/users').snapshotChanges().subscribe((res) => {
-        res.forEach((ele:any) => {
-          if(ele.key == this.fbApp.auth().currentUser.uid) {
-            // console.log(ele.payload.val().rol)
-            return ele.payload.val().rol
-          }
-        });
-      });
+      // db.database.ref('/User/').orderByChild('uID').equalTo(this.uID).once('value', (snapshot) => {
+      // this.fbApp.database().ref('/users/').orderByChild('key').equalTo(currentUser.uid)
+      this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
+        .once('value', (LUL) => {
+          this.allowed = LUL.val().rol
+        })
+      // console.log(this.afDB.object(`/users/${this.fbApp.auth().currentUser.uid}`).valueChanges())
+      // this.afDB.list('/users').snapshotChanges().subscribe((res) => {
+      //   res.forEach((ele:any) => {
+      //     if(ele.payload.val().key == this.fbApp.auth().currentUser.uid) {
+      //       return ele.payload.val().rol
+      //     }
+      //   });
+      // });
+      return this.allowed;
     }
-    return null;
+    else{
+      return null;
+    }
+    
   }
 
+  // this.db.object(`leafBox001/${id}`).valueChanges()
 //   deleteData(user:any){
 //     this.afDB.list('/users').snapshotChanges().subscribe((res) => {
 //       res.forEach((ele:any) => {
