@@ -47,7 +47,7 @@
       </ion-item-options>
     </ion-item-sliding>
     
-    <ion-item padding *ngIf="allowed != 'capitan'">
+    <ion-item padding *ngIf="user.rol != 'capitan'">
       <div text-center>
         <button ion-button color="primary" (click)="addPlayerPage()">Añadir jugador</button>
       </div>
