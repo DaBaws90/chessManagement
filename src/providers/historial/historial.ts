@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../auth/auth';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import { ToastController, AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs';
-// import * as admin from 'firebase-admin';
-
 
 
 /*
@@ -25,11 +23,9 @@ export class HistorialProvider {
   users;
   refCategoria;
   allowed;
-  user: Jugador = <Jugador>{};
 
   constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, 
     private fbApp: FirebaseApp, private toastCtrl: ToastController, private alertCtrl: AlertController) {
-      
     }
 
   cargar_historial() {
@@ -111,65 +107,12 @@ export class HistorialProvider {
     this._historial[index] = this.modifyPlayer(jugadorForm);
   }
 
-  getUser(){
-    return this.user;
-  }
-
-  getOne(): any{
-    this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDB.object(`/users/${auth.uid}`).query.once('value', (LUL) => {
-        this.user.nombre = LUL.val().nombre
-        this.user.apellidos = LUL.val().apellidos
-        this.user.telefono = LUL.val().telefono
-        this.user.elo = LUL.val().elo
-        this.user.jugadas = LUL.val().jugadas
-        this.user.ganadas = LUL.val().ganadas
-        this.user.empatadas = LUL.val().empatadas
-        this.user.perdidas = LUL.val().perdidas
-        this.user.casa = LUL.val().casa
-        this.user.fuera = LUL.val().fuera
-        this.user.puntos = LUL.val().puntos
-        this.user.email = LUL.val().email
-        this.user.key = LUL.val().key
-        this.user.rol = LUL.val().rol
-      }).then(() => {
-        console.log("GETONE "+this.user)
-        return this.user
-      }).catch(function(error) {
-        let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: error.message,
-          buttons: ['Aceptar']
-        });
-        alert.present();
-      })
-      console.log("GETONE "+this.user)
-    })
-    // return this.user
-  }
-
   deleteData(user: any) {
     this.afDB.object('/users/' + user.key).remove();
   }
 
-  // getCurrentUser(){
-  //   this.afAuth.authState.take(1).subscribe(auth => {
-  //     this.user = this.afDB.object(`users/${auth.uid}`)
-  //   })
-  //   return this.user
-    // if(this.fbApp.auth().currentUser.uid != null){
-    //   var uid = this.fbApp.auth().currentUser.uid;
-    //   admin.auth().getUser(uid).then(function(user) {
-    //     return user;
-    //   })
-    //   .catch(function(error) {
-    //     let alert = this.alertCtrl.create({
-    //       title: 'Error',
-    //       subTitle: error.message,
-    //       buttons: ['Aceptar']
-    //     });
-    //     alert.present();
-    //   })
+  getCurrentUser(){
+    if(this.fbApp.auth().currentUser.uid != null){
       // this.allowed = this.fbApp.database().ref().child('users/' + this.fbApp.auth().currentUser.uid).on('value', (data) => {
       //   return data.val()
       // })
@@ -182,22 +125,25 @@ export class HistorialProvider {
       //   });
       //   console.log(this.allowed)
       //   return this.allowed
+
+
+      // db.database.ref('/User/').orderByChild('uID').equalTo(this.uID).once('value', (snapshot) => {
+      // this.fbApp.database().ref('/users/').orderByChild('key').equalTo(currentUser.uid)
       
-      // ER GÜENO ---------------------
-      // this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
-      //   .once('value', (LUL) => {
-      //     this.allowed = LUL.val().rol
-      //   }).then(() => {
-      //     console.log("PROVIDER "+this.allowed)
-      //     return this.allowed
-      //   }).catch(err => {
-      //     let alert = this.alertCtrl.create({
-      //       title: 'Error',
-      //       subTitle: err.message,
-      //       buttons: ['Aceptar']
-      //     });
-      //     alert.present();
-      //   })
+      this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
+        .once('value', (LUL) => {
+          this.allowed = LUL.val().rol
+        }).then(() => {
+          console.log("PROVIDER "+this.allowed)
+          return this.allowed
+        }).catch(err => {
+          let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: err.message,
+            buttons: ['Aceptar']
+          });
+          alert.present();
+        })
 
       // console.log(this.afDB.object(`/users/${this.fbApp.auth().currentUser.uid}`).valueChanges())
       // this.afDB.list('/users').snapshotChanges().subscribe((res) => {
@@ -207,11 +153,27 @@ export class HistorialProvider {
       //     }
       //   });
       // });
-    // }
-    // else{
-    //   return null;
-    // }
-    // 
-  // }
+    }
+    else{
+      return null;
+    }
+    
+  }
+
+  // this.db.object(`leafBox001/${id}`).valueChanges()
+//   deleteData(user:any){
+//     this.afDB.list('/users').snapshotChanges().subscribe((res) => {
+//       res.forEach((ele:any) => {
+//         // if(ele.payload.val().email == user.email) {
+//         if(ele.key == user.email) {
+//           var uid = ele.key;
+//           this.afDB.list('/users').remove(ele.key).then(() => {
+//             console.log('BORRADO')
+//             console.log(uid)
+//           })
+//         }
+//       });
+//     });
+// }
 
 }

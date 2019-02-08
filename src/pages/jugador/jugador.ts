@@ -7,9 +7,6 @@ import { DetailsPage } from '../details/details';
 import { EditPlayerPage } from '../edit-player/edit-player';
 import { Observable } from 'rxjs';
 import { FirebaseApp } from 'angularfire2';
-// import * as admin from 'firebase-admin';
-import { AngularFireObject, AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 /**
  * Generated class for the JugadorPage page.
  *
@@ -24,26 +21,19 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class JugadorPage {
   jugadores: Observable<any[]>;
-  user: Jugador = <Jugador>{};
   allowed;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private historialProvider: HistorialProvider, private afAuth: AngularFireAuth, private afDB: AngularFireDatabase,
-    private fbApp: FirebaseApp, private alertCtrl: AlertController) {
+    private historialProvider: HistorialProvider, private fbApp: FirebaseApp, private alertCtrl: AlertController) {
+      this.allowed = this.getCurrentUser();
       this.jugadores = this.historialProvider.cargar_historial();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JugadorPage');
-    // this.user = this.historialProvider.getCurrentUser();
-    this.getOne()
-    // console.log("LOAD "+this.user)
   }
 
   ionViewWillEnter() {
     this.jugadores = this.historialProvider.cargar_historial();
-    // this.user = this.historialProvider.getCurrentUser();
-    this.getOne()
-    // console.log("ENTER "+this.user)
   }
 
   addPlayerPage() {
@@ -62,43 +52,6 @@ export class JugadorPage {
     this.historialProvider.deleteData(user);
   }
 
-  getOne(): any{
-    this.afAuth.authState.take(1).subscribe(auth => {
-      // this.afDB.object(`/users/${auth.uid}`).query.once('value', (LUL) => {
-      this.fbApp.database().ref().child('users').child(auth.uid).once('value', (LUL) => {
-        this.user = LUL.val()
-      }).then(() => {
-        console.log("TEST "+this.user.nombre+" "+this.user.apellidos)
-      }).catch(function(error) {
-        let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: error.message,
-          buttons: ['Aceptar']
-        });
-        alert.present();
-      })
-    })
-  }
-  
-  // getCurrentUser(){
-  //   console.log(admin.auth())
-  //   if(this.fbApp.auth().currentUser.uid != null){
-  //     console.log("ENTRO")
-  //     var uid = this.fbApp.auth().currentUser.uid;
-  //     admin.auth().getUser(uid)
-  //     .then(function(user) {
-  //       console.log(user.toJSON)
-  //       return user.toJSON;
-  //     })
-  //     .catch(function(error) {
-  //       let alert = this.alertCtrl.create({
-  //         title: 'Error',
-  //         subTitle: error.message,
-  //         buttons: ['Aceptar']
-  //       });
-  //       alert.present();
-  //     })
-  //   }
   getCurrentUser(){
     if(this.fbApp.auth().currentUser.uid != null){
       this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
