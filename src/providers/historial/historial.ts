@@ -113,12 +113,38 @@ export class HistorialProvider {
 
   getCurrentUser(){
     if(this.fbApp.auth().currentUser.uid != null){
+      // this.allowed = this.fbApp.database().ref().child('users/' + this.fbApp.auth().currentUser.uid).on('value', (data) => {
+      //   return data.val()
+      // })
+      // console.log(this.allowed)
+      // return this.allowed
+      
+      // this.allowed = this.afDB.object('/users/'+ this.fbApp.auth().currentUser.uid)
+      //   .snapshotChanges().subscribe(res => {
+      //       return res.payload.val();
+      //   });
+      //   console.log(this.allowed)
+      //   return this.allowed
+
+
       // db.database.ref('/User/').orderByChild('uID').equalTo(this.uID).once('value', (snapshot) => {
       // this.fbApp.database().ref('/users/').orderByChild('key').equalTo(currentUser.uid)
+      
       this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
         .once('value', (LUL) => {
           this.allowed = LUL.val().rol
+        }).then(() => {
+          console.log("PROVIDER "+this.allowed)
+          return this.allowed
+        }).catch(err => {
+          let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: err.message,
+            buttons: ['Aceptar']
+          });
+          alert.present();
         })
+
       // console.log(this.afDB.object(`/users/${this.fbApp.auth().currentUser.uid}`).valueChanges())
       // this.afDB.list('/users').snapshotChanges().subscribe((res) => {
       //   res.forEach((ele:any) => {
@@ -127,7 +153,6 @@ export class HistorialProvider {
       //     }
       //   });
       // });
-      return this.allowed;
     }
     else{
       return null;

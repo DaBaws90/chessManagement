@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { AddPlayerPage } from '../add-player/add-player';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
@@ -23,8 +23,9 @@ export class JugadorPage {
   jugadores: Observable<any[]>;
   allowed;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private historialProvider: HistorialProvider, private fbApp: FirebaseApp,) {
-      this.allowed = this.historialProvider.getCurrentUser();
+    private historialProvider: HistorialProvider, private fbApp: FirebaseApp, private alertCtrl: AlertController) {
+      this.allowed = this.getCurrentUser();
+      this.jugadores = this.historialProvider.cargar_historial();
   }
 
   ionViewDidLoad() {
@@ -33,8 +34,6 @@ export class JugadorPage {
 
   ionViewWillEnter() {
     this.jugadores = this.historialProvider.cargar_historial();
-    this.allowed = this.historialProvider.getCurrentUser();
-    console.log("JUGAODR PAGE " + this.allowed)
   }
 
   addPlayerPage() {
@@ -53,4 +52,26 @@ export class JugadorPage {
     this.historialProvider.deleteData(user);
   }
 
+  getCurrentUser(){
+    if(this.fbApp.auth().currentUser.uid != null){
+      this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
+        .once('value', (LUL) => {
+          this.allowed = LUL.val().rol
+        }).then(() => {
+          console.log("PROVIDER "+this.allowed)
+          return this.allowed
+        }).catch(err => {
+          let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: err.message,
+            buttons: ['Aceptar']
+          });
+          alert.present();
+        })
+    }
+    else{
+      return null;
+    }
+    
+  }
 }
