@@ -41,7 +41,8 @@ export class HistorialProvider {
     //     return 0;
     //   }
     // });
-    return this.afDB.list('users').valueChanges();
+    return this.afDB.list('/users', ref => ref.orderByChild('elo')).valueChanges();
+    // return this.afDB.list('users').valueChanges();
   }
 
   private toPlayer(jugadorForm: FormGroup, uid:any) {

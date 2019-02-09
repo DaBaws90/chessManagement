@@ -25,7 +25,8 @@
 </ion-content> -->
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let jugador of jugadores | async; let i = index">
+    <!-- <ion-item-sliding *ngFor="let jugador of jugadores | async; let i = index"> -->
+    <ion-item-sliding *ngFor="let jugador of (jugadores | async)?.slice().reverse(); let i = index">
       <ion-item (click)="details(jugador, i)">
         <ion-avatar item-start>
           <img src="../../assets/imgs/options/user.png">
