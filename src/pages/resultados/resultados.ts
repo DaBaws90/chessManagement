@@ -4,6 +4,7 @@ import { Equipo } from '../../interfaces/equipo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
 import { JornadaPage } from '../jornada/jornada';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the ResultadosPage page.
@@ -18,10 +19,10 @@ import { JornadaPage } from '../jornada/jornada';
   templateUrl: 'resultados.html',
 })
 export class ResultadosPage {
-  equipos: Equipo[] = [];
+  equipos: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider) {
-    this.equipos = this._jornadas.cargar_jugadas();
+    this.equipos = this._jornadas.cargar_jornadas();
   }
 
   ionViewDidLoad() {
@@ -29,7 +30,7 @@ export class ResultadosPage {
   }
 
   ionViewWillEnter() {
-    this.equipos = this._jornadas.cargar_jugadas();
+    this.equipos = this._jornadas.cargar_jornadas();
   }
 
   details(equipo: Equipo, idx: number) {

@@ -6,6 +6,7 @@ import { AddEquiposPage } from '../add-equipos/add-equipos';
 import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
 import { JornadaPage } from '../jornada/jornada';
 import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
+import { Observable } from 'rxjs';
 
 
 /**
@@ -21,7 +22,8 @@ import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
   templateUrl: 'equipos.html',
 })
 export class EquiposPage {
-  equipos:Equipo[] = [];
+  // equipos:Equipo[] = [];
+  equipos: Observable<any[]>
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private historialEquiposProvider:HistorialEquiposProvider) {
       this.equipos = this.historialEquiposProvider.cargar_jornadas();

@@ -1,0 +1,39 @@
+<!--
+  Generated template for the JugadoresToJornadaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Añadir jugadores</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/options/user.png">
+      </ion-avatar>
+      <h2>{{ equipo.nombre }}</h2>
+      <p>{{ equipo.ciudad }}</p>
+      <!--<button *ngIf="!editando" ion-button item-end color="dark" (click)="goEdit()">
+        <ion-icon name="create"></ion-icon>
+      </button>-->
+    </ion-item>
+
+<ion-item (click)="presentModal()">
+      Jugadores
+    </ion-item>
+
+    <ion-list *ngIf="selected">
+      <ion-item *ngFor="let jugador of selected">
+        {{ jugador.nombre }}
+      </ion-item>
+    </ion-list>
+
+</ion-content>

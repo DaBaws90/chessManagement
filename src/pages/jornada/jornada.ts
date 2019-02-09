@@ -5,6 +5,8 @@ import { Equipo } from '../../interfaces/equipo.interfaces';
 import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
 import { AddEquiposPage } from '../add-equipos/add-equipos';
 import { ResultadosPage } from '../resultados/resultados';
+import { Observable } from 'rxjs';
+import { JugadoresToJornadaPage } from '../jugadores-to-jornada/jugadores-to-jornada';
 
 /**
  * Generated class for the JornadaPage page.
@@ -19,10 +21,10 @@ import { ResultadosPage } from '../resultados/resultados';
   templateUrl: 'jornada.html',
 })
 export class JornadaPage {
-  equipos:Equipo[] = [];
+  equipos: Observable<any[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private _jornadas:HistorialEquiposProvider) {
-      this.equipos = this._jornadas.cargar_pendientes();
+      this.equipos = this._jornadas.cargar_jornadas();
   }
 
   ionViewDidLoad() {
@@ -30,7 +32,7 @@ export class JornadaPage {
   }
 
   ionViewWillEnter() {
-    this.equipos = this._jornadas.cargar_pendientes();
+    this.equipos = this._jornadas.cargar_jornadas();
   }
 
   addEquiposView(){
@@ -39,13 +41,17 @@ export class JornadaPage {
   }
 
   details(equipo:Equipo, idx:number){
-    this.navCtrl.push(ModalJornadaPage, {"equipo":equipo, "idx": idx});
+    this.navCtrl.push(ModalJornadaPage, {"equipo": equipo, "idx": idx});
+  }
+
+  addJugadorToJornada(equipo:Equipo) {
+    this.navCtrl.push(JugadoresToJornadaPage, {"equipo": equipo});
   }
 
   delete(idx: number) {
     console.log(idx);
-    this._jornadas.cargar_jornadas().splice(idx, 1);
-    this.equipos = this._jornadas.cargar_pendientes();
+    // this._jornadas.cargar_jornadas().splice(idx, 1);
+    this.equipos = this._jornadas.cargar_jornadas();
   }
 
   goToResultados() {

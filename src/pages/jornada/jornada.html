@@ -20,8 +20,8 @@
 
   <ion-list>
 
-    <ion-item-sliding *ngFor="let equipo of equipos; let i = index">
-      <ion-item (click)="details(equipo, i)">
+    <ion-item-sliding *ngFor="let equipo of equipos | async; let i = index">
+      <ion-item (click)="addJugadorToJornada(equipo)" *ngIf="equipo.jugada == false">
         <ion-avatar item-start>
           <img src="../../assets/imgs/options/chess-rook-solid.svg">
         </ion-avatar>

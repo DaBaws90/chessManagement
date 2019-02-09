@@ -19,7 +19,7 @@
       <ion-input type="text" formControlName="ciudad"></ion-input>
     </ion-item>
 
-    <ion-item (click)="presentModal()">
+    <!--<ion-item (click)="presentModal()">
       Jugadores
     </ion-item>
 
@@ -27,7 +27,7 @@
       <ion-item *ngFor="let jugador of selected">
         {{ jugador.nombre }}
       </ion-item>
-    </ion-list>
+    </ion-list>-->
 
     <ion-item>
       <ion-label>Local o visitante</ion-label>
@@ -48,7 +48,7 @@
     </ion-item>
 
     <div text-center padding>
-      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid || !selected">Añadir</button>
+      <button ion-button class="addTeam" type="submit" [disabled]="!equipoForm.valid">Añadir</button>
     </div>
 
   </form>

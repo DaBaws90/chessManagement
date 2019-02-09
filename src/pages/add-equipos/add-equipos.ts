@@ -46,7 +46,7 @@ export class AddEquiposPage {
     this.equipoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       ciudad: ['', Validators.required],
-      jugadores: [[]],
+      // jugadores: [[]],
       fecha: ['', Validators.required],
       hora: ['', Validators.required],
       local: ['', Validators.required],
@@ -60,7 +60,7 @@ export class AddEquiposPage {
   }
 
   addTeam() {
-    this.equipoForm.value["jugadores"] = this.selected;
+    // this.equipoForm.value["jugadores"] = this.selected;
     this.historialEquipos.agregar_equipo(this.equipoForm);
     this.presentToast(this.equipoForm.value['nombre']);
     this.navCtrl.pop();
