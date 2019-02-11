@@ -12,16 +12,16 @@
 
 <ion-content padding>
 
-  <ion-item *ngIf="equipos.length == 0" class="mensaje">
+  <!--<ion-item *ngIf="equipos.length == " class="mensaje">
     <div text-center padding>
       No hay jornadas pendientes
     </div>
-  </ion-item>
+  </ion-item> -->
 
   <ion-list>
 
     <ion-item-sliding *ngFor="let equipo of equipos | async; let i = index">
-      <ion-item (click)="addJugadorToJornada(equipo)" *ngIf="equipo.jugada == false">
+      <ion-item (click)="addJugadorToJornada(equipo)" *ngIf="equipo.jugadores == null">
         <ion-avatar item-start>
           <img src="../../assets/imgs/options/chess-rook-solid.svg">
         </ion-avatar>

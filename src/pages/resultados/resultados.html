@@ -9,16 +9,10 @@
 
 <ion-content padding>
 
-  <ion-item *ngIf="equipos.length == 0" class="mensaje">
-    <div text-center padding>
-      No hay resultados
-    </div>
-  </ion-item>
-
   <ion-list>
 
     <ion-item *ngFor="let equipo of equipos | async; let i = index" (click)="details(equipo, i)">
-    <div *ngIf="equipo.jugada == true">
+    <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/options/poll-solid.svg">
       </ion-avatar>
@@ -26,7 +20,7 @@
       <ion-note item-end>
         {{equipo.ciudad}} ({{ equipo.local }})
       </ion-note>
-      </div>
+      </ion-item>
     </ion-item>
 
   </ion-list>

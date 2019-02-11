@@ -16,57 +16,27 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class HistorialEquiposProvider {
   private _jornadas: Observable<any[]>;
-  private _jornadasPendientes: Equipo[] = [];
-  private _jornadasJugadas: Equipo[] = [];
-  private jornada:Equipo;
+  // _jornadas = {};
+  private _jornadasPendientes: Observable<any[]>;
+  private _jornadasJugadas: Observable<any[]>;
+  private jornada: Equipo;
 
   constructor(public afDB: AngularFireDatabase, public fbApp: FirebaseApp) {
     console.log('Hello HistorialEquiposProvider Provider');
   }
-  cargar_jornadas(){
-    // return this._jornadas;
-    return this.afDB.list('jornadas').valueChanges();
+  cargar_jornadas() {
+    this._jornadas = this.afDB.list('jornadas', ref => ref.orderByChild('jugadores').equalTo(null)).valueChanges();
+    return this._jornadas;
   }
 
   cargar_jugadas() {
-    // this._jornadasJugadas = [];
-    // this._jornadas.forEach(jornada => {
-    //   if(jornada.jugada == true){
-    //     this._jornadasJugadas.push(jornada);
-    //   }
-    // });
-    // return this._jornadasJugadas;
-  //   firebase.database().ref('request').orderByChild('apply').equalTo('true').once('value', function (snapshot) {
-  //     console.log(snapshot.val()) //contains all users that has apply as true
-  // })
-    this.afDB.database.ref('jornadas').orderByChild('jugada').equalTo('true').once('value', function (snapshot) {
-      this._jornadas = snapshot.val() //contains all users that has apply as true
-      return this._jornadas
-    })
-  
-    // list('jornadas', ref => ref.child('jugada').equalTo('true')).valueChanges()
+    this._jornadasJugadas = this.afDB.list('jornadas', ref => ref.orderByChild('jugada').equalTo(true)).valueChanges();
+    return this._jornadasJugadas;
   }
 
   cargar_pendientes() {
-    // this._jornadasPendientes = [];
-    // this._jornadas.forEach(jornada => {
-    //   if(jornada.jugada == false) {
-    //     this._jornadasPendientes.push(jornada);
-    //   }
-    // });
-    // return this._jornadasPendientes;
-    
-    this.afDB.database.ref('jornadas').orderByChild('jugada').equalTo('false').once('value', function (snapshot) {
-      this.equipos = snapshot.val() //contains all users that has apply as true
-      console.log("TETERINO")
-      return this._jornadas
-    }).then((data) => {
-      console.log(data)
-      return this._jornadas
-    })
-    // return this._jornadas
-    
-    // return this.afDB.list('jornadas', ref => ref.child('jugada').equalTo('false')).valueChanges()
+    this._jornadasPendientes = this.afDB.list('jornadas', ref => ref.orderByChild('jugada').equalTo(false)).valueChanges();
+    return this._jornadasPendientes;
   }
 
   private toTeam(equipoForm: FormGroup) {
@@ -78,15 +48,16 @@ export class HistorialEquiposProvider {
       hora: equipoForm.value['hora'],
       local: equipoForm.value['local'],
       jugada: false,
-      resultados: []
+      resultados: [],
+      key: '',
     };
     return this.jornada;
   }
 
-  agregar_equipo(equipoForm: FormGroup){
+  agregar_equipo(equipoForm: FormGroup) {
     // this._jornadas.push(this.toTeam(equipoForm));
     var equipoTemp = this.fbApp.database().ref().child('jornadas').push(this.toTeam(equipoForm));
-    this.fbApp.database().ref().child('jornadas/'+equipoTemp.key).child('key').set(equipoTemp.key);
+    this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('key').set(equipoTemp.key);
   }
 
   // agregar_jugada() {

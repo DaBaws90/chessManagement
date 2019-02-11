@@ -22,7 +22,7 @@ export class ResultadosPage {
   equipos: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider) {
-    this.equipos = this._jornadas.cargar_jornadas();
+    this.equipos = this._jornadas.cargar_pendientes();
   }
 
   ionViewDidLoad() {
@@ -30,7 +30,7 @@ export class ResultadosPage {
   }
 
   ionViewWillEnter() {
-    this.equipos = this._jornadas.cargar_jornadas();
+    this.equipos = this._jornadas.cargar_pendientes();
   }
 
   details(equipo: Equipo, idx: number) {

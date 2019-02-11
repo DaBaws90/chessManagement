@@ -15,25 +15,27 @@
 
 <ion-content padding>
 
-<ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/options/user.png">
-      </ion-avatar>
-      <h2>{{ equipo.nombre }}</h2>
-      <p>{{ equipo.ciudad }}</p>
-      <!--<button *ngIf="!editando" ion-button item-end color="dark" (click)="goEdit()">
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="../../assets/imgs/options/user.png">
+    </ion-avatar>
+    <h2>{{ equipo.nombre }}</h2>
+    <p>{{ equipo.ciudad }}</p>
+    <!--<button *ngIf="!editando" ion-button item-end color="dark" (click)="goEdit()">
         <ion-icon name="create"></ion-icon>
       </button>-->
+  </ion-item>
+
+  <ion-item (click)="presentModal()">
+    Jugadores
+  </ion-item>
+
+  <ion-list *ngIf="selected">
+    <ion-item *ngFor="let jugador of selected">
+      {{ jugador.nombre }}
     </ion-item>
-
-<ion-item (click)="presentModal()">
-      Jugadores
-    </ion-item>
-
-    <ion-list *ngIf="selected">
-      <ion-item *ngFor="let jugador of selected">
-        {{ jugador.nombre }}
-      </ion-item>
-    </ion-list>
-
+  </ion-list>
+  <button *ngIf="!editando" ion-button color="primary" (click)="saveJugadores()">
+    Guardar
+  </button>
 </ion-content>

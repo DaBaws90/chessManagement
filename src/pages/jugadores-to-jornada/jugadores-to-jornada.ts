@@ -5,6 +5,7 @@ import { Jugador } from '../../interfaces/player.interfaces';
 import { Observable } from 'rxjs';
 import { HistorialProvider } from '../../providers/historial/historial';
 import { Equipo } from '../../interfaces/equipo.interfaces';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the JugadoresToJornadaPage page.
@@ -22,8 +23,10 @@ export class JugadoresToJornadaPage {
   private selected: Jugador[];
   private jugadores: Observable<any[]>;
   private equipo: Equipo;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private historial: HistorialProvider) {
+  private keys: string[] = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private historial: HistorialProvider,
+    private afDB: AngularFireDatabase) {
     this.jugadores = this.historial.cargar_historial();
     this.equipo = this.navParams.get("equipo");
   }
@@ -39,5 +42,21 @@ export class JugadoresToJornadaPage {
       this.selected = data;
     });
   }
+
+  private saveJugadores() {
+    this.selected.forEach(jugador => {
+      this.keys.push(jugador.key);
+    });
+    this.equipo.jugadores = this.keys;
+    this.afDB.database.ref().child('jornadas/' + this.equipo.key).set(this.equipo).then(() => {
+      this.navCtrl.pop()
+    });
+  }
+
+  // private jugadoresToJornada() {
+  //   this.afDB.database.ref().child(this.equipo.key).set('jugadores')
+  // }
+
+
 
 }
