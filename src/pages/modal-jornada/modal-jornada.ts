@@ -7,6 +7,9 @@ import { Resultado } from '../../interfaces/resultado.interfaces';
 import { HistorialProvider } from '../../providers/historial/historial';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { Observable } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseApp } from 'angularfire2';
+import { ParseSourceFile } from '@angular/compiler';
 
 /**
  * Generated class for the ModalJornadaPage page.
@@ -21,7 +24,7 @@ import { Observable } from 'rxjs';
   templateUrl: 'modal-jornada.html',
 })
 export class ModalJornadaPage {
-  private equipo: Equipo;
+  equipo;
   // resultado: {} = {};
   // private resultados: FormGroup;
   private selected: boolean;
@@ -33,17 +36,26 @@ export class ModalJornadaPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider,
-    private _jornadas: HistorialEquiposProvider, private toastCtrl: ToastController) {
+    private _jornadas: HistorialEquiposProvider, private toastCtrl: ToastController, private fbApp: FirebaseApp) {
     this.equipo = this.navParams.get("equipo");
-
-    // for (let p of this.equipo.jugadores) {
+    // for (let p of this.equipo) {
     //   this.res = {
-    //     jugador: p,
+    //     jugador: p.key,
     //     resultado: "empata"
     //   }
     //   this.resultados.push(this.res);
     //   this.jugadores = this.historialProvider.cargar_historial();
     // }
+
+    this.equipo.forEach(player => {
+      console.log(player.key);
+      this.res = {
+        jugador: player.key,
+        resultado: "empata",
+      }
+      this.resultados.push(this.res);
+    });
+    
   }
 
   ionViewDidLoad() {
@@ -52,10 +64,32 @@ export class ModalJornadaPage {
 
   addResultado(player: Jugador, result: string) {
     this.resultados.forEach(resultado => {
-      if (resultado.jugador == player) {
+      console.log("RESULTADO JUGADOR: " + resultado.jugador + " PLAYER KEY: " + player.key);
+      if (resultado.jugador == player.key) {
         resultado.resultado = result;
       }
     });
+  }
+
+  guardar() {
+    this.resultados.forEach(resultado => {
+      switch (resultado.resultado) {
+        case "gana":
+          this.fbApp.database().ref().child('users/' + resultado.jugador).child('jugadas').update(1);
+          this.fbApp.database().ref().child('users/' + resultado.jugador).child('ganadas').update(1);
+          break;
+        case "empata":
+        this.fbApp.database().ref().child('users/' + resultado.jugador).child('jugadas').update(1);
+        this.fbApp.database().ref().child('users/' + resultado.jugador).child('empatadas').update(0.5);
+          break;
+        case "pierde":
+        this.fbApp.database().ref().child('users/' + resultado.jugador).child('jugadas').update(1);
+          break;
+      }
+
+    });
+    this.navCtrl.pop();
+
   }
 
   // guardar() {
