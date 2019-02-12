@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Jugador } from '../../interfaces/player.interfaces';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AuthProvider } from '../auth/auth';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import { ToastController, AlertController } from 'ionic-angular';
-import { Observable } from 'rxjs';
-// import * as admin from 'firebase-admin';
-
 
 /*
   Generated class for the HistorialProvider provider.
@@ -20,10 +17,7 @@ import { Observable } from 'rxjs';
 export class HistorialProvider {
   private _historial: Jugador[] = [];
   private jugador: Jugador;
-  // users: Observable<any[]>;
   users;
-  refCategoria;
-  allowed;
   user: Jugador = <Jugador>{};
 
   constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, 
@@ -32,15 +26,6 @@ export class HistorialProvider {
     }
 
   cargar_historial() {
-    // return this._historial.sort(function(a, b) {
-    //   if(Number(a.elo) > Number(b.elo)) {
-    //     return -1;
-    //   } else if(Number(a.elo) < Number(b.elo)) {
-    //     return 1;
-    //   } else {
-    //     return 0;
-    //   }
-    // });
     return this.afDB.list('/users', ref => ref.orderByChild('elo')).valueChanges();
     // return this.afDB.list('users').valueChanges();
   }
@@ -117,7 +102,6 @@ export class HistorialProvider {
       this.fbApp.database().ref().child('users').child(auth.uid).once('value', (LUL) => {
         this.user = LUL.val()
       }).then(() => {
-        // console.log("CURRENT USER: "+this.user.nombre+" "+this.user.apellidos)
         return this.user
       }).catch(function(error) {
         let alert = this.alertCtrl.create({

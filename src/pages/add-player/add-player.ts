@@ -37,7 +37,6 @@ export class AddPlayerPage {
 
   addPlayer() {
     this.historialProvider.agregar_historial(this.jugadorForm);
-    // this.presentToast(this.jugadorForm.value['nombre']);
     this.navCtrl.pop();
   }
 

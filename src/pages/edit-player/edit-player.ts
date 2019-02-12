@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Jugador } from '../../interfaces/player.interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HistorialProvider } from '../../providers/historial/historial';
-import { JugadorPage } from '../jugador/jugador';
 
 /**
  * Generated class for the EditPlayerPage page.

@@ -18,12 +18,12 @@ import { Jugador } from '../../interfaces/player.interfaces';
 export class EquipoDetailPage {
   equipo: Equipo;
   jugadores: Jugador[] = [];
-  idx: number;
+  // idx: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     historialEquipos: HistorialEquiposProvider) {
     this.equipo = this.navParams.get("equipo");
-    this.idx = this.navParams.get("idx");
+    // this.idx = this.navParams.get("idx");
   }
 
   ionViewDidLoad() {
@@ -33,5 +33,7 @@ export class EquipoDetailPage {
   cerrar() {
     this.navCtrl.pop();
   }
+
+  
 
 }

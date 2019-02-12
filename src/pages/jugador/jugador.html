@@ -6,26 +6,8 @@
 
 </ion-header>
 
-
-<!-- <ion-content padding>
-  <ion-list>
-      <button text-center ion-item block *ngFor="let jugador of jugadores; let i = index" (click)="details(jugador, i)">
-        <ion-item>
-          {{jugador.nombre}}
-          <ion-note item-end>
-            {{jugador.elo}}
-          </ion-note>
-        </ion-item>
-        
-      </button>
-    <ion-item>
-      <button ion-button block color="secondary" (click)="addPlayerPage()">Añadir jugador</button>
-    </ion-item>
-  </ion-list> 
-</ion-content> -->
 <ion-content padding>
   <ion-list>
-    <!-- <ion-item-sliding *ngFor="let jugador of jugadores | async; let i = index"> -->
     <ion-item-sliding *ngFor="let jugador of (jugadores | async)?.slice().reverse(); let i = index">
       <ion-item (click)="details(jugador, i)">
         <ion-avatar item-start>
@@ -48,10 +30,5 @@
       </ion-item-options>
     </ion-item-sliding>
     
-    <!-- <ion-item padding *ngIf="user.rol == 'capitan'">
-      <div text-center>
-        <button ion-button color="primary" (click)="addPlayerPage()">Añadir jugador</button>
-      </div>
-    </ion-item>-->
   </ion-list>
 </ion-content>

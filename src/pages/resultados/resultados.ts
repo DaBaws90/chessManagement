@@ -5,6 +5,10 @@ import { HistorialEquiposProvider } from '../../providers/historial-equipos/hist
 import { EquipoDetailPage } from '../equipo-detail/equipo-detail';
 import { JornadaPage } from '../jornada/jornada';
 import { Observable } from 'rxjs';
+import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
+import { Jugador } from '../../interfaces/player.interfaces';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseApp } from 'angularfire2';
 
 /**
  * Generated class for the ResultadosPage page.
@@ -20,8 +24,10 @@ import { Observable } from 'rxjs';
 })
 export class ResultadosPage {
   equipos: Observable<any[]>;
+  equipo: Jugador[] = []
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider, public afDB: AngularFireDatabase,
+    public fbApp: FirebaseApp) {
     this.equipos = this._jornadas.cargar_pendientes();
   }
 
@@ -33,8 +39,14 @@ export class ResultadosPage {
     this.equipos = this._jornadas.cargar_pendientes();
   }
 
-  details(equipo: Equipo, idx: number) {
-    this.navCtrl.push(EquipoDetailPage, {"equipo":equipo, "idx": idx});
+  details(equipo:Equipo){
+    equipo.jugadores.forEach((player) => {
+      // console.log(player)
+      this.fbApp.database().ref().child('users').child(player).once('value', (LUL) => {
+        this.equipo.push(LUL.val())
+      })
+    })
+    this.navCtrl.push(ModalJornadaPage, {"equipo": this.equipo});
   }
 
   goToHome(){

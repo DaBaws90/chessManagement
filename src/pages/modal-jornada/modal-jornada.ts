@@ -35,6 +35,7 @@ export class ModalJornadaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider,
     private _jornadas: HistorialEquiposProvider, private toastCtrl: ToastController) {
     this.equipo = this.navParams.get("equipo");
+
     // for (let p of this.equipo.jugadores) {
     //   this.res = {
     //     jugador: p,

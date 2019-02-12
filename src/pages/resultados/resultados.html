@@ -11,7 +11,7 @@
 
   <ion-list>
 
-    <ion-item *ngFor="let equipo of equipos | async; let i = index" (click)="details(equipo, i)">
+    <ion-item *ngFor="let equipo of equipos | async; let i = index" (click)="details(equipo)">
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/options/poll-solid.svg">

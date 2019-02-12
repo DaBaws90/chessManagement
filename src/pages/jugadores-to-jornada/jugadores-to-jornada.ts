@@ -53,10 +53,4 @@ export class JugadoresToJornadaPage {
     });
   }
 
-  // private jugadoresToJornada() {
-  //   this.afDB.database.ref().child(this.equipo.key).set('jugadores')
-  // }
-
-
-
 }

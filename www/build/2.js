@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 500:
+/***/ 501:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71,7 +71,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import * as admin from 'firebase-admin';
 
 
 /**
@@ -92,47 +91,19 @@ var JugadorPage = /** @class */ (function () {
         // user: Jugador = <Jugador>{};
         this.user = {};
         this.jugadores = this.historialProvider.cargar_historial();
-        // this.historialProvider.getOne().then((data) => {
-        //   this.user = data
-        //   console.log("NOW I HAVE A VALUE "+data.email+", "+this.user.key)
-        // })
         this.user = this.navParams.get('user');
     }
     JugadorPage.prototype.ionViewCanEnter = function () {
-        // this.historialProvider.getOne().then((data) => {
-        //   this.user = data
-        //   console.log("NOW I HAVE A CAN ENTER "+data.email+", "+this.user.key)
-        // })
         this.user = this.navParams.get('user');
     };
     JugadorPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad JugadorPage');
-        // this.getOne()
-        // this.historialProvider.getOne().then((data) => {
-        //   this.user = data
-        //   console.log("NOW I HAVE A VALUE "+data.email+", "+this.user.key)
-        // })
         this.user = this.navParams.get('user');
     };
     JugadorPage.prototype.ionViewWillEnter = function () {
         this.jugadores = this.historialProvider.cargar_historial();
-        // this.historialProvider.getOne().then((data) => {
-        //   this.user = data
-        //   // console.log("NOW I HAVE A VALUE "+data.email+", "+this.user.key)
-        // })
-        // this.historialProvider.getOne().then((data) => {
-        //   this.user = data
-        //   console.log("NOW I HAVE A VALUE "+data.email+", "+this.user.key)
-        // })
-        // this.getCurrent().then(() => {
-        //   console.log("ENTER "+this.user.key)
-        // })
-        // console.log("ENTER "+this.user.key)
         this.user = this.navParams.get('user');
     };
-    // async getCurrent(){
-    //   this.user = await this.historialProvider.getOne()
-    // }
     JugadorPage.prototype.addPlayerPage = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__add_player_add_player__["a" /* AddPlayerPage */]);
     };
@@ -147,7 +118,7 @@ var JugadorPage = /** @class */ (function () {
     };
     JugadorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-jugador',template:/*ion-inline-start:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\jugador\jugador.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jugadores</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<!-- <ion-content padding>\n\n  <ion-list>\n\n      <button text-center ion-item block *ngFor="let jugador of jugadores; let i = index" (click)="details(jugador, i)">\n\n        <ion-item>\n\n          {{jugador.nombre}}\n\n          <ion-note item-end>\n\n            {{jugador.elo}}\n\n          </ion-note>\n\n        </ion-item>\n\n        \n\n      </button>\n\n    <ion-item>\n\n      <button ion-button block color="secondary" (click)="addPlayerPage()">Añadir jugador</button>\n\n    </ion-item>\n\n  </ion-list> \n\n</ion-content> -->\n\n<ion-content padding>\n\n  <ion-list>\n\n    <!-- <ion-item-sliding *ngFor="let jugador of jugadores | async; let i = index"> -->\n\n    <ion-item-sliding *ngFor="let jugador of (jugadores | async)?.slice().reverse(); let i = index">\n\n      <ion-item (click)="details(jugador, i)">\n\n        <ion-avatar item-start>\n\n          <img src="../../assets/imgs/options/user.png">\n\n        </ion-avatar>\n\n        <h2>{{ jugador.nombre }} {{ jugador.apellidos }}</h2>\n\n        <p>ELO: {{ jugador.elo }}</p>\n\n        <ion-icon item-right name="ios-arrow-back" *ngIf="user.rol == \'capitan\'"></ion-icon>\n\n        <ion-note item-end *ngIf="user.rol == \'capitan\'">Deslizar</ion-note>\n\n      </ion-item>\n\n      <ion-item-options side="right" *ngIf="user.rol == \'capitan\'">\n\n        <button ion-button color="danger" (click)="deleteUser(jugador)">\n\n          <ion-icon name="trash"></ion-icon>\n\n          Borrar\n\n        </button>\n\n        <button ion-button color="primary" (click)="goEdit(jugador, i)" *ngIf="user.rol == \'capitan\'">\n\n          <ion-icon name="create"></ion-icon>\n\n          Editar\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n    \n\n    <!-- <ion-item padding *ngIf="user.rol == \'capitan\'">\n\n      <div text-center>\n\n        <button ion-button color="primary" (click)="addPlayerPage()">Añadir jugador</button>\n\n      </div>\n\n    </ion-item>-->\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\DAM\PMDM\App Final Trimestre 1\ajedrez\src\pages\jugador\jugador.html"*/,
+            selector: 'page-jugador',template:/*ion-inline-start:"C:\Users\pere_\Data - Downloads - Stuff\Ionic\chessManagement\src\pages\jugador\jugador.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Jugadores</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item-sliding *ngFor="let jugador of (jugadores | async)?.slice().reverse(); let i = index">\n\n      <ion-item (click)="details(jugador, i)">\n\n        <ion-avatar item-start>\n\n          <img src="../../assets/imgs/options/user.png">\n\n        </ion-avatar>\n\n        <h2>{{ jugador.nombre }} {{ jugador.apellidos }}</h2>\n\n        <p>ELO: {{ jugador.elo }}</p>\n\n        <ion-icon item-right name="ios-arrow-back" *ngIf="user.rol == \'capitan\'"></ion-icon>\n\n        <ion-note item-end *ngIf="user.rol == \'capitan\'">Deslizar</ion-note>\n\n      </ion-item>\n\n      <ion-item-options side="right" *ngIf="user.rol == \'capitan\'">\n\n        <button ion-button color="danger" (click)="deleteUser(jugador)">\n\n          <ion-icon name="trash"></ion-icon>\n\n          Borrar\n\n        </button>\n\n        <button ion-button color="primary" (click)="goEdit(jugador, i)" *ngIf="user.rol == \'capitan\'">\n\n          <ion-icon name="create"></ion-icon>\n\n          Editar\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n    \n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Data - Downloads - Stuff\Ionic\chessManagement\src\pages\jugador\jugador.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */], __WEBPACK_IMPORTED_MODULE_8_angularfire2_auth__["AngularFireAuth"], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["AngularFireDatabase"],
