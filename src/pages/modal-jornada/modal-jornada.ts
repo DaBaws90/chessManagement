@@ -24,11 +24,11 @@ import { ParseSourceFile } from '@angular/compiler';
   templateUrl: 'modal-jornada.html',
 })
 export class ModalJornadaPage {
-  equipo;
+  equipo: Equipo
+  // equipo: Observable<Jugador[]>;
   // resultado: {} = {};
   // private resultados: FormGroup;
   private selected: boolean;
-  // private datos: [];
   private resultados: Resultado[] = [];
   private res: Resultado;
   private jugadores: Observable<any[]>;
@@ -37,36 +37,57 @@ export class ModalJornadaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private historialProvider: HistorialProvider,
     private _jornadas: HistorialEquiposProvider, private toastCtrl: ToastController, private fbApp: FirebaseApp) {
-    this.equipo = this.navParams.get("equipo");
+    this.equipo = this.navParams.get('equipo');
+    console.log(this.equipo)
+    // this.equipo.forEach(player => {
+    //   console.log("PLAYER "+player)
+    // });
+    // this.fbApp.database().ref().child('jornadas').child(this.key).once('value', (data) => {
+    //   this.equipo = data.val().jugadores
+    //   console.log("DATA "+data.val().jugadores)
+    // });
+
     // for (let p of this.equipo) {
+    //   console.log("ENTRO ANTES")
     //   this.res = {
     //     jugador: p.key,
     //     resultado: "empata"
     //   }
+    //   console.log("ENTRO")
     //   this.resultados.push(this.res);
-    //   this.jugadores = this.historialProvider.cargar_historial();
+    //   // this.jugadores = this.historialProvider.cargar_historial();
     // }
 
-    this.equipo.forEach(player => {
-      console.log(player.key);
-      this.res = {
-        jugador: player.key,
-        resultado: "empata",
-      }
-      this.resultados.push(this.res);
-    });
+    // this.equipo.forEach(player => {
+    //   console.log("KEY "+player.key);
+    //   this.res = {
+    //     jugador: player.key,
+    //     resultado: "empata",
+    //   }
+    //   this.resultados.push(this.res);
+    // });
     
+  }
+
+  ionViewCanEnter(){
+    console.log('ionViewCanEnter ModalJornadaPage');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalJornadaPage');
   }
 
-  addResultado(player: Jugador, result: string) {
+  ionViewWillEnter(){
+    console.log('ionViewWillEnter ModalJornadaPage');
+  }
+
+  addResultado(player: string, result: string) {
+    console.log("ENTRO "+player)
     this.resultados.forEach(resultado => {
-      console.log("RESULTADO JUGADOR: " + resultado.jugador + " PLAYER KEY: " + player.key);
-      if (resultado.jugador == player.key) {
+      console.log("LUL")
+      if (resultado.jugador == player) {
         resultado.resultado = result;
+        console.log("RESULTADO JUGADOR: " + resultado.jugador + " PLAYER KEY: " + player);
       }
     });
   }

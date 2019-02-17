@@ -23,7 +23,7 @@ export class JugadoresToJornadaPage {
   private selected: Jugador[];
   private jugadores: Observable<any[]>;
   private equipo: Equipo;
-  private keys: string[] = [];
+  private keys: Jugador[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private historial: HistorialProvider,
     private afDB: AngularFireDatabase) {
@@ -45,7 +45,7 @@ export class JugadoresToJornadaPage {
 
   private saveJugadores() {
     this.selected.forEach(jugador => {
-      this.keys.push(jugador.key);
+      this.keys.push(jugador);
     });
     this.equipo.jugadores = this.keys;
     this.afDB.database.ref().child('jornadas/' + this.equipo.key).set(this.equipo).then(() => {

@@ -19,7 +19,7 @@ export class HistorialEquiposProvider {
   // _jornadas = {};
   private _jornadasPendientes: Observable<any[]>;
   private _jornadasJugadas: Observable<any[]>;
-  private jornada: Equipo;
+  jornada: Equipo;
 
   constructor(public afDB: AngularFireDatabase, public fbApp: FirebaseApp) {
     console.log('Hello HistorialEquiposProvider Provider');
@@ -40,6 +40,30 @@ export class HistorialEquiposProvider {
     return this._jornadasPendientes;
   }
 
+  getJornada(equipo: Equipo){
+    return new Promise((resolve, reject) => {
+      // equipo.jugadores.forEach(player => {
+        // console.log(player)
+        this.jornada = equipo
+      // })
+      resolve(true)
+    })
+  }
+  // return new Promise((resolve, reject) => {
+  //   this.afDB.doc(`/usuarios/${clave}`)
+  //     .valueChanges().subscribe(data => {
+  //       //console.log(data);
+  //       if(data){
+  //         this.clave = clave;
+  //         this.user = data;
+  //         resolve(true);
+  //       } else {
+  //         resolve(false);
+  //       }
+        
+  //     })
+  // })
+
   private toTeam(equipoForm: FormGroup) {
     this.jornada = {
       nombre: equipoForm.value['nombre'],
@@ -56,12 +80,8 @@ export class HistorialEquiposProvider {
   }
 
   agregar_equipo(equipoForm: FormGroup) {
-    // this._jornadas.push(this.toTeam(equipoForm));
     var equipoTemp = this.fbApp.database().ref().child('jornadas').push(this.toTeam(equipoForm));
     this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('key').set(equipoTemp.key);
   }
 
-  // agregar_jugada() {
-  //   this._jornadasJugadas.push();
-  // }
 }

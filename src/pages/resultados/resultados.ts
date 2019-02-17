@@ -23,10 +23,11 @@ import { FirebaseApp } from 'angularfire2';
   templateUrl: 'resultados.html',
 })
 export class ResultadosPage {
-  equipos: Observable<any[]>;
-  equipo: Jugador[] = []
+  equipos: Observable<Equipo[]>;
+  // equipo: Jugador[] = []
+  equipo: Observable<Jugador[]>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _jornadas: HistorialEquiposProvider, public afDB: AngularFireDatabase,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public _jornadas: HistorialEquiposProvider, public afDB: AngularFireDatabase,
     public fbApp: FirebaseApp) {
     this.equipos = this._jornadas.cargar_pendientes();
   }
@@ -39,14 +40,27 @@ export class ResultadosPage {
     this.equipos = this._jornadas.cargar_pendientes();
   }
 
+  // async dummy(equipo: Equipo){
+  //   equipo.jugadores.forEach((player) => {
+  //     // console.log(player)
+  //     this.fbApp.database().ref().child('users').child(player).once('value', (LUL) => {
+  //       this.equipo.push(LUL.val())
+  //     })
+  //   })
+  //   return await this.equipo;
+  // }
+
   details(equipo:Equipo){
-    equipo.jugadores.forEach((player) => {
-      // console.log(player)
-      this.fbApp.database().ref().child('users').child(player).once('value', (LUL) => {
-        this.equipo.push(LUL.val())
-      })
+    // equipo.jugadores.forEach((player) => {
+    //   // console.log(player)
+    //   this.fbApp.database().ref().child('users').child(player.key).once('value', (LUL) => {
+    //     this.equipo.push(LUL.val())
+    //     this.equipo = equipo.jugadores
+    //   })
+    // })
+    this._jornadas.getJornada(equipo).then(() => {
+      this.navCtrl.push(ModalJornadaPage, {"equipo": this._jornadas.jornada});
     })
-    this.navCtrl.push(ModalJornadaPage, {"equipo": this.equipo});
   }
 
   goToHome(){

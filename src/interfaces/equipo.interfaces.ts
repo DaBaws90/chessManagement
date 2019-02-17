@@ -4,7 +4,7 @@ import { Resultado } from "./resultado.interfaces";
 export interface Equipo {
     nombre: string;
     ciudad: string;
-    jugadores: string[];
+    jugadores: Jugador[];
     local: string;
     fecha: string;
     hora: string;
