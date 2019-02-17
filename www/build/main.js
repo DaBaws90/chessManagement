@@ -532,23 +532,6 @@ var ModalJornadaPage = /** @class */ (function () {
         this.equipo = this.navParams.get('equipo');
         console.log(this.equipo);
         // this.equipo.forEach(player => {
-        //   console.log("PLAYER "+player)
-        // });
-        // this.fbApp.database().ref().child('jornadas').child(this.key).once('value', (data) => {
-        //   this.equipo = data.val().jugadores
-        //   console.log("DATA "+data.val().jugadores)
-        // });
-        // for (let p of this.equipo) {
-        //   console.log("ENTRO ANTES")
-        //   this.res = {
-        //     jugador: p.key,
-        //     resultado: "empata"
-        //   }
-        //   console.log("ENTRO")
-        //   this.resultados.push(this.res);
-        //   // this.jugadores = this.historialProvider.cargar_historial();
-        // }
-        // this.equipo.forEach(player => {
         //   console.log("KEY "+player.key);
         //   this.res = {
         //     jugador: player.key,
@@ -628,12 +611,12 @@ var ModalJornadaPage = /** @class */ (function () {
         });
         toast.present();
     };
+    var _a, _b, _c, _d, _e, _f, _g;
     ModalJornadaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-modal-jornada',template:/*ion-inline-start:"C:\Users\pere_\Data - Downloads - Stuff\Ionic\chessManagement\src\pages\modal-jornada\modal-jornada.html"*/'<!--\n\n  Generated template for the ModalJornadaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Resultado</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list *ngFor="let player of equipo.jugadores; let i = index">\n\n    <ion-item>\n\n      <ion-label>{{ player.nombre }} {{ player.apellidos }}</ion-label>\n\n      <ion-select >\n\n        <ion-option (ionSelect)="addResultado(player.key, \'gana\')">\n\n          Gana\n\n        </ion-option>\n\n        <ion-option selected (ionSelect)="addResultado(player.key, \'empata\')">\n\n          Empata\n\n        </ion-option>\n\n        <ion-option (ionSelect)="addResultado(player.key, \'pierde\')">\n\n          Pierde\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </ion-list>\n\n  <div text-center padding>\n\n  <button ion-button (click)="guardar()">Guardar</button>\n\n  </div>\n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pere_\Data - Downloads - Stuff\Ionic\chessManagement\src\pages\modal-jornada\modal-jornada.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5_angularfire2__["FirebaseApp"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_historial_historial__["a" /* HistorialProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_historial_equipos_historial_equipos__["a" /* HistorialEquiposProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2__["FirebaseApp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2__["FirebaseApp"]) === "function" && _g || Object])
     ], ModalJornadaPage);
     return ModalJornadaPage;
 }());
@@ -1040,7 +1023,6 @@ var HistorialProvider = /** @class */ (function () {
     }
     HistorialProvider.prototype.cargar_historial = function () {
         return this.afDB.list('/users', function (ref) { return ref.orderByChild('elo'); }).valueChanges();
-        // return this.afDB.list('users').valueChanges();
     };
     HistorialProvider.prototype.toPlayer = function (jugadorForm, uid) {
         this.jugador = {
@@ -1111,7 +1093,6 @@ var HistorialProvider = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.afAuth.authState.take(1).subscribe(function (auth) {
-                            // this.afDB.object(`/users/${auth.uid}`).query.once('value', (LUL) => {
                             _this.fbApp.database().ref().child('users').child(auth.uid).once('value', function (LUL) {
                                 _this.user = LUL.val();
                             }).then(function () {
@@ -1131,34 +1112,13 @@ var HistorialProvider = /** @class */ (function () {
             });
         });
     };
-    // getCurrentUser(){
-    //   if(this.fbApp.auth().currentUser.uid != null){
-    //     this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
-    //       .once('value', (LUL) => {
-    //         this.allowed = LUL.val().rol
-    //       }).then(() => {
-    //         console.log("PROVIDER "+this.allowed)
-    //         return this.allowed
-    //       }).catch(err => {
-    //         let alert = this.alertCtrl.create({
-    //           title: 'Error',
-    //           subTitle: err.message,
-    //           buttons: ['Aceptar']
-    //         });
-    //         alert.present();
-    //       })
-    //   }
-    //   else{
-    //     return null;
-    //   }
-    // }
     HistorialProvider.prototype.deleteData = function (user) {
         this.afDB.object('/users/' + user.key).remove();
     };
+    var _a, _b, _c, _d, _e, _f;
     HistorialProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"],
-            __WEBPACK_IMPORTED_MODULE_4_angularfire2__["FirebaseApp"], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_auth__["a" /* AuthProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["AngularFireDatabase"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["AngularFireAuth"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2__["FirebaseApp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2__["FirebaseApp"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["j" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object])
     ], HistorialProvider);
     return HistorialProvider;
 }());

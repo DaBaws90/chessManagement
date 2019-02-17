@@ -27,7 +27,6 @@ export class HistorialProvider {
 
   cargar_historial() {
     return this.afDB.list('/users', ref => ref.orderByChild('elo')).valueChanges();
-    // return this.afDB.list('users').valueChanges();
   }
 
   private toPlayer(jugadorForm: FormGroup, uid:any) {
@@ -98,7 +97,6 @@ export class HistorialProvider {
 
   async getOne() {
     this.afAuth.authState.take(1).subscribe(auth => {
-      // this.afDB.object(`/users/${auth.uid}`).query.once('value', (LUL) => {
       this.fbApp.database().ref().child('users').child(auth.uid).once('value', (LUL) => {
         this.user = LUL.val()
       }).then(() => {
@@ -115,62 +113,11 @@ export class HistorialProvider {
     return await this.user;
   }
 
-  // getCurrentUser(){
-  //   if(this.fbApp.auth().currentUser.uid != null){
-  //     this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
-  //       .once('value', (LUL) => {
-  //         this.allowed = LUL.val().rol
-  //       }).then(() => {
-  //         console.log("PROVIDER "+this.allowed)
-  //         return this.allowed
-  //       }).catch(err => {
-  //         let alert = this.alertCtrl.create({
-  //           title: 'Error',
-  //           subTitle: err.message,
-  //           buttons: ['Aceptar']
-  //         });
-  //         alert.present();
-  //       })
-  //   }
-  //   else{
-  //     return null;
-  //   }
-  // }
-
   deleteData(user: any) {
     this.afDB.object('/users/' + user.key).remove();
   }
 
   // getCurrentUser(){
-  //   this.afAuth.authState.take(1).subscribe(auth => {
-  //     this.user = this.afDB.object(`users/${auth.uid}`)
-  //   })
-  //   return this.user
-    // if(this.fbApp.auth().currentUser.uid != null){
-    //   var uid = this.fbApp.auth().currentUser.uid;
-    //   admin.auth().getUser(uid).then(function(user) {
-    //     return user;
-    //   })
-    //   .catch(function(error) {
-    //     let alert = this.alertCtrl.create({
-    //       title: 'Error',
-    //       subTitle: error.message,
-    //       buttons: ['Aceptar']
-    //     });
-    //     alert.present();
-    //   })
-      // this.allowed = this.fbApp.database().ref().child('users/' + this.fbApp.auth().currentUser.uid).on('value', (data) => {
-      //   return data.val()
-      // })
-      // console.log(this.allowed)
-      // return this.allowed
-      
-      // this.allowed = this.afDB.object('/users/'+ this.fbApp.auth().currentUser.uid)
-      //   .snapshotChanges().subscribe(res => {
-      //       return res.payload.val();
-      //   });
-      //   console.log(this.allowed)
-      //   return this.allowed
       
       // ER GÜENO ---------------------
       // this.fbApp.database().ref().child('users').child(this.fbApp.auth().currentUser.uid)
@@ -187,20 +134,5 @@ export class HistorialProvider {
       //     });
       //     alert.present();
       //   })
-
-      // console.log(this.afDB.object(`/users/${this.fbApp.auth().currentUser.uid}`).valueChanges())
-      // this.afDB.list('/users').snapshotChanges().subscribe((res) => {
-      //   res.forEach((ele:any) => {
-      //     if(ele.payload.val().key == this.fbApp.auth().currentUser.uid) {
-      //       return ele.payload.val().rol
-      //     }
-      //   });
-      // });
-    // }
-    // else{
-    //   return null;
-    // }
-    // 
-  // }
 
 }

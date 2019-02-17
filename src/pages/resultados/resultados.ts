@@ -37,18 +37,9 @@ export class ResultadosPage {
   }
 
   ionViewWillEnter() {
+    console.log('ionViewWillEnter ResultadosPage');
     this.equipos = this._jornadas.cargar_pendientes();
   }
-
-  // async dummy(equipo: Equipo){
-  //   equipo.jugadores.forEach((player) => {
-  //     // console.log(player)
-  //     this.fbApp.database().ref().child('users').child(player).once('value', (LUL) => {
-  //       this.equipo.push(LUL.val())
-  //     })
-  //   })
-  //   return await this.equipo;
-  // }
 
   details(equipo:Equipo){
     // equipo.jugadores.forEach((player) => {

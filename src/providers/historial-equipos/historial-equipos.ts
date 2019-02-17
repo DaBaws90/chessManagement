@@ -1,7 +1,7 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Equipo } from '../../interfaces/equipo.interfaces';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Jugador } from '../../interfaces/player.interfaces';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
@@ -16,7 +16,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class HistorialEquiposProvider {
   private _jornadas: Observable<any[]>;
-  // _jornadas = {};
   private _jornadasPendientes: Observable<any[]>;
   private _jornadasJugadas: Observable<any[]>;
   jornada: Equipo;

@@ -39,24 +39,6 @@ export class ModalJornadaPage {
     private _jornadas: HistorialEquiposProvider, private toastCtrl: ToastController, private fbApp: FirebaseApp) {
     this.equipo = this.navParams.get('equipo');
     console.log(this.equipo)
-    // this.equipo.forEach(player => {
-    //   console.log("PLAYER "+player)
-    // });
-    // this.fbApp.database().ref().child('jornadas').child(this.key).once('value', (data) => {
-    //   this.equipo = data.val().jugadores
-    //   console.log("DATA "+data.val().jugadores)
-    // });
-
-    // for (let p of this.equipo) {
-    //   console.log("ENTRO ANTES")
-    //   this.res = {
-    //     jugador: p.key,
-    //     resultado: "empata"
-    //   }
-    //   console.log("ENTRO")
-    //   this.resultados.push(this.res);
-    //   // this.jugadores = this.historialProvider.cargar_historial();
-    // }
 
     // this.equipo.forEach(player => {
     //   console.log("KEY "+player.key);
