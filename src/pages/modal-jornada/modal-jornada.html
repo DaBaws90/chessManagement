@@ -19,13 +19,13 @@
     <ion-item>
       <ion-label>{{ player.nombre }} {{ player.apellidos }}</ion-label>
       <ion-select >
-        <ion-option (ionSelect)="addResultado(player.key, 'gana')">
+        <ion-option (ionSelect)="addResultado(player, 'gana')">
           Gana
         </ion-option>
-        <ion-option selected (ionSelect)="addResultado(player.key, 'empata')">
+        <ion-option selected (ionSelect)="addResultado(player, 'empata')">
           Empata
         </ion-option>
-        <ion-option (ionSelect)="addResultado(player.key, 'pierde')">
+        <ion-option (ionSelect)="addResultado(player, 'pierde')">
           Pierde
         </ion-option>
       </ion-select>

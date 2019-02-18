@@ -1,6 +1,6 @@
 import { Jugador } from './player.interfaces';
 
 export interface Resultado {
-    jugador: string;
+    jugador: Jugador;
     resultado: string;
 }
