@@ -6,6 +6,7 @@ import { Jugador } from '../../interfaces/player.interfaces';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { Observable } from 'rxjs';
+import { Banquillo } from '../../interfaces/banquillo.interfaces';
 
 /*
   Generated class for the HistorialEquiposProvider provider.
@@ -19,6 +20,7 @@ export class HistorialEquiposProvider {
   private _jornadasPendientes: Observable<any[]>;
   private _jornadasJugadas: Observable<any[]>;
   jornada: Equipo;
+  banquillos : Observable<any[]>;
 
   constructor(public afDB: AngularFireDatabase, public fbApp: FirebaseApp) {
     console.log('Hello HistorialEquiposProvider Provider');
@@ -60,6 +62,11 @@ export class HistorialEquiposProvider {
   //     })
   // })
 
+  getBanquillos() {
+    this.banquillos = this.afDB.list('equipos').valueChanges();
+    return this.banquillos
+  }
+
   private toTeam(equipoForm: FormGroup) {
     this.jornada = {
       nombre: equipoForm.value['nombre'],
@@ -72,16 +79,13 @@ export class HistorialEquiposProvider {
       resultados: [],
       key: '',
       compound: 'false0',
-      // compound: '',
     };
     return this.jornada;
   }
 
   agregar_equipo(equipoForm: FormGroup) {
-    // equipoForm['jugadores'] = ''
     var equipoTemp = this.fbApp.database().ref().child('jornadas').push(this.toTeam(equipoForm));
     this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('key').set(equipoTemp.key);
-    // this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('compound').set(this.toTeam(equipoForm).jugada + '0')
   }
 
 }

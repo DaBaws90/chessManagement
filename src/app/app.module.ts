@@ -23,6 +23,7 @@ import { EquipoDetailPage } from '../pages/equipo-detail/equipo-detail';
 import { ModalPage } from '../pages/modal/modal';
 import { ModalJornadaPage } from '../pages/modal-jornada/modal-jornada';
 import { JugadoresToJornadaPage } from '../pages/jugadores-to-jornada/jugadores-to-jornada';
+import { AddTeamPage } from '../pages/add-team/add-team';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { JugadoresToJornadaPage } from '../pages/jugadores-to-jornada/jugadores-
     ModalPage,
     ModalJornadaPage,
     JugadoresToJornadaPage,
+    AddTeamPage,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import { JugadoresToJornadaPage } from '../pages/jugadores-to-jornada/jugadores-
     ModalPage,
     ModalJornadaPage,
     JugadoresToJornadaPage,
+    AddTeamPage,
   ],
   providers: [
     StatusBar,

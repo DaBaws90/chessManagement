@@ -22,7 +22,6 @@ import { Observable } from 'rxjs';
   templateUrl: 'equipos.html',
 })
 export class EquiposPage {
-  // equipos:Equipo[] = [];
   equipos: Observable<any[]>
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private historialEquiposProvider:HistorialEquiposProvider) {

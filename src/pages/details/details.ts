@@ -45,7 +45,6 @@ export class DetailsPage {
     this.navCtrl.pop();
   }
 
-  
   /*editable(){
     var cont = document.getElementsByClassName("disabled");
     this.editando = true;
