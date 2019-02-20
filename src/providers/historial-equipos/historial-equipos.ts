@@ -35,16 +35,13 @@ export class HistorialEquiposProvider {
   }
 
   cargar_pendientes() {
-    this._jornadasPendientes = this.afDB.list('jornadas', ref => ref.orderByChild('jugada').equalTo(false)).valueChanges();
+    this._jornadasPendientes = this.afDB.list('jornadas', ref => ref.orderByChild('compound').equalTo('false1')).valueChanges();
     return this._jornadasPendientes;
   }
 
   getJornada(equipo: Equipo){
     return new Promise((resolve, reject) => {
-      // equipo.jugadores.forEach(player => {
-        // console.log(player)
-        this.jornada = equipo
-      // })
+      this.jornada = equipo
       resolve(true)
     })
   }
@@ -74,13 +71,17 @@ export class HistorialEquiposProvider {
       jugada: false,
       resultados: [],
       key: '',
+      compound: 'false0',
+      // compound: '',
     };
     return this.jornada;
   }
 
   agregar_equipo(equipoForm: FormGroup) {
+    // equipoForm['jugadores'] = ''
     var equipoTemp = this.fbApp.database().ref().child('jornadas').push(this.toTeam(equipoForm));
     this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('key').set(equipoTemp.key);
+    // this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('compound').set(this.toTeam(equipoForm).jugada + '0')
   }
 
 }

@@ -29,14 +29,16 @@ export class DetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
+    this.jugador = this.navParams.get("jugador");
   }
 
   ionViewWillEnter(){
-    this.jugador = this.historialProvider.cargar_historial()[this.index];
+    console.log('ionViewWillEnter DetailsPage');
+    this.jugador = this.navParams.get("jugador");
   }
 
   goEdit() {
-    this.navCtrl.push(EditPlayerPage, {"jugador": this.jugador, "index": this.index});
+    this.navCtrl.push(EditPlayerPage, {"jugador": this.jugador});
   }
   
   cerrar(){

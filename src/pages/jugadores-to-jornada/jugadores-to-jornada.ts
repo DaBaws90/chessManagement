@@ -48,6 +48,7 @@ export class JugadoresToJornadaPage {
       this.keys.push(jugador);
     });
     this.equipo.jugadores = this.keys;
+    this.equipo.compound = this.equipo.jugada + '1';
     this.afDB.database.ref().child('jornadas/' + this.equipo.key).set(this.equipo).then(() => {
       this.navCtrl.pop()
     });

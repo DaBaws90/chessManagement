@@ -84,6 +84,7 @@ export class ModalJornadaPage {
       })
       this.equipo.jugada = true;
       this.equipo.jugadores = this.jugadores
+      this.equipo.compound = this.equipo.jugada + '1';
       this.equipo.resultados = this.resultados
       this.fbApp.database().ref().child('jornadas/' + this.equipo.key).set(this.equipo);
       resolve(true)

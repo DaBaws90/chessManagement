@@ -24,7 +24,6 @@ import { FirebaseApp } from 'angularfire2';
 })
 export class ResultadosPage {
   equipos: Observable<Equipo[]>;
-  // equipo: Jugador[] = []
   equipo: Observable<Jugador[]>
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public _jornadas: HistorialEquiposProvider, public afDB: AngularFireDatabase,
@@ -42,13 +41,6 @@ export class ResultadosPage {
   }
 
   details(equipo:Equipo){
-    // equipo.jugadores.forEach((player) => {
-    //   // console.log(player)
-    //   this.fbApp.database().ref().child('users').child(player.key).once('value', (LUL) => {
-    //     this.equipo.push(LUL.val())
-    //     this.equipo = equipo.jugadores
-    //   })
-    // })
     this._jornadas.getJornada(equipo).then(() => {
       this.navCtrl.push(ModalJornadaPage, {"equipo": this._jornadas.jornada});
     })

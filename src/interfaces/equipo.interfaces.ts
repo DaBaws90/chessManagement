@@ -11,4 +11,6 @@ export interface Equipo {
     jugada: boolean;
     resultados: Resultado[];
     key: string;
+    compound: string;
+    // compound: number;
 }

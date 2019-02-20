@@ -23,13 +23,17 @@
           <ion-icon name="trash"></ion-icon>
           Borrar
         </button>
-        <button ion-button color="primary" (click)="goEdit(jugador, i)">
+        <!-- <button ion-button color="primary" (click)="goEdit(jugador, i)">
           <ion-icon name="create"></ion-icon>
           Editar
-        </button>
-        <button ion-button color="primary" (click)="makeCaptain(jugador, i)">
+        </button> -->
+        <button *ngIf="jugador.rol != 'capitan'" ion-button color="primary" (click)="toCaptain(jugador, i)">
           <ion-icon name="add"></ion-icon>
           Hacer capitán
+        </button>
+        <button *ngIf="jugador.rol == 'capitan'" ion-button color="danger" (click)="deleteCaptain(jugador)">
+          <ion-icon name="trash"></ion-icon>
+          Quitar capitanía
         </button>
       </ion-item-options>
     </ion-item-sliding>
