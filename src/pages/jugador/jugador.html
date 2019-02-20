@@ -15,17 +15,21 @@
         </ion-avatar>
         <h2>{{ jugador.nombre }} {{ jugador.apellidos }}</h2>
         <p>ELO: {{ jugador.elo }}</p>
-        <ion-icon item-right name="ios-arrow-back" *ngIf="user.rol == 'capitan'"></ion-icon>
-        <ion-note item-end *ngIf="user.rol == 'capitan'">Deslizar</ion-note>
+        <ion-icon item-right name="ios-arrow-back"></ion-icon>
+        <ion-note item-end>Deslizar</ion-note>
       </ion-item>
-      <ion-item-options side="right" *ngIf="user.rol == 'capitan'">
+      <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteUser(jugador)">
           <ion-icon name="trash"></ion-icon>
           Borrar
         </button>
-        <button ion-button color="primary" (click)="goEdit(jugador, i)" *ngIf="user.rol == 'capitan'">
+        <button ion-button color="primary" (click)="goEdit(jugador, i)">
           <ion-icon name="create"></ion-icon>
           Editar
+        </button>
+        <button ion-button color="primary" (click)="makeCaptain(jugador, i)">
+          <ion-icon name="add"></ion-icon>
+          Hacer capitán
         </button>
       </ion-item-options>
     </ion-item-sliding>

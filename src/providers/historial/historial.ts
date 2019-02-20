@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import { ToastController, AlertController } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
 /*
   Generated class for the HistorialProvider provider.
@@ -19,6 +20,8 @@ export class HistorialProvider {
   private jugador: Jugador;
   users;
   user: Jugador = <Jugador>{};
+  captains: Observable<any[]>
+  oneUser: Jugador
 
   constructor(public auth: AuthProvider, private afDB: AngularFireDatabase, private afAuth: AngularFireAuth, 
     private fbApp: FirebaseApp, private toastCtrl: ToastController, private alertCtrl: AlertController) {
@@ -46,6 +49,7 @@ export class HistorialProvider {
       key: uid,
       rol: 'user'
     };
+    this.jugador.elo = Number(this.jugador.elo)
     return this.jugador;
   }
 
@@ -66,6 +70,14 @@ export class HistorialProvider {
       key: jugadorForm.value['key'],
       rol: jugadorForm.value['rol'],
     };
+    this.jugador.elo = Number(this.jugador.elo)
+    this.jugador.jugadas = Number(this.jugador.jugadas)
+    this.jugador.ganadas = Number(this.jugador.ganadas)
+    this.jugador.empatadas = Number(this.jugador.empatadas)
+    this.jugador.perdidas = Number(this.jugador.perdidas)
+    this.jugador.casa = Number(this.jugador.casa)
+    this.jugador.fuera = Number(this.jugador.fuera)
+    this.jugador.puntos = Number(this.jugador.puntos)
     return this.jugador;
 
   }
@@ -95,26 +107,67 @@ export class HistorialProvider {
     this._historial[index] = this.modifyPlayer(jugadorForm);
   }
 
-  async getOne() {
-    this.afAuth.authState.take(1).subscribe(auth => {
-      this.fbApp.database().ref().child('users').child(auth.uid).once('value', (LUL) => {
-        this.user = LUL.val()
-      }).then(() => {
-        return this.user
-      }).catch(function(error) {
-        let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: error.message,
-          buttons: ['Aceptar']
-        });
-        alert.present();
+  // Gets the current logged user
+  getOne(){
+    return new Promise((resolve, reject) => {
+      this.afAuth.authState.take(1).subscribe(auth => {
+        this.fbApp.database().ref().child('users').child(auth.uid).once('value', (LUL) => {
+          this.user = LUL.val()
+        })
       })
     })
-    return await this.user;
   }
+  // async getOne() {
+  //   this.afAuth.authState.take(1).subscribe(auth => {
+  //     this.fbApp.database().ref().child('users').child(auth.uid).once('value', (LUL) => {
+  //       this.user = LUL.val()
+  //     }).then(() => {
+  //       return this.user
+  //     }).catch(function(error) {
+  //       let alert = this.alertCtrl.create({
+  //         title: 'Error',
+  //         subTitle: error.message,
+  //         buttons: ['Aceptar']
+  //       });
+  //       alert.present();
+  //     })
+  //   })
+  //   return await this.user;
+  // }
 
   deleteData(user: any) {
     this.afDB.object('/users/' + user.key).remove();
+  }
+
+  getCaptains(){
+    this.captains = this.afDB.list('/users', ref => ref.orderByChild('rol').equalTo('capitan')).valueChanges();
+    return this.captains
+  }
+
+  getOneUser(key: string){
+    return new Promise((resolve, reject) => {
+      this.fbApp.database().ref().child('users').child(key).once('value', LUL => {
+        this.oneUser = LUL.val()
+      })
+      resolve(true)
+    })
+    
+  }
+
+  makeCaptain(player: Jugador){
+    return new Promise((resolve, reject) => {
+      player.rol = 'capitan'
+      this.fbApp.database().ref().child('users/' + player.key).set(player);
+      resolve(true)
+    })
+  }
+
+  deleteCaptain(player: Jugador){
+    return new Promise((resolve, reject) => {
+      player.rol = 'user'
+      this.fbApp.database().ref().child('users/' + player.key).set(player);
+      resolve(true)
+    })
   }
 
   // getCurrentUser(){

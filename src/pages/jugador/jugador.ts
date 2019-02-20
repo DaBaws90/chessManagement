@@ -23,28 +23,23 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class JugadorPage {
   jugadores: Observable<any[]>;
-  // user: Jugador = <Jugador>{};
-  user: Jugador = <Jugador>{};
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private historialProvider: HistorialProvider, private afAuth: AngularFireAuth, private afDB: AngularFireDatabase,
     private fbApp: FirebaseApp, private alertCtrl: AlertController) {
-      this.jugadores = this.historialProvider.cargar_historial();
-      this.user = this.navParams.get('user');
+
+    this.jugadores = this.historialProvider.cargar_historial();
   }
 
   ionViewCanEnter(){
-    this.user = this.navParams.get('user');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JugadorPage');
-    this.user = this.navParams.get('user');
   }
 
   ionViewWillEnter() {
     this.jugadores = this.historialProvider.cargar_historial();
-    this.user = this.navParams.get('user');
   }
 
   addPlayerPage() {
