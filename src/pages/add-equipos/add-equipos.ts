@@ -31,7 +31,6 @@ export class AddEquiposPage {
   private myDate: String = new Date().toISOString();
   private myTime: String = new Date(this.d.getTime() + (3600000 * this.offset)).toISOString(); // Necesita revisión
   private calendar: Calendario = <Calendario>{}; // Inicializarlo vacío así o en el constructor
-  // private listTeams:Equipo[];
 
   public event = {
     fecha: this.myDate,
@@ -60,11 +59,10 @@ export class AddEquiposPage {
   }
 
   addTeam() {
-    // this.equipoForm.value["jugadores"] = this.selected;
     this.historialEquipos.agregar_equipo(this.equipoForm);
     this.presentToast(this.equipoForm.value['nombre']);
     this.navCtrl.pop();
-    console.log(this.equipoForm.value);
+    // console.log(this.equipoForm.value);
   }
 
   private presentToast(nombre: string) {

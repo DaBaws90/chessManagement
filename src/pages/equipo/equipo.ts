@@ -4,6 +4,7 @@ import { Banquillo } from '../../interfaces/banquillo.interfaces';
 import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 import { Observable } from 'rxjs';
 import { AddTeamPage } from '../add-team/add-team';
+import { HistorialProvider } from '../../providers/historial/historial';
 
 /**
  * Generated class for the EquipoPage page.
@@ -19,8 +20,10 @@ import { AddTeamPage } from '../add-team/add-team';
 })
 export class EquipoPage {
   banquillos: Observable<Banquillo[]>
+  // jugadores
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public historialEquipos : HistorialEquiposProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public historialEquipos : HistorialEquiposProvider, 
+    public historial :HistorialProvider) {
     this.banquillos = this.historialEquipos.getBanquillos()
   }
 
