@@ -22,7 +22,7 @@ export class EquipoPage {
   banquillos: Observable<Banquillo[]>
   // jugadores
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public historialEquipos : HistorialEquiposProvider, 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public historialEquipos : HistorialEquiposProvider,
     public historial :HistorialProvider) {
     this.banquillos = this.historialEquipos.getBanquillos()
   }

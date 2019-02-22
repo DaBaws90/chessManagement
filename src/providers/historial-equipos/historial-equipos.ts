@@ -20,7 +20,7 @@ export class HistorialEquiposProvider {
   private _jornadasPendientes: Observable<any[]>;
   private _jornadasJugadas: Observable<any[]>;
   jornada: Equipo;
-  banquillos : Observable<any[]>;
+  banquillos: Observable<any[]>;
 
   constructor(public afDB: AngularFireDatabase, public fbApp: FirebaseApp) {
     console.log('Hello HistorialEquiposProvider Provider');
@@ -41,7 +41,7 @@ export class HistorialEquiposProvider {
     return this._jornadasPendientes;
   }
 
-  getJornada(equipo: Equipo){
+  getJornada(equipo: Equipo) {
     return new Promise((resolve, reject) => {
       this.jornada = equipo
       resolve(true)
@@ -86,6 +86,11 @@ export class HistorialEquiposProvider {
   agregar_equipo(equipoForm: FormGroup) {
     var equipoTemp = this.fbApp.database().ref().child('jornadas').push(this.toTeam(equipoForm));
     this.fbApp.database().ref().child('jornadas/' + equipoTemp.key).child('key').set(equipoTemp.key);
+  }
+
+  saveJugadores(equipo: Jugador[]) {
+    this.fbApp.database().ref().child('equipos').push(equipo);
+
   }
 
 }

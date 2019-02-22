@@ -5,6 +5,7 @@ import { HistorialProvider } from '../../providers/historial/historial';
 import { Observable } from 'rxjs';
 import { ModalPage } from '../modal/modal';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HistorialEquiposProvider } from '../../providers/historial-equipos/historial-equipos';
 
 /**
  * Generated class for the AddTeamPage page.
@@ -25,12 +26,12 @@ export class AddTeamPage {
   // Controlar que jugadores no estén ya seleccionados en otro equipo
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public modalCtrl: ModalController,
-    public hstorial: HistorialProvider) {
+    public historial: HistorialProvider, public historialEquipos: HistorialEquiposProvider) {
     this.equipoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       jugadores: [],
     })
-    this.jugadores = this.hstorial.cargar_historial()
+    this.jugadores = this.historial.cargar_historial()
   }
 
   ionViewDidLoad() {
@@ -43,6 +44,15 @@ export class AddTeamPage {
     modal.onDidDismiss(data => {
       this.selected = data;
     });
+  }
+
+  private saveJugadores() {
+    if(this.selected.length == 4) {
+      this.historialEquipos.saveJugadores(this.selected);
+      this.navCtrl.pop();
+    }
+
+
   }
 
 
