@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Puntuar</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goToHome()">Home <ion-icon name="home"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item *ngFor="let equipo of equipos | async; let i = index" (click)="details(equipo)">
+    <ion-item >
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/options/poll-solid.svg">
+      </ion-avatar>
+      <h2>{{equipo.nombre}}</h2>
+      <ion-note item-end>
+        {{equipo.ciudad}} ({{ equipo.local }})
+      </ion-note>
+      </ion-item>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

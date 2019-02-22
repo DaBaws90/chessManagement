@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 496:
+/***/ 497:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddPlayerPageModule", function() { return AddPlayerPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddTeamPageModule", function() { return AddTeamPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_player__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_team__ = __webpack_require__(291);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddPlayerPageModule = /** @class */ (function () {
-    function AddPlayerPageModule() {
+var AddTeamPageModule = /** @class */ (function () {
+    function AddTeamPageModule() {
     }
-    AddPlayerPageModule = __decorate([
+    AddTeamPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_player__["a" /* AddPlayerPage */],
+                __WEBPACK_IMPORTED_MODULE_2__add_team__["a" /* AddTeamPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_player__["a" /* AddPlayerPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_team__["a" /* AddTeamPage */]),
             ],
         })
-    ], AddPlayerPageModule);
-    return AddPlayerPageModule;
+    ], AddTeamPageModule);
+    return AddTeamPageModule;
 }());
 
-//# sourceMappingURL=add-player.module.js.map
+//# sourceMappingURL=add-team.module.js.map
 
 /***/ })
 

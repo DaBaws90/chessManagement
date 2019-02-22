@@ -28,7 +28,7 @@ export class ResultadosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public _jornadas: HistorialEquiposProvider, public afDB: AngularFireDatabase,
     public fbApp: FirebaseApp) {
-    this.equipos = this._jornadas.cargar_pendientes();
+    this.equipos = this._jornadas.cargar_jugadas();
   }
 
   ionViewDidLoad() {
@@ -37,12 +37,12 @@ export class ResultadosPage {
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter ResultadosPage');
-    this.equipos = this._jornadas.cargar_pendientes();
+    this.equipos = this._jornadas.cargar_jugadas();
   }
 
   details(equipo:Equipo){
     this._jornadas.getJornada(equipo).then(() => {
-      this.navCtrl.push(ModalJornadaPage, {"equipo": this._jornadas.jornada});
+      this.navCtrl.push(EquipoDetailPage, {"equipo": this._jornadas.jornada});
     })
   }
 

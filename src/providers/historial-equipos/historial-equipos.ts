@@ -25,7 +25,7 @@ export class HistorialEquiposProvider {
   constructor(public afDB: AngularFireDatabase, public fbApp: FirebaseApp) {
     console.log('Hello HistorialEquiposProvider Provider');
   }
-  
+
   cargar_jornadas() {
     this._jornadas = this.afDB.list('jornadas', ref => ref.orderByChild('jugadores').equalTo(null)).valueChanges();
     return this._jornadas;
@@ -58,7 +58,7 @@ export class HistorialEquiposProvider {
   //       } else {
   //         resolve(false);
   //       }
-        
+
   //     })
   // })
 

@@ -16,8 +16,13 @@ export const OPTIONS = [
     img: "assets/imgs/options/chess-rook-solid.svg"
 },
 {
+  nombre: "Puntuar",
+  img: "assets/imgs/options/score.png"
+},
+{
     nombre: "Resultados",
     img: "assets/imgs/options/poll-solid.svg"
 },
+
 
 ]

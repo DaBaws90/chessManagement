@@ -24,6 +24,7 @@ import { ModalPage } from '../pages/modal/modal';
 import { ModalJornadaPage } from '../pages/modal-jornada/modal-jornada';
 import { JugadoresToJornadaPage } from '../pages/jugadores-to-jornada/jugadores-to-jornada';
 import { AddTeamPage } from '../pages/add-team/add-team';
+import { PuntuarPage } from '../pages/puntuar/puntuar';
 
 @NgModule({
   declarations: [
